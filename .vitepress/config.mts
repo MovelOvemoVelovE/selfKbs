@@ -5,7 +5,7 @@ export default defineConfig({
   title: "前端开发笔记手册",
   description: "前端自学的一些笔记，一些着重点记录。以便学习、复习、参考",
   outDir: 'public',
-  base: '/docs/',
+  base: '/selfKbs/',
   themeConfig: {
     nav: [
       { text: 'javascript', link: '/docs/' },
