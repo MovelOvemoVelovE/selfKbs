@@ -4,6 +4,9 @@ import mdConfig from './vitepress/config/mdConfig.mjs'
 export default defineConfig({
   title: "Jiabs-docs",
   description: "Jiabs-frontend-docs",
+  appearance: {
+    initialValue: 'dark',
+  },
   // head标签配置
   head: [
     ['link', { rel: 'icon', href: '/assets/logo.jpg' }],
@@ -21,9 +24,6 @@ export default defineConfig({
     // 站点标题
     siteTitle: 'Jiabs-docs',
     // 主题配置
-    appearance: {
-      initialValue: 'dark',
-    },
     // 搜索
     search: {
       provider: 'local',
