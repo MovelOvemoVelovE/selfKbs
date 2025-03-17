@@ -48,25 +48,52 @@ export default defineConfig({
     },
     // 导航栏配置
     nav: [
-      { text: '我们是一佳人', link: '/' },
+      { 
+        text: '我们是一佳人', 
+        items: [
+          { text: '数据逻辑', link: '/markdowns/jbs-tips/dataSource' },
+          { text: '方法及hooks', link: '/markdowns/jbs-tips/methods' },
+          { text: '组件库', link: '/markdowns/jbs-components/index' }
+        ]
+      },
       { 
         text: '框架', 
         items: [
           { text: 'React', link: '/markdowns/architect_trip/react/index' },
         ]
       },
-      { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
-      { 
-        text: 'version-0.1',
+      {
+        text: '工具集',
         items: [
-          { text: '参与贡献', link: 'https://gitlab.jiabs.com/jbs/hris' },
-          { text: '审批贡献', link: 'https://gitlab.jiabs.com/jbs/hris/hris-fe/jbs-flow' }
+          { text: 'Git', link: '/markdowns/architect_trip/tools/git' },
+          { text: 'webpack', link: '/markdowns/architect_trip/webpack/index' },
         ]
-      }
+      },
+      {
+        text: '配置文件集',
+        link: '/markdowns/configJs/index'
+      },
+      {
+        text: '全栈之旅',
+        items: [
+          { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
+          { text: 'js数据结构与算法', link: '/markdowns/architect_trip/javascriptAdvanced/dataStructure' },
+          { text: 'js设计模式', link: '/markdowns/architect_trip/javascriptAdvanced/designMode' },
+          { text: 'web响应式设计', link: '/markdowns/architect_trip/javascriptAdvanced/responsiveDesign' },
+          { text: '你不知道的js', link: '/markdowns/architect_trip/javascriptAdvanced/jsYDK' },
+        ]
+      },
+      // { 
+      //   text: 'version-0.1',
+      //   items: [
+      //     { text: '参与贡献', link: 'https://gitlab.jiabs.com/jbs/hris' },
+      //     { text: '审批贡献', link: 'https://gitlab.jiabs.com/jbs/hris/hris-fe/jbs-flow' }
+      //   ]
+      // }
     ],
     // 侧边栏配置
     sidebar: {
-      '/jbs-components': [
+      '/markdowns/jbs-components': [
         {
           text: '基础组件',
           // collapsed: true,
@@ -92,7 +119,16 @@ export default defineConfig({
           ]
         }
       ],
-
+      '/markdowns/architect_trip/webpack': [
+        {
+          text: 'webpack',
+          items: [
+            { text: 'webpack基础配置', link: '/markdowns/architect_trip/webpack/basics' },
+            { text: 'webpack-loader', link: '/markdowns/architect_trip/webpack/loader' },
+            { text: 'webpack-plugin', link: '/markdowns/architect_trip/webpack/plugin' }
+          ]
+        }
+      ],
     },
     // 社交链接
     socialLinks: [
