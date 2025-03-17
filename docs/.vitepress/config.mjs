@@ -2,10 +2,11 @@ import { defineConfig } from 'vitepress'
 import mdConfig from './vitepress/config/mdConfig.mjs'
 
 export default defineConfig({
-  title: "Jiabs-docs",
-  description: "Jiabs-frontend-docs",
+  title: "个人知识库",
+  description: "包含了日常代码积累、自学知识积累",
   appearance: {
-    initialValue: 'dark',
+    initOnMounted: false,
+    initialValue: 'dark'
   },
   // head标签配置
   head: [
@@ -22,7 +23,7 @@ export default defineConfig({
       // src: '/assets/logo.jpg',
     },
     // 站点标题
-    siteTitle: 'Jiabs-docs',
+    siteTitle: '不断充实的知识库',
     // 主题配置
     // 搜索
     search: {
@@ -47,10 +48,14 @@ export default defineConfig({
     },
     // 导航栏配置
     nav: [
-      { text: '组件', link: '/jbs-components' },
-      { text: '方法', link: '/jbs-methods' },
-      { text: '数据逻辑', link: '/markdowns/jbs-tips/dataSource' },
-      { text: '开发规范', link: '/develop-specification' },
+      { text: '我们是一佳人', link: '/' },
+      { 
+        text: '框架', 
+        items: [
+          { text: 'React', link: '/markdowns/architect_trip/react/index' },
+        ]
+      },
+      { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
       { 
         text: 'version-0.1',
         items: [
@@ -70,9 +75,24 @@ export default defineConfig({
           ]
         }
       ],
-      '/markdowns/jbs-tips/dataSource': [
-        { text: '数据逻辑', link: '/markdowns/jbs-tips/dataSource'  }
-      ]
+      '/markdowns/architect_trip/react': [
+        {
+          text: 'React',
+          items: [
+            { text: '速通React官网', link: '/markdowns/architect_trip/react/officialDocument' },
+            { text: '样式私有化方案', link: '/markdowns/architect_trip/react/stylePrivate' },
+            { text: 'fetch请求', link: '/markdowns/architect_trip/react/fetch' },
+            { text: 'hook索引', link: '/markdowns/architect_trip/react/hooksIndex' },
+            { text: 'react-router-dom(路由)', link: '/markdowns/architect_trip/react/reactRouterDom' },
+            { text: 'react-redux状态管理', link: '/markdowns/architect_trip/react/redux'  },
+            { text: 'redux-saga(redux中间件)', link: '/markdowns/architect_trip/react/reduxSaga' },
+            { text: '源码原理', link: '/markdowns/architect_trip/react/sourceCode' },
+            { text: '补漏', link: '/markdowns/architect_trip/react/fill' },
+            { text: 'React生态列表', link: '/markdowns/architect_trip/react/ecology' }
+          ]
+        }
+      ],
+
     },
     // 社交链接
     socialLinks: [

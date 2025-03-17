@@ -11,14 +11,8 @@ hero:
     alt: jbsLogo
   actions:
     - theme: brand
-      text: 组件示例
-      link: /jbs-components
-    - theme: brand
       text: 数据逻辑
       link: /markdowns/jbs-tips/dataSource
-    - theme: alt
-      text: 开发规范
-      link: /jbs-specification
 
 features:
   - title: 高效
