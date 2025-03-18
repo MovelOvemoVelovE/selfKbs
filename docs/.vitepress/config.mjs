@@ -77,6 +77,7 @@ export default defineConfig({
         text: '全栈之旅',
         items: [
           { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
+          { text: 'express', link: '/markdowns/architect_trip/express/index' },
           { text: 'js数据结构与算法', link: '/markdowns/architect_trip/javascriptAdvanced/dataStructure' },
           { text: 'js设计模式', link: '/markdowns/architect_trip/javascriptAdvanced/designMode' },
           { text: 'web响应式设计', link: '/markdowns/architect_trip/javascriptAdvanced/responsiveDesign' },
