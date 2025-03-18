@@ -1,6 +1,6 @@
 ::: tip
 
-这里有vite、webpack等配置项全集
+这里有vite、webpack、.gitignore等配置项全集
 
 :::
 
@@ -15,3 +15,7 @@
 ## webpack.prod.js
 
 <<< ./webpack.prod.js
+
+## .gitignore
+
+<<< ../../../.gitignore

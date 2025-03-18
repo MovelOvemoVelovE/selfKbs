@@ -18,6 +18,8 @@ export default defineConfig({
   cleanUrls: true,
   // 页面布局配置
   themeConfig: {
+    // 大纲渲染的层级
+    outline: [1, 4], // number [number, number] 'deep' 
     // 站点logo
     logo: {
       // src: '/assets/logo.jpg',
