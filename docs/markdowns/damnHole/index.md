@@ -1,3 +1,4 @@
+Damn！Tread Hole! <Badge type="danger" text="version 0.1" />
 # 组件库
 
 ## elementPlus
@@ -46,3 +47,61 @@ const tableData = ref([])
 - **传递prop避开data属性命名的冲突**
 - `vue`特性的`attribute`透传可通过`defineOptions().inheritAttrs = false`解决
 :::
+
+## 
+
+# vue
+
+## 封装$dialog
+
+::: warning
+
+在封装$dialog时， 控制台警告: 
+
+`Non-function value encountered for default slot. Prefer function slots for better performance.`
+
+由于vue3中插槽内容要为函数
+
+:::
+
+```js [dialogPlugin.js]
+
+() => h(ElDialog, {
+    modelValue: visible.value,
+  },
+  {
+    default: options.content, // [!code --]
+    default: () => options.content, // [!code ++]
+    footer: () => options.showFooter ? h('div', 
+      { class: ['dialog-footer', options.footerClass ] },
+      [
+        options.showCancelBtn && h(ElButton, { onClick: close, type: options.cancelType }, options.cancelText ), // [!code --]
+        options.showCancelBtn && h(ElButton, { onClick: close, type: options.cancelType }, () => options.cancelText ), // [!code ++]
+        //.....
+      ]
+    ) : null,
+  });
+
+```
+
+## `<component />`常识
+
+在**setup组合api中**， 使用`<component />`标签，传递一个组件实例过去。
+
+::: warning
+
+假设定义了一个对象，其中有个属性名为`component`, 那么也会触发警告: 
+
+**Vue received a Component that was made a reactive object. This can lead to unnecessary performance overhead and should be avoided by marking the component with `markRaw` or using `shallowRef` instead of `ref`.**
+
+:::
+
+::: details 解决方法
+
+```js
+obj = reactive({
+  component: markRaw(component)
+})
+```
+
+::: 

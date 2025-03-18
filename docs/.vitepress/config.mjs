@@ -53,9 +53,7 @@ export default defineConfig({
       { 
         text: '我们是一佳人', 
         items: [
-          { text: '数据逻辑', link: '/markdowns/jbs-tips/dataSource' },
-          { text: '方法及hooks', link: '/markdowns/jbs-tips/methods' },
-          { text: '组件库', link: '/markdowns/jbs-components/index' }
+          { text: '查询索引', link: '/markdowns/jbs-tips/dataSource' },
         ]
       },
       { 
@@ -105,6 +103,23 @@ export default defineConfig({
           // collapsed: true,
           items: [
             { text: 'Table 表格', link: '/markdowns/jbs-components/Table' },
+          ]
+        }
+      ],
+      '/markdowns/jbs-tips': [
+        {
+          text: '系统代码逻辑',
+          // collapsed: true,
+          items: [
+            { text: '数据逻辑', link: '/markdowns/jbs-tips/dataSource' },
+            { text: '函数方法', link: '/markdowns/jbs-tips/methods' }
+          ]
+        },
+        {
+          text: '审批代码逻辑',
+          items: [
+            { text: '审批逻辑', link: '/markdowns/jbs-tips/workFlow'  },
+            { text: '函数方法', link: '/markdowns/jbs-tips/flowMethods' }
           ]
         }
       ],
