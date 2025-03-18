@@ -11,7 +11,7 @@ export default defineConfig({
   },
   // head标签配置
   head: [
-    ['link', { rel: 'icon', href: '/assets/logo.jpg' }],
+    ['link', { rel: 'icon', href: '/imgs/logo.jpg' }],
   ],
   // 最后更新事件
   lastUpdated: true,
@@ -23,7 +23,7 @@ export default defineConfig({
     outline: [1, 4], // number [number, number] 'deep' 
     // 站点logo
     logo: {
-      // src: '/assets/logo.jpg',
+      // src: '/imgs/logo.jpg',
     },
     // 站点标题
     siteTitle: '不断充实的知识库',
