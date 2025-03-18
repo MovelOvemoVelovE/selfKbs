@@ -19,3 +19,7 @@
 ## .gitignore
 
 <<< ../../../.gitignore
+
+## .vitepress/config.mjs
+
+<<< ../../../docs/.vitepress/config.mjs{js}
