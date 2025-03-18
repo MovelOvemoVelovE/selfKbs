@@ -135,3 +135,5 @@ public/
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+docs/.vitepress/cache/deps/_metadata.json
+docs/.vitepress/cache/deps/@theme_index.js

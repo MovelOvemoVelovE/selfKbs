@@ -1,17 +1,23 @@
 {
-  "name": "memo",
+  "name": "jbs-docs",
   "version": "1.0.0",
-  "description": "前端自学的一些笔记，一些着重点记录。以便学习、复习、参考",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vitepress dev",
-    "build": "vitepress build",
-    "preview": "vitepress preview"
+    "dev": "vitepress dev docs --port 2112",
+    "build": "vitepress build docs",
+    "preview": "vitepress preview docs"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
+  "type": "commonjs",
   "devDependencies": {
     "vitepress": "^1.6.3"
+  },
+  "dependencies": {
+    "element-plus": "^2.9.6",
+    "markdown-it-container": "^4.0.0"
   }
 }

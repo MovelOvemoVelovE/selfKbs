@@ -46,11 +46,12 @@ jobs:
       - name: Install dependencies
         run: npm install # 或 pnpm install / yarn install / bun install
       - name: Build with VitePress
-        run: npm run build # 或 pnpm build / yarn build / bun run build
+        run: npm run build # 或 pnpm docs:build / yarn docs:build / bun run docs:build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: public
+          path: docs/.vitepress/dist
+
   # 部署工作
   deploy:
     environment:
