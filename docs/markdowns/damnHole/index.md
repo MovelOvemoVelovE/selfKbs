@@ -6,7 +6,7 @@
 
 ::: danger
 
-由于传递是个对象，最顶级的`el-table`又接受了`attribute`，会导致组件内的data被覆盖，从而导致报错。
+由于传递是个对象，最顶级的`el-table`又接受了`attribute`，`elementPlus`底层用了`data.includes`方法会导致报错。
 
 :::
 
