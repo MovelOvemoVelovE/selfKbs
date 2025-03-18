@@ -83,6 +83,10 @@ export default defineConfig({
           { text: '你不知道的js', link: '/markdowns/architect_trip/javascriptAdvanced/jsYDK' },
         ]
       },
+      {
+        text: '踩坑日记',
+        link: '/markdowns/damnHole/index'
+      }
       // { 
       //   text: 'version-0.1',
       //   items: [
