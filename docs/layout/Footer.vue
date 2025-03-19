@@ -8,12 +8,11 @@
 import { VPTeamMembers } from 'vitepress/theme'
 const members = [
   {
-    avatar: 'assets/logo.jpg',
-    name: 'Xiao Liu',
-    title: 'Creator',
+    avatar: 'imgs/logo.jpg',
+    name: 'kakarotto',
+    title: 'movelovemovelove@163.com',
     links: [
-      { icon: 'github', link: 'https://github.com/yyx990803' },
-      { icon: 'twitter', link: 'https://twitter.com/youyuxi' }
+      { icon: 'github', link: 'https://github.com/movelovemovelove' },
     ]
   },
 ]

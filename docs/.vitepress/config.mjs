@@ -9,9 +9,10 @@ export default defineConfig({
     initOnMounted: false,
     initialValue: 'dark'
   },
+  // srcDir: 'docs',
   // head标签配置
   head: [
-    ['link', { rel: 'icon', href: '/imgs/logo.jpg' }],
+    ['link', { rel: 'icon', type: 'jpg', href: '/selfKbs/imgs/logo.jpg' }],
   ],
   // 最后更新事件
   lastUpdated: true,
@@ -60,7 +61,7 @@ export default defineConfig({
       { 
         text: '框架', 
         items: [
-          { text: 'React', link: '/markdowns/architect_trip/react/index' },
+          { text: 'React', link: '/markdowns/architect_trip/react/index' }
         ]
       },
       {
@@ -79,6 +80,8 @@ export default defineConfig({
         items: [
           { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
           { text: 'express', link: '/markdowns/architect_trip/express/index' },
+          { text: 'jest测试', link: '/markdowns/architect_trip/testJs/jest' },
+          { text: 'cypress交互测试', link: '/markdowns/architect_trip/testJs/cypress' },
           { text: 'js数据结构与算法', link: '/markdowns/architect_trip/javascriptAdvanced/dataStructure' },
           { text: 'js设计模式', link: '/markdowns/architect_trip/javascriptAdvanced/designMode' },
           { text: 'web响应式设计', link: '/markdowns/architect_trip/javascriptAdvanced/responsiveDesign' },
@@ -155,6 +158,7 @@ export default defineConfig({
     },
     // 社交链接
     socialLinks: [
+      { icon: 'github', link: 'https://github.com/movelovemovelove' },
       // { icon: 'gitlab', link: 'https://gitlab.jiabs.com/jbs/hris' },
       { icon: 'vite', link: 'https://vuejs.org' },
       // { icon: {

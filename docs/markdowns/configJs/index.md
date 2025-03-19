@@ -18,7 +18,7 @@
 
 ## .gitignore
 
-<<< ../../../.gitignore
+<<< ../../../.gitignore{bash}
 
 ## .vitepress/config.mjs
 

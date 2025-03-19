@@ -48,7 +48,55 @@ const tableData = ref([])
 - `vue`特性的`attribute`透传可通过`defineOptions().inheritAttrs = false`解决
 :::
 
-## 
+## vant
+
+### `Calendar`
+
+::: danger
+
+日历组件内的日期， 直接渲染成了**字符**， 想要重置修改样式！发现做不到！
+
+![日历组件渲染](../../imgs/rili.png)
+
+:::
+
+**通过提供的`formatter: (date) => date`来生成div标签， 代码如下：**
+
+```vue
+<Calendar :formatter="calendarFormatter"/>
+
+<script setup>
+const calendarFormatter = (day) => {
+  day.text = h('div', {
+    class: 'custom_day',
+  }, day.text)
+  return day
+}
+</script>
+
+<style lang="scss" scoped>
+::v-deep {
+  .custom_day {
+    // xxx
+  }
+}
+</style>
+```
+
+## 日历组件
+
+::: danger
+
+市面的日历组件未能满足需求， 需要自己封装一个完整版功能的日历组件
+
+1. elementplus的日历组件：
+   - 无法设置头部的周日排序在后面
+   - 初始样式化太丑
+   - border线很丑
+<!-- 2. vant：
+   -  -->
+:::
+
 
 # vue
 
