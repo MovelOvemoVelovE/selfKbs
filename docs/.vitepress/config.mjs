@@ -4,7 +4,7 @@ import mdConfig from './vitepress/config/mdConfig.mjs'
 export default defineConfig({
   title: "个人知识库",
   description: "包含了日常代码积累、自学知识积累",
-  base: '/selfKbs/docs/',
+  base: '/selfKbs/',
   appearance: {
     initOnMounted: false,
     initialValue: 'dark'
