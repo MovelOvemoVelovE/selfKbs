@@ -7,7 +7,7 @@ hero:
   text: "日常总结随笔"
   tagline: 你值得拥有
   image: 
-    src: /selfKbs/docs/imgs/logo.jpg
+    src: /logo.jpg
     alt: jbsLogo
   actions:
     - theme: brand

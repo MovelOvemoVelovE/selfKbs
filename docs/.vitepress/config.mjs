@@ -12,7 +12,7 @@ export default defineConfig({
   // srcDir: 'docs',
   // head标签配置
   head: [
-    ['link', { rel: 'icon', type: 'jpg', href: '/selfKbs/docs/imgs/logo.jpg' }],
+    ['link', { rel: 'icon', type: 'jpg', href: '/selfKbs/logo.jpg' }],
   ],
   // 最后更新事件
   lastUpdated: true,
