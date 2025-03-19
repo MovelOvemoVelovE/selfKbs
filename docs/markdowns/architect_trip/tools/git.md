@@ -3,7 +3,7 @@ theme: vuepress
 highlight: vs2015
 ---
 
-> **gitignore 常用模板**：[.gitignore](/markdowns/configJs#gitignore)
+> **gitignore 常用模板**：[.gitignore](/markdowns/configJs/#gitignore)
 
 # 可视化工具
 
