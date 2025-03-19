@@ -48,7 +48,19 @@ const tableData = ref([])
 - `vue`特性的`attribute`透传可通过`defineOptions().inheritAttrs = false`解决
 :::
 
-## 
+## 日历组件
+
+::: danger
+
+市面的日历组件未能满足需求， 需要自己封装一个完整版功能的日历组件
+
+1. elementplus的日历组件：
+   - 无法设置头部的周日排序在后面
+   - 初始样式化太丑
+   - border线很丑
+2. vant：
+   - 
+:::
 
 # vue
 
