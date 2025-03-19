@@ -158,6 +158,7 @@ export default defineConfig({
     },
     // 社交链接
     socialLinks: [
+      { icon: 'github', link: 'https://github.com/movelovemovelove' },
       // { icon: 'gitlab', link: 'https://gitlab.jiabs.com/jbs/hris' },
       { icon: 'vite', link: 'https://vuejs.org' },
       // { icon: {
