@@ -1,32 +1,32 @@
-express是快速、独立、极简的nodejs web框架
+express 是快速、独立、极简的 nodejs web 框架
 
 ```bash
 mkdir myapp
 cd myapp
 npm init
-npm i express 
+npm i express
 ```
 
 # 新手入门
 
 ## Hello world
 
-先来一个简单的示例，进入express的世界!
+先来一个简单的示例，进入 express 的世界!
 
 ::: code-group
 
 ```js [index.js]
-const express = require('express')
-const app = express()
-const port = 9999
+const express = require("express");
+const app = express();
+const port = 9999;
 
-app.get('/', (req, res) => {
-  res.send('Hello world')
-})
+app.get("/", (req, res) => {
+  res.send("Hello world");
+});
 
 app.listen(port, () => {
-  console.log('example app listening on port ' + port)
-})
+  console.log("example app listening on port " + port);
+});
 ```
 
 ```shell [shell终端]
@@ -90,5 +90,49 @@ $env:DEBUG='myapp:*'; npm start
 
 7 directories, 9 files
 ```
+
 :::
 
+## 基本路由
+
+路由是确定 app 如何响应客户端对特定端口的请求， 该端点可以是 URL、HTTP 请求(GET、POST、PUT、DELETE 等)。
+
+每个路由可以有**一个或多个**处理函数，匹配路由时执行。
+
+使用: `app[METHOD](PATH, HANDLER`
+
+::: tip
+
+- app是express的实例
+- METHOD是小写的请求方法，get、post
+- PATH是服务器路径
+- HANDLER是执行的回调函数
+:::
+
+## 提供静态资源
+
+静态资源的提供使用: `app.use([virtualUrl,]express.static(path.join(__dirname, 'public')))`
+
+如：
+
+:::  code-group
+
+```js [index.js]
+
+const app = express();
+app.use('/static', express.static(path.join(__dirname, 'public')))
+```
+
+```md [访问]
+http://localhost:3000/static/images/kitten.jpg
+http://localhost:3000/static/css/style.css
+http://localhost:3000/static/js/app.js
+http://localhost:3000/static/images/bg.png
+http://localhost:3000/static/hello.html
+```
+
+:::
+
+## 常见问题
+
+### 
