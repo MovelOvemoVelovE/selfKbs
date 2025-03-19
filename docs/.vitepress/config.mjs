@@ -9,9 +9,10 @@ export default defineConfig({
     initOnMounted: false,
     initialValue: 'dark'
   },
+  // srcDir: 'docs',
   // head标签配置
   head: [
-    ['link', { rel: 'icon', href: '/imgs/logo.jpg' }],
+    ['link', { rel: 'icon', href: '../imgs/logo.jpg' }],
   ],
   // 最后更新事件
   lastUpdated: true,

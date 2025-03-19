@@ -8,7 +8,7 @@
 import { VPTeamMembers } from 'vitepress/theme'
 const members = [
   {
-    avatar: 'assets/logo.jpg',
+    avatar: 'imgs/logo.jpg',
     name: 'Xiao Liu',
     title: 'Creator',
     links: [
