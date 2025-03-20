@@ -22,4 +22,7 @@ const members = [
   .footer_container {
     text-align: center;
   }
+  .footer_container:hover {
+    cursor: pointer;
+  }
 </style>
