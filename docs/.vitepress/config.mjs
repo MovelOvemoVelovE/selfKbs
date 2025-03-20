@@ -56,6 +56,7 @@ export default defineConfig({
         text: '🧬我们是一佳人', 
         items: [
           { text: '查询索引', link: '/markdowns/jbs-tips/dataSource' },
+          { text: '🙆‍♀️噗OA流程', link: '/markdowns/pupu/index' }
         ]
       },
       { 
