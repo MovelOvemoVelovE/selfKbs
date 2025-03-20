@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "Front-end docs"
-  text: "日常总结随笔"
-  tagline: 人生的意义在于人本身 
+  name: "卡卡笔记"
+  text: "人生的意义在于人本身"
+  tagline: 人活到100岁，影像的大小是46,195.3125 TB
   image: 
     src: /vitepress-logo-large.webp
     alt: webLogo
