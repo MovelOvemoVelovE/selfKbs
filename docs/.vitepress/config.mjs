@@ -67,6 +67,7 @@ export default defineConfig({
       {
         text: '🔨工具集',
         items: [
+          { text: '函数方法', link: '/markdowns/architect_trip/tools/functions' },
           { text: 'Git', link: '/markdowns/architect_trip/tools/git' },
           { text: 'webpack', link: '/markdowns/architect_trip/webpack/index' },
         ]
