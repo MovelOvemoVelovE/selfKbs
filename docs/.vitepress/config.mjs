@@ -62,7 +62,8 @@ export default defineConfig({
       { 
         text: '🌈框架', 
         items: [
-          { text: 'React', link: '/markdowns/architect_trip/react/index' }
+          { text: 'React', link: '/markdowns/architect_trip/react/index' },
+          { text: 'vue', link: '/markdowns/architect_trip/vue/vue' }
         ]
       },
       {
@@ -154,6 +155,15 @@ export default defineConfig({
             { text: 'webpack基础配置', link: '/markdowns/architect_trip/webpack/basics' },
             { text: 'webpack-loader', link: '/markdowns/architect_trip/webpack/loader' },
             { text: 'webpack-plugin', link: '/markdowns/architect_trip/webpack/plugin' }
+          ]
+        }
+      ],
+      '/markdowns/architect_trip/testJs/jest': [
+        {
+          text: 'jest',
+          items: [
+            { text: '简介', link: '/markdowns/architect_trip/testJs/jest/jest' },
+            { text: '快速入门', link: '/markdowns/architect_trip/testJs/jest/base' },
           ]
         }
       ],

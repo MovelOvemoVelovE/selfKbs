@@ -74,7 +74,7 @@ module.exports = {
 匹配器可以理解为是 **比较运算符**， 用于不同情况的测试值。
 
 ::: tip
-the following matchers just a taste. 在api文档内进行索引展示
+the following matchers just a taste. 在 api 文档内进行索引展示
 :::
 
 ## 精确相等
@@ -115,20 +115,19 @@ test("not test", () => {
 
 :::
 
-
 ::: tip
 
 `toBe`使用`Object.is`来比较值.
 
 `toEqual`是递归检查对比。
 
- `toEqual`会忽略undefined、稀疏数组， 如果想要比较这些可以使用`toStrictEqual`。
+`toEqual`会忽略 undefined、稀疏数组， 如果想要比较这些可以使用`toStrictEqual`。
 
 :::
 
 ## 真值
 
-测试真值中，有时需要区分`undefined`、`null`、`false`，有时又不需要， jest提供了比较全面的匹配器。
+测试真值中，有时需要区分`undefined`、`null`、`false`，有时又不需要， jest 提供了比较全面的匹配器。
 
 - `toBeNull`
 - `toBeUndefined`
@@ -154,22 +153,66 @@ test("not test", () => {
 数组和可迭代对象可以使用`toContain`来测试包含关系。
 
 ```js
-test('array or iterator have some thing', () => {
-  const arr = [
-    'liu',
-    'xiao',
-    'need',
-    'some'
-  ]
-  expect(arr).toContain('neded')
-})
+test("array or iterator have some thing", () => {
+  const arr = ["liu", "xiao", "need", "some"];
+  expect(arr).toContain("neded");
+});
 ```
 
-## Exceptions异常
+## Exceptions 异常
 
 测试某个函数是不是会抛出异常，使用`toThrow`
 
 ```js
-
+test("compiling android goes as expected", () => {
+  expect(() => compilingAndroidCode()).toThrow();
+  expect(() => compilingAndroidCode()).toThrow(Error);
+  expect(() => compilingAndroidCode()).toThrow(/JDK/);
+  // 报错测试不通过
+  // expect(() => compilingAndroidCode()).toThrow('yoqweqweqwewqequ are using the wronwg JDK');
+  expect(() => compilingAndroidCode()).toThrow(
+    /^you are using the wrong JDKk$/
+  );
+});
 ```
 
+# 测试异步代码
+
+- [Promise](#promise)
+- [Async/Await](#Async)
+- [Callbacks](#Callbacks)
+- [`.reslove`/`.reject`](#reslove)
+
+## Promise
+
+测试返回一个`Promise`, 如果`reject`掉, 那么测试失败
+
+```js
+function fetchData(){
+  // 模拟一个后端请求
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('peanut butter1')
+    }, 1000)
+  })
+}
+
+test('request remote and date is peanut butter', () => {
+  // return出去，不然测试无效
+  return fetchData().then( res => {
+    expect(res).toBe('peanut butter')
+  })
+})
+```
+
+::: danger
+**必须**使用`return`关键字，将测试的回调函数变为`Promise`, 否则测试是无效的
+:::
+
+## Async
+
+
+
+## Callbacks
+
+## reslove
