@@ -369,4 +369,47 @@ describe('Scoped / Nested block', () => {
 
 ## 执行顺序
 
+使用`describe`块作用域，那么`jest`执行顺序会变得难以直接理解。
 
+**遇到`describe`块， 优先执行`describe`块内代码， 遇到测试函数！相当于放入了js的微任务。**
+
+```js
+console.log('describe outer-a');
+
+  describe('describe inner 1', () => {
+    console.log('describe inner 1');
+
+    test('test 1', () => console.log('test 1'));
+  });
+
+  console.log('describe outer-b');
+
+  test('test 2', () => console.log('test 2'));
+
+  describe('describe inner 2', () => {
+    console.log('describe inner 2');
+
+    test('test 3', () => console.log('test 3'));
+  });
+
+  console.log('describe outer-c');
+
+/**
+ * describe outer-a
+ * describe inner 1
+ * describe outer-b
+ * describe inner 2
+ * describe outer-c
+ * test 1
+ * test 2
+ * test 3
+ */
+```
+
+## 单独测试
+
+当一套测试流程失败了，想检查某某一个是不是独立运行都失败？ 可以使用`test.only()`
+
+# 模拟函数
+
+模拟高阶函数的函数参数来擦除函数的实际实现。
