@@ -12,7 +12,7 @@ export default defineConfig({
   // srcDir: 'docs',
   // head标签配置
   head: [
-    ['link', { rel: 'icon', type: 'jpg', href: '/selfKbs/logo.jpg' }],
+    ['link', { rel: 'icon', type: 'jpg', href: '/selfKbs/vitepress-logo-large.webp' }],
   ],
   // 最后更新事件
   lastUpdated: true,
@@ -53,34 +53,37 @@ export default defineConfig({
     // 导航栏配置
     nav: [
       { 
-        text: '我们是一佳人', 
+        text: '🧬我们是一佳人', 
         items: [
           { text: '查询索引', link: '/markdowns/jbs-tips/dataSource' },
+          { text: '🙆‍♀️噗OA流程', link: '/markdowns/pupu/index' }
         ]
       },
       { 
-        text: '框架', 
+        text: '🌈框架', 
         items: [
-          { text: 'React', link: '/markdowns/architect_trip/react/index' }
+          { text: 'React', link: '/markdowns/architect_trip/react/index' },
+          { text: 'vue', link: '/markdowns/architect_trip/vue/vue' }
         ]
       },
       {
-        text: '工具集',
+        text: '🔨工具集',
         items: [
+          { text: '函数方法', link: '/markdowns/architect_trip/tools/functions' },
           { text: 'Git', link: '/markdowns/architect_trip/tools/git' },
           { text: 'webpack', link: '/markdowns/architect_trip/webpack/index' },
         ]
       },
       {
-        text: '配置文件集',
+        text: '📝配置文件集',
         link: '/markdowns/configJs/index'
       },
       {
-        text: '全栈之旅',
+        text: '🤑全栈之旅',
         items: [
           { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
           { text: 'express', link: '/markdowns/architect_trip/express/index' },
-          { text: 'jest测试', link: '/markdowns/architect_trip/testJs/jest' },
+          { text: 'jest测试', link: '/markdowns/architect_trip/testJs/jest/jest' },
           { text: 'cypress交互测试', link: '/markdowns/architect_trip/testJs/cypress' },
           { text: 'js数据结构与算法', link: '/markdowns/architect_trip/javascriptAdvanced/dataStructure' },
           { text: 'js设计模式', link: '/markdowns/architect_trip/javascriptAdvanced/designMode' },
@@ -89,7 +92,7 @@ export default defineConfig({
         ]
       },
       {
-        text: '踩坑日记',
+        text: '🌩踩坑日记',
         link: '/markdowns/damnHole/index'
       }
       // { 
@@ -152,6 +155,15 @@ export default defineConfig({
             { text: 'webpack基础配置', link: '/markdowns/architect_trip/webpack/basics' },
             { text: 'webpack-loader', link: '/markdowns/architect_trip/webpack/loader' },
             { text: 'webpack-plugin', link: '/markdowns/architect_trip/webpack/plugin' }
+          ]
+        }
+      ],
+      '/markdowns/architect_trip/testJs/jest': [
+        {
+          text: 'jest',
+          items: [
+            { text: '简介', link: '/markdowns/architect_trip/testJs/jest/jest' },
+            { text: '快速入门', link: '/markdowns/architect_trip/testJs/jest/base' },
           ]
         }
       ],
