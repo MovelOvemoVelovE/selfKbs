@@ -82,6 +82,7 @@ export default defineConfig({
       {
         text: '🤑全栈之旅',
         items: [
+          { text: 'nodejs', link: '/markdowns/architect_trip/nodejs/nodejs' },
           { text: 'MySql', link: '/markdowns/architect_trip/database/mysqlBasics' },
           { text: 'express', link: '/markdowns/architect_trip/express/index' },
           { text: 'jest测试', link: '/markdowns/architect_trip/testJs/jest/jest' },
