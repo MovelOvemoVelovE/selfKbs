@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import generateSidebar from './vitepress/config/helper/sidebar.js'
 import mdConfig from './vitepress/config/mdConfig.mjs'
 
 export default defineConfig({
@@ -158,6 +159,7 @@ export default defineConfig({
           ]
         }
       ],
+      // ...generateSidebar('jest'),
       '/markdowns/architect_trip/testJs/jest': [
         {
           text: 'jest',
