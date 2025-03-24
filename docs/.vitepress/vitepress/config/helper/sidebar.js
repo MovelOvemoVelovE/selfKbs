@@ -46,7 +46,6 @@ function generateSidebar(sidebarModule) {
   } else {
     throw new Error('sidebar config must be directory')
   }
-  console.log(resultArr)
   return {
     [sidebarModule]: resultArr
   }
