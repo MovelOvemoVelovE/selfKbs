@@ -25,4 +25,4 @@ next:
 
 :::
 
-那么就[快速开始](./QuickStart/Buffer.md)吧
+那么就[快速开始](./quickStart/Buffer.md)吧
