@@ -13,12 +13,10 @@ import { getCurrentInstance } from 'vue'
 const _this = getCurrentInstance()
 const { $dialog } = _this.appContext.config.globalProperties
 $dialog({
-  title: '考勤核对通知',
-  content: `
-    ${tableSelection.value.length}名员工(其中${3}名员工没有审批中或异常的考勤数据)，将向${4}名员工发送考勤核对提醒，确认发送
-  `,
+  title: '标题',
+  content: `这里是内容`,
   onConfirm: (close) => {
-    alert('发送考勤核对通知')
+    alert('这里是confirm事件')
     close()
   }
 })

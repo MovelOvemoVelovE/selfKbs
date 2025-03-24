@@ -8,12 +8,33 @@
 import fs from 'fs'
 import path from 'path'
 
-function generateSidebar(sidebarModule){
-  console.log(sidebarModule);
-  const sidebarPath = path.join(__dirname, sidebarModule);
-  const stats = fs.statSync(sidebarPath);
-  console.log(stats.isFile());
-  return
+function generateSidebar(sidebarModule) {
+    const resultArr = {}
+    const sidebarPath = path.join('docs/', sidebarModule);
+    const stats = fs.statSync(sidebarPath);
+    // 如果是文件夹的话生成
+    if (stats.isDirectory()) {
+        const targetFiles = fs.readdirSync(sidebarPath)
+        targetFiles.forEach(file => {
+            if (fs.statSync(path.join(sidebarPath, file)).isDirectory()) {
+
+            } else {
+                // 如果是文件那么默认是简介
+                resultArr[sidebarModule + '/jest'] = [
+                    {
+                        text: 'jest',
+                        items: [
+                            {text: '简介', link: path.join(sidebarPath, file).toString()},
+                        ]
+                    }
+                ]
+            }
+        })
+    } else {
+        throw new Error('sidebar must be directory')
+    }
+    console.log(resultArr)
+    return resultArr
 }
 
 export default generateSidebar;

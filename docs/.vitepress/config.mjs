@@ -159,16 +159,7 @@ export default defineConfig({
           ]
         }
       ],
-      // ...generateSidebar('jest'),
-      '/markdowns/architect_trip/testJs/jest': [
-        {
-          text: 'jest',
-          items: [
-            { text: '简介', link: '/markdowns/architect_trip/testJs/jest/jest' },
-            { text: '快速入门', link: '/markdowns/architect_trip/testJs/jest/base' },
-          ]
-        }
-      ],
+      ...generateSidebar('/markdowns/architect_trip/testJs/jest'),
     },
     // 社交链接
     socialLinks: [
