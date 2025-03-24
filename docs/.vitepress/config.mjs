@@ -86,7 +86,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "🤑全栈之旅",
+        text: "🤑技多不压身",
         items: [
           { text: "nodejs", link: "/markdowns/architect_trip/nodejs/nodejs" },
           {
@@ -103,21 +103,9 @@ export default defineConfig({
             link: "/markdowns/architect_trip/testJs/cypress",
           },
           {
-            text: "js数据结构与算法",
-            link: "/markdowns/architect_trip/javascriptAdvanced/dataStructure",
-          },
-          {
-            text: "js设计模式",
-            link: "/markdowns/architect_trip/javascriptAdvanced/designMode",
-          },
-          {
-            text: "web响应式设计",
-            link: "/markdowns/architect_trip/javascriptAdvanced/responsiveDesign",
-          },
-          {
-            text: "你不知道的js",
-            link: "/markdowns/architect_trip/javascriptAdvanced/jsYDK",
-          },
+            text: '关于Javascript的故事',
+            link: "/markdowns/architect_trip/js/javascript"
+          }
         ],
       },
       {
@@ -225,6 +213,7 @@ export default defineConfig({
       ],
       ...generateSidebar("/markdowns/architect_trip/testJs/jest"),
       ...generateSidebar("/markdowns/architect_trip/nodejs"),
+      ...generateSidebar("/markdowns/architect_trip/js"),
     },
     // 社交链接
     socialLinks: [

@@ -48,9 +48,6 @@ const fs = require("fs");
 /* 写入流对象 */
 const ws = fs.createWriteStream("./座右铭.txt");
 ws.write("锄禾日当午\r\n");
-ws.write("汗滴禾下土\r\n");
-ws.write("谁知盘中餐\r\n");
-ws.write("粒粒皆辛苦\r\n");
 // 销毁流对象
 ws.close();
 ```
