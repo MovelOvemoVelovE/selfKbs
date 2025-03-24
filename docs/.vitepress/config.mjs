@@ -103,9 +103,9 @@ export default defineConfig({
             link: "/markdowns/architect_trip/testJs/cypress",
           },
           {
-            text: '关于Javascript的故事',
-            link: "/markdowns/architect_trip/js/javascript"
-          }
+            text: "关于Javascript的故事",
+            link: "/markdowns/architect_trip/js/javascript",
+          },
         ],
       },
       {
