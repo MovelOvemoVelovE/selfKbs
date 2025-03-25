@@ -34,7 +34,7 @@ function generateSidebar(sidebarModule) {
       } else {
         let fileNameAndSuffix = file.split('.')
         // 如果是文件那么默认是简介 也就是entry
-        resultArr.push({
+        resultArr.unshift({
             text: fileNameAndSuffix[0],
             collapsed: false,
             items: [

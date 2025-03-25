@@ -213,6 +213,7 @@ export default defineConfig({
       ],
       ...generateSidebar("/markdowns/architect_trip/testJs/jest"),
       ...generateSidebar("/markdowns/architect_trip/nodejs"),
+      ...generateSidebar("/markdowns/architect_trip/express"),
       ...generateSidebar("/markdowns/architect_trip/js"),
     },
     // 社交链接
