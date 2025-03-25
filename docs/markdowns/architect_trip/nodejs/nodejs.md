@@ -25,4 +25,4 @@ next:
 
 :::
 
-那么就[快速开始](./quickStart/Buffer)
+那么就[快速开始](./quickStart/Buffer)吧
