@@ -59,7 +59,7 @@ export default defineConfig({
       // {
       //   text: "🧬我们是一佳人",
       //   items: [
-      //     { text: "查询索引", link: "/markdowns/jbs-tips/dataSource" },
+      //     { text: "查询索引", link: "/markdowns/jtips/dataSource" },
       //     { text: "🙆‍♀️噗OA流程", link: "/markdowns/pupu/index" },
       //   ],
       // },
@@ -127,7 +127,7 @@ export default defineConfig({
           text: "基础组件",
           // collapsed: true,
           items: [
-            { text: "Table 表格", link: "/markdowns/jbs-components/Table" },
+            { text: "Table 表格", link: "/markdowns/jcomponents/Table" },
           ],
         },
       ],
@@ -136,15 +136,15 @@ export default defineConfig({
           text: "系统代码逻辑",
           // collapsed: true,
           items: [
-            { text: "数据逻辑", link: "/markdowns/jbs-tips/dataSource" },
-            { text: "函数方法", link: "/markdowns/jbs-tips/methods" },
+            { text: "数据逻辑", link: "/markdowns/jtips/dataSource" },
+            { text: "函数方法", link: "/markdowns/jtips/methods" },
           ],
         },
         {
           text: "审批代码逻辑",
           items: [
-            { text: "审批逻辑", link: "/markdowns/jbs-tips/workFlow" },
-            { text: "函数方法", link: "/markdowns/jbs-tips/flowMethods" },
+            { text: "审批逻辑", link: "/markdowns/jtips/workFlow" },
+            { text: "函数方法", link: "/markdowns/jtips/flowMethods" },
           ],
         },
       ],
