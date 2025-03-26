@@ -26,7 +26,7 @@ function generateSidebar(sidebarModule) {
             collapsed: false,
             items: childFiles.map(itemChildFile => {
               return {
-                text: itemChildFile.replace('.md', ''),
+                text: itemChildFile.replace('.md', '').substring(1),
                 link: `${sidebarModule}/${file}/${itemChildFile}`
               }
             })

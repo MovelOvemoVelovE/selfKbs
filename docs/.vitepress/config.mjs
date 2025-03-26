@@ -103,8 +103,8 @@ export default defineConfig({
             link: "/markdowns/architect_trip/testJs/cypress",
           },
           {
-            text: "端对端测试Playwright",
-            link: "",
+            text: "Playwright",
+            link: "/404",
           },
           {
             text: "关于Javascript的故事",
