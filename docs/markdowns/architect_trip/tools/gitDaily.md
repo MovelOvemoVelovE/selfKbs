@@ -12,7 +12,7 @@ const fs = require('fs');
 const path = require('path');
 
 // 目标目录（替换为你的 Git 仓库路径）
-const targetDir = path.resolve('D://work space//hirs-fe-manage'); // 当前目录，或替换为其他路径
+const targetDir = path.resolve('D://work space'); // 当前目录，或替换为其他路径
 // 当天日期
 const today = new Date().toLocaleDateString().replace(/\//g, '');
 // 输出文件路径
