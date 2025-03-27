@@ -1,7 +1,7 @@
 ---
 next:
   text: '快速开始'
-  link: '/markdowns/architect_trip/nodejs/quickstart/Buffer.md'
+  link: '/markdowns/architect_trip/nodejs/quickstart/1Buffer.md'
 ---
 
 作为一名前端，不管是**工程化**、**构建工具**、**浏览器引擎**、**工作脚本**等等都离不开nodejs, 可以说前端进入全栈的第一步。

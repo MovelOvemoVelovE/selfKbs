@@ -1,8 +1,3 @@
-<!-- ---
-theme: vuepress
-highlight: tomorrow-night
---- -->
-
 > **学习《javascript设计模式与开发实践》总结。**
 
 有些人说，在动态语言javascript的世界是没有设计模式这个概念的。我们需要了解下不同的声音，从什么是设计模式入手。

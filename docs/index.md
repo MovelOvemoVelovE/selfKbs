@@ -12,7 +12,7 @@ hero:
   actions:
     - theme: brand
       text: 数据逻辑
-      link: /markdowns/jbs-tips/dataSource
+      link: /markdowns/jtips/dataSource
 
 features:
   - title: 高效
