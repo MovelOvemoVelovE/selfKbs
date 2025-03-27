@@ -83,6 +83,7 @@ export default defineConfig({
             text: "📝配置文件集",
             link: "/markdowns/configJs/index",
           },
+          { text: 'git提取日报、周报', link: "/markdowns/architect_trip/tools/gitDaily.md" },
         ],
       },
       {
