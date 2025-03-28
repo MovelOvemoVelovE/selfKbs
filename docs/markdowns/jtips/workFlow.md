@@ -1,1 +1,2 @@
-你好<Badge type="warning" text="need realTime update" />
+版本 <Badge type="warning" text="1.0" />
+
