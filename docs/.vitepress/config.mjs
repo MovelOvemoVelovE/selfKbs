@@ -3,8 +3,8 @@ import generateSidebar from "./vitepress/config/helper/sidebar.js";
 import mdConfig from "./vitepress/config/mdConfig.mjs";
 
 export default defineConfig({
-  title: "个人知识库",
-  description: "包含了日常代码积累、自学知识积累",
+  title: "前端知识库、笔记的技术分享",
+  description: "一个前端代码、组件库、踩坑记录及工具集的一个静态站点",
   base: "/selfKbs/",
   appearance: {
     initOnMounted: false,
@@ -83,7 +83,7 @@ export default defineConfig({
             text: "📝配置文件集",
             link: "/markdowns/configJs/index",
           },
-          { text: 'git提取日报、周报', link: "/markdowns/architect_trip/tools/gitDaily.md" },
+          {text: 'git提取日报、周报', link: "/markdowns/architect_trip/tools/gitDaily.md"},
         ],
       },
       {
@@ -224,6 +224,7 @@ export default defineConfig({
     // 社交链接
     socialLinks: [
       {icon: "github", link: "https://github.com/movelovemovelove"},
+      {icon: "yahoo", link: "https://movelovemovelove@yahoo.com"},
       // { icon: 'gitlab', link: 'https://gitlab.jiabs.com/jbs/hris' },
       {icon: "vite", link: "https://vuejs.org"},
       // { icon: {

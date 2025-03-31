@@ -1,7 +1,7 @@
 {
-  "name": "jbs-docs",
+  "name": "front-end-docs",
   "version": "1.0.0",
-  "description": "",
+  "description": "开发技巧、踩坑日记、工具等学习随笔",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
