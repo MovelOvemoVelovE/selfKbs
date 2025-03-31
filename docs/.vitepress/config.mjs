@@ -99,14 +99,14 @@ export default defineConfig({
             text: "jest测试",
             link: "/markdowns/architect_trip/testJs/jest/jest",
           },
-          {
-            text: "cypress交互测试",
-            link: "/markdowns/architect_trip/testJs/cypress",
-          },
-          {
-            text: "Playwright",
-            link: "/404",
-          },
+          // {
+          //   text: "cypress交互测试",
+          //   link: "/markdowns/architect_trip/testJs/cypress",
+          // },
+          // {
+          //   text: "Playwright",
+          //   link: "/404",
+          // },
           {
             text: "关于Javascript的故事",
             link: "/markdowns/architect_trip/js/javascript",
@@ -114,8 +114,11 @@ export default defineConfig({
         ],
       },
       {
-        text: "🌩踩坑日记",
-        link: "/markdowns/damnHole/index",
+        text: "🌩知识碎片",
+        items: [
+          { text: '踩坑碎片', link: "/markdowns/damnHole/index" },
+          { text: 'js零散', link: '/markdowns/damnHole/js' }
+        ]
       },
       // {
       //   text: 'version-0.1',

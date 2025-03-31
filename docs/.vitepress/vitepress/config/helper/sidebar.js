@@ -35,7 +35,7 @@ function generateSidebar(sidebarModule) {
         let fileNameAndSuffix = file.split('.')
         // 如果是文件那么默认是简介 也就是entry
         resultArr.unshift({
-            text: fileNameAndSuffix[0],
+            text: `💌${fileNameAndSuffix[0]}`,
             collapsed: false,
             items: [
               { text: '简介', link: path.join(sidebarModule, file).toString() },

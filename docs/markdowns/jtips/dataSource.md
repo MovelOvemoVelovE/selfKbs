@@ -1,4 +1,4 @@
-~~---
+---
 outline: deep
 title: 数据逻辑
 ---
@@ -154,7 +154,7 @@ function replaceInFile(filePath) {
 
   // 替换 moment(xxx) 为 dayjs(xxx)
   updatedContent = updatedContent.replace(/moment\((.*?)\)/g, 'dayjs($1)');
-
+  
   // 如果内容有变化，则写回文件
   if (updatedContent !== content) {
     fs.writeFileSync(filePath, updatedContent, 'utf-8');
@@ -186,6 +186,9 @@ console.log('替换完成！');
 console.log(`
   1. 检查有没有moment()用同一个内存地址操作的， dayjs是新的实例
   2. 检查插件
+  3. 检查moment(    
+      wqeewq
+  )换行的情况
 `)
 
 // 卸载 moment
