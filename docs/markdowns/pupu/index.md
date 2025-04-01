@@ -1,16 +1,17 @@
-* 封装calendar日历组件！！
-* 电商BI大屏!!
+* 封装calendar日历组件 70%
+* 电商BI大屏 组件库?ws?!
+* jest测试框架 10%
+* MDN知识
 * 封装组件库
-* jest测试框架
-* AI
 * 流程引擎
+* AI
 * express示例过一遍
 * nodejs深入学习(express学习完了之后就差不多了)
-* websocket
+* java/python
 * webrtc
-* MDN知识
 * linux
-* react
-* http和计算机原理等
+* react复习/nextjs
+* http和计算机原理
 * canvas、svg
 * devops CICD
+* PWA

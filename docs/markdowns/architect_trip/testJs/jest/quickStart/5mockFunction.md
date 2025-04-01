@@ -93,5 +93,21 @@ myMock.mockReturnValueOnce(32).mockReturnValueOnce(23).mockReturnValue(55)
 console.log(myMock(), myMock(), myMock()) //32 23 55
 ```
 
-##
+## 模拟模块
+
+ajax、fetch等如果直接调用，慢慢的测试就会变得缓慢、脆弱。 
+
+可以使用 `jest.mock()`来模拟axios模块。
+
+::: code-group
+
+```js [user.js]
+
+```
+
+```js [user.test.js]
+
+```
+
+:::
 
