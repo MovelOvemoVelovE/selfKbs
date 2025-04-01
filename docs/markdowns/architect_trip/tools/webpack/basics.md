@@ -1,13 +1,12 @@
 ---
 theme: vuepress
 ---
-> webpack是静态资源打包工具。
-> 
-> 打包工具可以编译框架、ES6、less等语法，可以压缩代码、兼容处理、性能优化。
-> 
+webpack是静态资源打包工具。 打包工具可以编译框架、ES6、less等语法，可以压缩代码、兼容处理、性能优化。
+
 > docs: 
 > - [webpack 中文文档](https://www.webpackjs.com/guides/getting-started)   
 > - [深入浅出 Webpack](https://webpack.wuhaolin.cn/)
+
 # 搭建环境
 
 ```bash
