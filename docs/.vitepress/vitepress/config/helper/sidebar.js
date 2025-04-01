@@ -16,33 +16,48 @@ function generateSidebar(sidebarModule) {
   if (stats.isDirectory()) {
     // 获取到目标文件夹的文件列表
     const targetFiles = fs.readdirSync(sidebarPath)
-    // 循环获取到文件列表 [index.md, xxx文件夹]
-    targetFiles.forEach(file => {
-      // 是否为文件夹
-      if (fs.statSync(path.join(sidebarPath, file)).isDirectory()) {
-        const childFiles = fs.readdirSync(path.join(sidebarPath, file))
-        resultArr.push({
-            text: file,
-            collapsed: false,
-            items: childFiles.map(itemChildFile => {
-              return {
-                text: itemChildFile.replace('.md', '').substring(1),
-                link: `${sidebarModule}/${file}/${itemChildFile}`
-              }
+    // 如果都是文件 没有文件夹那么都是同级
+    if(targetFiles.some(file => fs.statSync(path.join(sidebarPath, file)).isDirectory())) {
+      // 循环获取到文件列表 [index.md, xxx文件夹]
+      targetFiles.forEach(file => {
+        // 是否为文件夹
+        if (fs.statSync(path.join(sidebarPath, file)).isDirectory()) {
+          const childFiles = fs.readdirSync(path.join(sidebarPath, file))
+          resultArr.push({
+              text: file,
+              collapsed: false,
+              items: childFiles.map(itemChildFile => {
+                return {
+                  text: itemChildFile.replace('.md', '').substring(1),
+                  link: `${sidebarModule}/${file}/${itemChildFile}`
+                }
+              })
             })
-          })
-      } else {
+        } else {
+          let fileNameAndSuffix = file.split('.')
+          // 如果是文件那么默认是简介 也就是entry
+          resultArr.unshift({
+              text: `💌${fileNameAndSuffix[0]}`,
+              collapsed: false,
+              items: [
+                { text: '简介', link: path.join(sidebarModule, file).toString() },
+              ]
+            })
+        }
+      })
+    }else {
+      resultArr.push({
+        text: `💨${sidebarModule.split('/').pop}💨`,
+        collapsed: false,
+        items: []
+      })
+      targetFiles.forEach(file => {
         let fileNameAndSuffix = file.split('.')
-        // 如果是文件那么默认是简介 也就是entry
-        resultArr.unshift({
-            text: fileNameAndSuffix[0],
-            collapsed: false,
-            items: [
-              { text: '简介', link: path.join(sidebarModule, file).toString() },
-            ]
-          })
-      }
-    })
+        resultArr[0].items.push({
+          text: fileNameAndSuffix[0], link: path.join(sidebarModule, file).toString()
+        })
+      })
+    }
   } else {
     throw new Error('sidebar config must be directory')
   }
