@@ -20,7 +20,4 @@
 
 # MDN相关
 
-## webCryptoAPi
-
-[加密存储](./mdnDocs/1webCrypto.md)允许访问一个密码学安全的随机数生成器和密码学原语， 用于加密存储
 
