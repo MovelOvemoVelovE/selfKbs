@@ -149,7 +149,7 @@ function replaceInFile(filePath) {
   // 替换 import 语句
   let updatedContent = content.replace(
     /import\s+moment\s+from\s+['"]moment['"]/g,
-    "import { dayjs } from 'element-plus'"
+    "import dayjs from 'dayjs'"
   );
 
   // 替换 moment(xxx) 为 dayjs(xxx)
