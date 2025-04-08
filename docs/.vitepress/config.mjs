@@ -122,6 +122,16 @@ export default defineConfig({
           { text: "js零散", link: "/markdowns/damnHole/js" },
         ],
       },
+      {
+        text: '🔖读书让人成长',
+        items: [
+          { text: '《持续交付-发布可靠软件的系统方法》', link: '/markdowns/books/continuousDelivery/1index' },
+          { text: '《你不知道的Javascript》', link: '/markdowns/books/javascriptStory/4jsYDK' },
+          { text: '《Javascript的数据结构与算法》', link: '/markdowns/books/javascriptStory/1dataStructure' },
+          { text: '《JavaScript设计模式》', link: '/markdowns/books/javascriptStory/2designMode' },
+          { text: '《WEB响应式设计》', link: '/markdowns/books/javascriptStory/3responsiveDesign' },
+        ]
+      }
     ],
     // 侧边栏配置
     sidebar: {
