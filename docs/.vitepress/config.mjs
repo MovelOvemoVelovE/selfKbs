@@ -61,6 +61,10 @@ export default defineConfig({
         items: [
           //     { text: "查询索引", link: "/markdowns/jtips/dataSource" },
           { text: "🙆‍♀️噗", link: "/markdowns/pupu/index" },
+          {
+            text: "git提取日报、周报",
+            link: "/markdowns/architect_trip/tools/gitDaily.md",
+          },
         ],
       },
       {
@@ -75,19 +79,15 @@ export default defineConfig({
         ],
       },
       {
-        text: "🔨工具集",
+        text: "🔨工具",
         items: [
           {
             text: "工具函数",
             link: "/markdowns/architect_trip/tools/functions",
           },
-          { text: "webpack", link: "/markdowns/architect_trip/webpack/basics" },
-          { text: "vite", link: "/markdowns/architect_trip/webpack/basics" },
+          { text: "webpack", link: "/markdowns/architect_trip/tools/webpack/basics" },
+          { text: "vite", link: "/markdowns/architect_trip/tools/vite/vite" },
           { text: "Git", link: "/markdowns/architect_trip/tools/git" },
-          {
-            text: "git提取日报、周报",
-            link: "/markdowns/architect_trip/tools/gitDaily.md",
-          },
           { text: "📝配置文件集", link: "/markdowns/configJs/index" },
         ],
       },
@@ -227,6 +227,7 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/express"),
       ...generateSidebar("/markdowns/architect_trip/js"),
       ...generateSidebar("/markdowns/architect_trip/http"),
+      // ...generateSidebar("/markdowns/books/continuousDelivery"),
     },
     // 社交链接
     socialLinks: [
