@@ -1,9 +1,9 @@
 # 前端开发
-    封装calendar日历组件 70%
-    电商BI大屏 组件库?ws?!
+    封装markdown-it-container组件
+    电商BI大屏
+    封装组件库并生成文档
     jest测试框架 10%
     MDN知识
-    封装组件库
     react复习/nextjs
     canvas、svg
     PWA

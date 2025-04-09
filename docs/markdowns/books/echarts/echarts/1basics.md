@@ -5,6 +5,7 @@ title: Echarts基础
 <script setup>
 
 import Timeline from '@/demos/echarts/Timeline.vue'
+import DataZoomSlider from '@/demos/echarts/DataZoomSlider.vue'
 
 </script>
 
@@ -311,7 +312,15 @@ myCharts.setOption(option);
 - inside： 内置缩放
 - select： 框选行缩放
 
+### 6.1 slider
 
+```js
+var options = {
+  data  
+}
+```
+
+<DataZoomSlider />
 
 ## 7. 网格
 
