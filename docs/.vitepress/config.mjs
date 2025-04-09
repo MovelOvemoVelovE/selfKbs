@@ -130,6 +130,7 @@ export default defineConfig({
           { text: '《Javascript的数据结构与算法》', link: '/markdowns/books/javascriptStory/1dataStructure' },
           { text: '《JavaScript设计模式》', link: '/markdowns/books/javascriptStory/2designMode' },
           { text: '《WEB响应式设计》', link: '/markdowns/books/javascriptStory/3responsiveDesign' },
+          { text: '《Echarts入门、实战与进阶》', link: '/markdowns/books/echarts/index' },
         ]
       }
     ],
@@ -228,6 +229,7 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/js"),
       ...generateSidebar("/markdowns/architect_trip/http"),
       // ...generateSidebar("/markdowns/books/continuousDelivery"),
+      ...generateSidebar("/markdowns/books/echarts"),
     },
     // 社交链接
     socialLinks: [
