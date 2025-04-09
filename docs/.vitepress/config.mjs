@@ -235,7 +235,8 @@ export default defineConfig({
     socialLinks: [
       { icon: "github", link: "https://github.com/movelovemovelove" },
       { icon: "yahoo", link: "https://movelovemovelove@yahoo.com" },
-      { icon: "vite", link: "https://vuejs.org" },
+      // { icon: "react", link: "https://movelovemovelove@yahoo.com" },
+      { icon: "vite", link: "https://vitepress.dev/zh/guide/what-is-vitepress" },
     ],
   },
   // markdown config options

@@ -110,9 +110,9 @@ HighCharts 是一个商业化的图表库， 由 javascript 编写。
 
 :::tip
 
-组件的配置项attribute很多，下面只是列出基础，作为了解。 
+组件的配置项 attribute 很多，下面只是列出基础，作为了解。
 
-在使用中，想要配置个性化，可以查询官网配置api**作为字典**来查询使用。
+在使用中，想要配置个性化，可以查询官网配置 api**作为字典**来查询使用。
 
 :::
 
@@ -179,7 +179,7 @@ var options = {
       // 保存为图片 title是悬停时的提示
       saveAsImage: {
         show: true,
-        title: "保存为图片"
+        title: "保存为图片",
       },
       // 原数据视图
       dataView: {
@@ -196,7 +196,7 @@ var options = {
           bar: "柱状图",
         },
       },
-    }
+    },
   },
 };
 ```
@@ -208,8 +208,102 @@ var options = {
 图例组件为 legend， 用于区分不同数据的表示
 
 ```js
-
+var options = {
+  legend: {
+    // 图例的显示状态
+    show: true,
+    // 图例的布局方式： horizontal(横向)、vertical(纵向)
+    orient: "horizontal",
+    // 图例的水平位置： 像素、百分比、left、right、center
+    left: "left",
+    // 图例的垂直位置： 像素、百分比、top、middle、bottom
+    top: "top",
+    // 图例数据数组。 与数据展示的系列一一对应
+    data: ["销量", "库存"],
+  },
+};
 ```
+
+## 5. 时间轴
+
+时间轴 timeline 与之前略有差异。 使用 timeline 后 `chartsInstance.setOption`参数的 option内的数据结构就需要改变了。
+
+option 需要分为 baseOption 和 options。
+
+只要用到timeline的就称为**原子option**， 也就是**baseOption**。 baseOption 是基础配置项， options 是时间轴的每个时间点的配置项。
+
+```js
+var myCharts = echarts.init(document.getElementById("main"));
+var option = {
+  baseOption: {
+    timeline: {
+      data: ["2027", "2028", "2029"],
+    },
+    title: {
+      subtext: "",
+    },
+    xAxis: [
+      {
+        type: "category",
+        data: ["A公司", "B公司", "C公司"],
+      },
+    ],
+    yAxis: [
+      {
+        type: "value",
+      },
+    ],
+    series: [
+      {
+        type: "bar",
+      },
+    ],
+  },
+  options: [
+    {
+      title: {
+        text: "2027年销售情况",
+      },
+      series: [
+        {
+          data: [120, 200, 150],
+        },
+      ],
+    },
+    {
+      title: {
+        text: "2028年销售情况",
+      },
+      series: [
+        {
+          data: [220, 182, 191],
+        },
+      ],
+    },
+    {
+      title: {
+        text: "2029年销售情况",
+      },
+      series: [
+        {
+          data: [150, 232, 201],
+        },
+      ],
+    },
+  ],
+};
+myCharts.setOption(option);
+```
+
+![时间轴](/assets/echarts/3-51timeline.png)
+
+**以上为首帧的图标**
+
+![时间轴](/assets/echarts/3-5timeline.png)
+
+## 6. 数据区域缩放
+
+
 
 ---
 
