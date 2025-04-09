@@ -5,7 +5,7 @@
  * generateSidebar('/markdowns/architect_trip/testJs/jest')下的文件夹所有的都加上侧边栏
  * @author kakarotto <movelovemovelove@163.com>
  */
-import fs from 'fs'
+import fs, { link } from 'fs'
 import path from 'path'
 
 function generateSidebar(sidebarModule) {
@@ -47,7 +47,8 @@ function generateSidebar(sidebarModule) {
       })
     }else {
       resultArr.push({
-        text: `💨${sidebarModule.split('/').pop}💨`,
+        text: `💨${sidebarModule.split('/').pop()}💨`,
+        link: sidebarModule,
         collapsed: false,
         items: []
       })

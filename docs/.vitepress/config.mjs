@@ -1,6 +1,7 @@
-import {defineConfig} from "vitepress";
+import { defineConfig } from "vitepress";
 import generateSidebar from "./vitepress/config/helper/sidebar.js";
 import mdConfig from "./vitepress/config/mdConfig.mjs";
+import path from "path";
 
 export default defineConfig({
   title: "前端知识库、笔记的技术分享",
@@ -15,7 +16,7 @@ export default defineConfig({
   head: [
     [
       "link",
-      {rel: "icon", type: "jpg", href: "/selfKbs/vitepress-logo-large.webp"},
+      { rel: "icon", type: "jpg", href: "/selfKbs/vitepress-logo-large.webp" },
     ],
   ],
   // 最后更新事件
@@ -60,40 +61,47 @@ export default defineConfig({
         text: "🧬量子纠缠",
         items: [
           //     { text: "查询索引", link: "/markdowns/jtips/dataSource" },
-          {text: "🙆‍♀️噗", link: "/markdowns/pupu/index"},
+          { text: "🙆‍♀️噗", link: "/markdowns/pupu/index" },
+          {
+            text: "git提取日报、周报",
+            link: "/markdowns/architect_trip/tools/gitDaily.md",
+          },
         ],
       },
       {
         text: "🌈框架",
         items: [
-          {text: "React", link: "/markdowns/architect_trip/react/index"},
-          {text: "vue", link: "/markdowns/architect_trip/vue/vue"},
+          { text: "React", link: "/markdowns/architect_trip/react/index" },
+          { text: "vue", link: "/markdowns/architect_trip/vue/vue" },
+          {
+            text: "jest",
+            link: "/markdowns/architect_trip/testJs/jest/jest",
+          },
         ],
       },
       {
-        text: "🔨工具集",
+        text: "🔨工具",
         items: [
-          {text: "工具函数", link: "/markdowns/architect_trip/tools/functions"},
-          {text: "webpack", link: "/markdowns/architect_trip/webpack/basics"},
-          {text: "vite", link: "/markdowns/architect_trip/webpack/basics"},
-          {text: "Git相关", link: "/markdowns/architect_trip/tools/git"},
-          {text: 'git提取日报、周报', link: "/markdowns/architect_trip/tools/gitDaily.md"},
-          {text: "📝配置文件集", link: "/markdowns/configJs/index"},
+          {
+            text: "工具函数",
+            link: "/markdowns/architect_trip/tools/functions",
+          },
+          { text: "webpack", link: "/markdowns/architect_trip/tools/webpack/basics" },
+          { text: "vite", link: "/markdowns/architect_trip/tools/vite/vite" },
+          { text: "Git", link: "/markdowns/architect_trip/tools/git" },
+          { text: "📝配置文件集", link: "/markdowns/configJs/index" },
         ],
       },
       {
         text: "🤑技多不压身",
         items: [
-          {text: "nodejs", link: "/markdowns/architect_trip/nodejs/nodejs"},
+          { text: "nodejs", link: "/markdowns/architect_trip/nodejs/nodejs" },
           {
             text: "MySql",
             link: "/markdowns/architect_trip/database/mysqlBasics",
           },
-          {text: "express", link: "/markdowns/architect_trip/express/index"},
-          {
-            text: "jest测试",
-            link: "/markdowns/architect_trip/testJs/jest/jest",
-          },
+          { text: "express", link: "/markdowns/architect_trip/express/index" },
+          { text: 'http', link: '/markdowns/architect_trip/http/http' },
           // {
           //   text: "cypress交互测试",
           //   link: "/markdowns/architect_trip/testJs/cypress",
@@ -111,10 +119,21 @@ export default defineConfig({
       {
         text: "🌩知识碎片",
         items: [
-          {text: '踩坑碎片', link: "/markdowns/damnHole/index"},
-          {text: 'js零散', link: '/markdowns/damnHole/js'}
-        ]
+          { text: "踩坑碎片", link: "/markdowns/damnHole/index" },
+          { text: "js零散", link: "/markdowns/damnHole/js" },
+        ],
       },
+      {
+        text: '🔖读书让人成长',
+        items: [
+          { text: '《持续交付-发布可靠软件的系统方法》', link: '/markdowns/books/continuousDelivery/1index' },
+          { text: '《你不知道的Javascript》', link: '/markdowns/books/javascriptStory/4jsYDK' },
+          { text: '《Javascript的数据结构与算法》', link: '/markdowns/books/javascriptStory/1dataStructure' },
+          { text: '《JavaScript设计模式》', link: '/markdowns/books/javascriptStory/2designMode' },
+          { text: '《WEB响应式设计》', link: '/markdowns/books/javascriptStory/3responsiveDesign' },
+          { text: '《Echarts入门、实战与进阶》', link: '/markdowns/books/echarts/index' },
+        ]
+      }
     ],
     // 侧边栏配置
     sidebar: {
@@ -122,9 +141,7 @@ export default defineConfig({
         {
           text: "基础组件",
           // collapsed: true,
-          items: [
-            {text: "Table 表格", link: "/markdowns/jcomponents/Table"},
-          ],
+          items: [{ text: "Table 表格", link: "/markdowns/jcomponents/Table" }],
         },
       ],
       "/markdowns/jbs-tips": [
@@ -132,15 +149,15 @@ export default defineConfig({
           text: "系统代码逻辑",
           // collapsed: true,
           items: [
-            {text: "数据逻辑", link: "/markdowns/jtips/dataSource"},
-            {text: "函数方法", link: "/markdowns/jtips/methods"},
+            { text: "数据逻辑", link: "/markdowns/jtips/dataSource" },
+            { text: "函数方法", link: "/markdowns/jtips/methods" },
           ],
         },
         {
           text: "审批代码逻辑",
           items: [
-            {text: "审批逻辑", link: "/markdowns/jtips/workFlow"},
-            {text: "函数方法", link: "/markdowns/jtips/flowMethods"},
+            { text: "审批逻辑", link: "/markdowns/jtips/workFlow" },
+            { text: "函数方法", link: "/markdowns/jtips/flowMethods" },
           ],
         },
       ],
@@ -180,7 +197,7 @@ export default defineConfig({
               text: "源码原理",
               link: "/markdowns/architect_trip/react/sourceCode",
             },
-            {text: "补漏", link: "/markdowns/architect_trip/react/fill"},
+            { text: "补漏", link: "/markdowns/architect_trip/react/fill" },
             {
               text: "React生态列表",
               link: "/markdowns/architect_trip/react/ecology",
@@ -211,12 +228,16 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/nodejs"),
       ...generateSidebar("/markdowns/architect_trip/express"),
       ...generateSidebar("/markdowns/architect_trip/js"),
+      ...generateSidebar("/markdowns/architect_trip/http"),
+      // ...generateSidebar("/markdowns/books/continuousDelivery"),
+      ...generateSidebar("/markdowns/books/echarts"),
     },
     // 社交链接
     socialLinks: [
-      {icon: "github", link: "https://github.com/movelovemovelove"},
-      {icon: "yahoo", link: "https://movelovemovelove@yahoo.com"},
-      {icon: "vite", link: "https://vuejs.org"},
+      { icon: "github", link: "https://github.com/movelovemovelove" },
+      { icon: "yahoo", link: "https://movelovemovelove@yahoo.com" },
+      // { icon: "react", link: "https://movelovemovelove@yahoo.com" },
+      { icon: "vite", link: "https://vitepress.dev/zh/guide/what-is-vitepress" },
     ],
   },
   // markdown config options
@@ -224,4 +245,11 @@ export default defineConfig({
     // markdown extendion plugin use
     config: (md) => mdConfig(md),
   },
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../../src')
+      }
+    }
+  }
 });

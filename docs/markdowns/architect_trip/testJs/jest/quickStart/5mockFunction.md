@@ -48,7 +48,7 @@ test('forEach mock function', () => {
   - 调用的参数: `fn.mock.calls[0]`
   - 返回结果: `fn.mock.results[0]`
 
-```js []
+```js [mock.text.js]
 function forEach(arr, callback) {
   for (let i = 0; i < arr.length; i++) {
     callback(arr[i]);

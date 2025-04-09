@@ -1,4 +1,11 @@
 Damn！Tread Hole! <Badge type="danger" text="version 0.1" />
+
+<script setup>
+
+import Calendar from '@/vueComponents/Calendar.vue'
+
+</script>
+
 # 组件库
 
 ## elementPlus
@@ -62,7 +69,7 @@ const tableData = ref([])
 
 **通过提供的`formatter: (date) => date`来生成div标签， 代码如下：**
 
-```vue
+```vue v-pre
 <Calendar :formatter="calendarFormatter"/>
 
 <script setup>
@@ -77,7 +84,7 @@ const calendarFormatter = (day) => {
 <style lang="scss" scoped>
 ::v-deep {
   .custom_day {
-    // xxx
+    
   }
 }
 </style>
@@ -96,6 +103,8 @@ const calendarFormatter = (day) => {
 <!-- 2. vant：
    -  -->
 :::
+
+<Calendar />
 
 
 # vue
