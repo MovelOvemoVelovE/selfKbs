@@ -2,6 +2,8 @@
 
 书中一共12章节， 从echarts的概念、优势 到常用组件的使用 到基础可视化图 到进阶篇的色彩主体、时间轴的复杂可视化到各类数据应用开发 到高级篇的三维可视化、响应式和事件行为。
 
+[💥💥echarts文档](https://echarts.apache.org/handbook/zh/get-started/)
+
 ## 基本篇
 
 书中1-4章为基础篇

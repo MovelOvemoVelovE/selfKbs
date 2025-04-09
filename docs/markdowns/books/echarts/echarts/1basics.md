@@ -2,6 +2,12 @@
 title: Echarts基础
 ---
 
+<script setup>
+
+import Timeline from '@/demos/echarts/Timeline.vue'
+
+</script>
+
 Echarts 是百度捐献给 Apache 的一个开源项目， 由 javascript 编写。
 
 底层依赖轻量级的`ZRender`， 该库是一个轻量级的 canvas 渲染引擎。
@@ -132,8 +138,6 @@ var options = {
   }
 }
 ```
-
-![标题](/assets/echarts/3-1title.png)
 
 ## 2. 提示框
 
@@ -295,13 +299,21 @@ var option = {
 myCharts.setOption(option);
 ```
 
-![时间轴](/assets/echarts/3-51timeline.png)
-
-**以上为首帧的图标**
-
-![时间轴](/assets/echarts/3-5timeline.png)
+<Timeline />
 
 ## 6. 数据区域缩放
+
+数据区域缩放为 dataZoom， 为用户提供区域缩放的功能。
+
+组件有很多种：
+
+- slider： 滑动条缩放， 适合时间轴等数据
+- inside： 内置缩放
+- select： 框选行缩放
+
+
+
+## 7. 网格
 
 
 

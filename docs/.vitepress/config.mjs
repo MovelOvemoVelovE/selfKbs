@@ -1,6 +1,7 @@
 import { defineConfig } from "vitepress";
 import generateSidebar from "./vitepress/config/helper/sidebar.js";
 import mdConfig from "./vitepress/config/mdConfig.mjs";
+import path from "path";
 
 export default defineConfig({
   title: "前端知识库、笔记的技术分享",
@@ -244,4 +245,11 @@ export default defineConfig({
     // markdown extendion plugin use
     config: (md) => mdConfig(md),
   },
+  vite: {
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, '../../src')
+      }
+    }
+  }
 });
