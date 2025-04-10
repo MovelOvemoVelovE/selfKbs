@@ -13,6 +13,12 @@ hero:
     - theme: brand
       text: 数据逻辑
       link: /markdowns/jtips/dataSource
+    - theme: brand
+      text: Echarts入门、实战与进阶
+      link: /markdowns/books/echarts/index
+    - theme: alt
+      text: 🚀学无止境
+      link: /markdowns/pupu/index
 
 features:
   - title: 高效

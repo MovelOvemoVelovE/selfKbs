@@ -1,5 +1,6 @@
 # 前端开发
     封装markdown-it-container组件
+    elementplus dialog+form内存泄漏 + daisyui源码查看
     电商BI大屏
     封装组件库并生成文档
     jest测试框架 10%
@@ -9,7 +10,7 @@
     PWA
 # 后端开发
     express示例过一遍
-    nodejs深入学习(express学习完了之后就差不多了)
+    nodejs深入学习
     java/python
 # 全栈开发
     流程引擎
