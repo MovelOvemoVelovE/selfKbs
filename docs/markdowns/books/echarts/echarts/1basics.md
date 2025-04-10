@@ -300,7 +300,7 @@ var option = {
 myCharts.setOption(option);
 ```
 
-<Timeline />
+![时间轴图片](/assets/echarts/3-5timeline.png)
 
 ## 6. 数据区域缩放
 
@@ -316,14 +316,38 @@ myCharts.setOption(option);
 
 ```js
 var options = {
-  data  
+  // 数组结构的缩放
+  dataZoom: [
+    {
+      id: 'dataZoomX',
+      type: 'slider',
+      // 指定控制缩放的x轴是哪个
+      xAxisIndex: [0],
+      // 过滤模式： filter(过滤窗口外的数据)、empty(不会影响其他轴的数据)、weakFilter(影响其他轴的数据，只有所有维度都在窗口外才会被过滤)、none(不过滤)
+      filterMode: 'filter'
+    },
+    {
+      id: 'dataZoomY',
+      type: 'slider',
+      // 指定控制缩放的y轴
+      yAxisIndex: [0],
+      filterMode: 'empty'
+    }
+  ]
 }
 ```
 
-<DataZoomSlider />
+![slider缩放](/assets/echarts/3-61datazoom.png)
+
+### 6.2 inside
+
+
+
+```js
+
+```
 
 ## 7. 网格
-
 
 
 ---

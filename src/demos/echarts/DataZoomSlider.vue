@@ -43,7 +43,7 @@ let echartsContainer = ref(null)
 let chartsInstance = null
 
 onMounted(() => {
-  chartsInstance = echarts.init(echartsContainer.value)
+  chartsInstance = echarts.init(echartsContainer.value, null, { renderer: 'svg' })
 
   chartsInstance.setOption(options)
 })
