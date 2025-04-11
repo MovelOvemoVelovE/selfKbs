@@ -482,8 +482,8 @@ var options = {
     fontSize: 12,
     // 字体的系列： sans-serif、serif、monospace、Arial、Counrier New、Microsoft Yahei等
     fontFamily: "sans-serif",
-  }
-}
+  },
+};
 ```
 
 :::tip
@@ -494,7 +494,7 @@ var options = {
 
 ## 11. 刷选
 
-刷选 brush是区域选择，可以选择数据的某个区域进行查看并统计结果等。
+刷选 brush 是区域选择，可以选择数据的某个区域进行查看并统计结果等。
 
 ```js
 var options = {
@@ -502,14 +502,14 @@ var options = {
     // toolbox的选中状态 rect矩形选择、polygon多边形选择、lineX/lineY横纵向选择、clear清除l选中状态
     toolbox: ["lineX", "clear"],
     // 哪些数据可以被刷选: all、[]列表、number：0那一条seriesIndex
-    seriesIndex: 'all'
-  }
-}
+    seriesIndex: "all",
+  },
+};
 ```
 
 ## 12. 标注、标线、标域
 
-标注MarkPoint、标线MarkLine、标域MarkArea是对数据的标注。
+标注 MarkPoint、标线 MarkLine、标域 MarkArea 是对数据的标注。
 
 TODO
 
@@ -529,15 +529,23 @@ TODO
 
 # 可视化图
 
+:::danger 提示
+
+在学习图表前，组件内容必须熟读。 至少每个组件的 key 值和作用要记住。
+
+在图表中组件就是随手就拿来用的。记住最基础的其它的就交给 copilot 了。
+
+:::
+
 在 Echarts**术语速查手册**中， 可以看到可视化图表的分类。 官网目前是**22 种**， 其中最后一种是**自定义图**
 
 :::info
 
-图的类型，通过 `series.type`来指定。（会在对应章节的第一个单词声明他的type）
+图的类型，通过 `series.type`来指定。（会在对应章节的第一个单词声明他的 type）
 
-由于图配置和数据配置等代码过长，官网的示例中也是有着较为详细且容易调试的代码。 
+由于图配置和数据配置等代码过长，官网的示例中也是有着较为详细且容易调试的代码。
 
-这里只是对api进行注释并记录， 全面了解可以投入生产后，继续深挖。
+这里只是对 api 进行注释并记录， 全面了解可以投入生产后，继续深挖。
 
 :::
 
@@ -547,26 +555,136 @@ TODO
 
 ```js
 var options = {
-  // x轴配置
-  xAxis: {
-    // 较为松散的类别类型
-    type: 'category',
-    // x轴分组数据
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  },
-  // 配置y轴
-  yAxis: {
-    // 数值类型
-    type: 'value',
-  },
   series: {
     // 折线图
-    type: 'line',
+    type: "line",
+    // 是否需要光滑的曲线
+    smooth: true,
     // 真实数据
     data: [120, 200, 150, 80, 70, 110, 130],
-  }
-}
+  },
+};
 ```
 
+### 1.1 堆叠态折线图
+
+折线图通常是需要**多条折线**以及**堆叠态**来表明复杂情况下。
+
+且复杂图表是需要多个组件配合来做到数据的全面化
+
+```js
+var options = {
+  // 增加鼠标悬浮提示组件
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "cross",
+      label: {
+        backgroundColor: "#6a7985",
+      },
+    },
+  },
+  // 增加图例筛选对应数据
+  legend: {
+    // 图例位置
+    left: "right",
+    // 图例数据
+    data: ["A产品销量", "B产品销量", "C产品销量"],
+  },
+  // 设置数据项为 Array<simpleSeriesOption>
+  series: [
+    {
+      name: "A产品销量",
+      // 折线图
+      type: "line",
+      // 是否需要光滑的曲线
+      smooth: true,
+      // 真实数据
+      data: [120, 200, 150, 80, 70, 110, 130],
+      stack: "总量",
+      areaStyle: {
+        // 设置堆叠态的下方区域
+        color: "rgba(255, 0, 0, 0.5)",
+      },
+    },
+    {
+      name: "B产品销量",
+      // 折线图
+      type: "line",
+      // 是否需要光滑的曲线
+      smooth: true,
+      // 真实数据
+      data: [220, 182, 191, 234, 290, 330, 310],
+      stack: "总量",
+      areaStyle: {},
+    },
+    {
+      name: "C产品销量",
+      // 折线图
+      type: "line",
+      // 是否需要光滑的曲线
+      smooth: true,
+      // 真实数据
+      data: [150, 232, 201, 154, 190, 330, 410],
+      stack: "总量",
+      areaStyle: {},
+      label: {
+        normal: {
+          show: true,
+          position: "top",
+        },
+      },
+    },
+  ],
+};
+```
+
+![折线图](/assets/echarts/4-11line.png)
 
 
+## 2. 柱状图
+
+bar 柱状图是常用的离散数据的频数。
+
+```js
+var options = {
+  series: {
+    // 柱状图
+    type: "bar",
+  }
+};
+```
+
+### 2.1 进阶柱状图
+
+聚合的图都 需要 `legend` 图例来辅助显示， 并将`series`设置为`Array<simpleSeriesOption>`。
+
+```js
+var options = {
+  // 数组结构聚合柱状图
+  series: [
+    {
+      name: "A产品销量",
+      // 柱状图
+      type: "bar",
+      // 真实数据
+      data: [120, 200, 150, 80, 70, 110, 130],
+      // 堆叠态
+      // stack: "总量",
+      // areaStyle: {
+      //   color: "rgba(255, 0, 0, 0.5)",
+      // },
+    },
+    // ....
+  ],
+  // 调换x轴和y轴数据, 成为水平聚合图
+  xAxis: {
+    type: 'value'
+  },
+  yAxis: {
+    type: 'category',
+    data: ['衬衫', '羊毛衫', '雪纺衫', '牛仔裤', '皮衣', '高跟鞋', '袜子']
+  },
+}
+```
+![水平柱状图](/assets/echarts/4-21bar.png)

@@ -4,6 +4,12 @@
 
 [💥💥echarts文档](https://echarts.apache.org/handbook/zh/get-started/)
 
+:::tip
+
+本笔记代码只针对特定option配置， 如折线图等图表想要直接看到效果， 那么在官网示例中，或者是本站点的示例(TODO)中直接复制代码。
+
+:::
+
 ## 基本篇
 
 书中1-4章为基础篇
