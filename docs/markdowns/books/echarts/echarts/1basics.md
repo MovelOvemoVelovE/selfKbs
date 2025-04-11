@@ -65,6 +65,8 @@ HighCharts 是一个商业化的图表库， 由 javascript 编写。
 
 通过 npm 和 cdn 引入都是可以的。
 
+新建一个 html 文件， body 替换为如下代码。
+
 ```html
 <body>
   <div id="main" style="width: 600px; height: 400px"></div>
@@ -557,7 +559,7 @@ TODO
 var options = {
   series: {
     // 折线图
-    type: "line",
+    type: "line", // [!code focus]
     // 是否需要光滑的曲线
     smooth: true,
     // 真实数据
@@ -574,25 +576,17 @@ var options = {
 
 ```js
 var options = {
-  // 增加鼠标悬浮提示组件
-  tooltip: {
-    trigger: "axis",
-    axisPointer: {
-      type: "cross",
-      label: {
-        backgroundColor: "#6a7985",
-      },
-    },
-  },
-  // 增加图例筛选对应数据
+  // 增加图例筛选对应数据  // [!code ++]
   legend: {
-    // 图例位置
-    left: "right",
-    // 图例数据
-    data: ["A产品销量", "B产品销量", "C产品销量"],
-  },
-  // 设置数据项为 Array<simpleSeriesOption>
+    // [!code ++]
+    // 图例位置  // [!code ++]
+    left: "right", // [!code ++]
+    // 图例数据  // [!code ++]
+    data: ["A产品销量", "B产品销量", "C产品销量"], // [!code ++]
+  }, // [!code ++]
+  // 设置数据项为 Array<simpleSeriesOption> // [!code ++]
   series: [
+    // [!code highlight]
     {
       name: "A产品销量",
       // 折线图
@@ -601,11 +595,12 @@ var options = {
       smooth: true,
       // 真实数据
       data: [120, 200, 150, 80, 70, 110, 130],
-      stack: "总量",
+      stack: "总量", // [!code ++]
       areaStyle: {
-        // 设置堆叠态的下方区域
-        color: "rgba(255, 0, 0, 0.5)",
-      },
+        // [!code ++]
+        // 设置堆叠态的下方区域 // [!code ++]
+        color: "rgba(255, 0, 0, 0.5)", // [!code ++]
+      }, // [!code ++]
     },
     {
       name: "B产品销量",
@@ -641,7 +636,6 @@ var options = {
 
 ![折线图](/assets/echarts/4-11line.png)
 
-
 ## 2. 柱状图
 
 bar 柱状图是常用的离散数据的频数。
@@ -650,8 +644,8 @@ bar 柱状图是常用的离散数据的频数。
 var options = {
   series: {
     // 柱状图
-    type: "bar",
-  }
+    type: "bar", // [!code focus]
+  },
 };
 ```
 
@@ -661,12 +655,20 @@ var options = {
 
 ```js
 var options = {
+  // 调换x轴和y轴数据, 成为水平聚合图
+  xAxis: {
+    type: "value",
+  },
+  yAxis: {
+    type: "category",
+    data: ["衬衫", "羊毛衫", "雪纺衫", "牛仔裤", "皮衣", "高跟鞋", "袜子"],
+  },
   // 数组结构聚合柱状图
   series: [
     {
       name: "A产品销量",
       // 柱状图
-      type: "bar",
+      type: "bar", // [!code focus]
       // 真实数据
       data: [120, 200, 150, 80, 70, 110, 130],
       // 堆叠态
@@ -674,17 +676,147 @@ var options = {
       // areaStyle: {
       //   color: "rgba(255, 0, 0, 0.5)",
       // },
+      // 调换后label的位置也需要换成right
+      label: {
+        show: true,
+        position: "right",
+      },
     },
     // ....
   ],
-  // 调换x轴和y轴数据, 成为水平聚合图
-  xAxis: {
-    type: 'value'
-  },
-  yAxis: {
-    type: 'category',
-    data: ['衬衫', '羊毛衫', '雪纺衫', '牛仔裤', '皮衣', '高跟鞋', '袜子']
-  },
-}
+};
 ```
+
 ![水平柱状图](/assets/echarts/4-21bar.png)
+
+## 3. 饼图
+
+`pie`饼图是展示数据占比的常用图表。
+
+```js
+var options = {
+  series: {
+    type: "pie", // [!code focus]
+    //  数组为环状图 // [!code ++]
+    // radius: ["50%", "70%"], // [!code ++]
+    // 普通饼状图
+    redius: "50%",
+    data: [
+      { value: 335, name: "直接访问" },
+      { value: 310, name: "邮件营销" },
+      { value: 234, name: "联盟广告" },
+      { value: 1000, name: "视频广告" },
+      { value: 1548, name: "搜索引擎" },
+    ],
+  },
+};
+```
+
+## 4. 散点图
+
+`scatter` 散点图
+
+```js
+var options = {
+  xAxis: { type: "value" }, // [!code ++]
+  yAxis: { type: "value" }, // [!code ++]
+  legend: { data: ["类别1", "类别2"] }, // [!code ++]
+  series: [
+    {
+      name: "类别1",
+      type: "scatter", // [!code focus]
+      data: [
+        [10, 20], // [!code highlight]
+        [30, 40], // [!code highlight]
+        [50, 60], // [!code highlight]
+        [70, 80], // [!code highlight]
+        [90, 100], // [!code highlight]
+      ],
+    },
+    {
+      name: "类别2",
+      type: "scatter",
+      data: [
+        [15, 25],
+        [35, 45],
+        [55, 65],
+        [75, 85],
+        [95, 105],
+      ],
+    },
+  ],
+};
+```
+
+## 5. 气泡图
+
+`scatter` 也是气泡图，唯一与散点图不同的是， 在散点图的两个维度的data格式外，需要第三个维度的**气泡大小**信息。
+
+再通过`symbolSize: (data: typeof series.data) => number`来设置气泡的大小
+
+```js
+var options = {
+  series: [
+    {
+      name: "气泡图",
+      type: "scatter", // [!code focus]
+      data: [
+        [10, 20, 5], // [!code ++]
+        [30, 40, 10], // [!code ++]
+        [50, 60, 15], // [!code ++]
+        [70, 80, 20], // [!code ++]
+        [90, 100, 25], // [!code ++]
+      ], // [!code ++]
+      symbolSize: function (data) { // [!code ++]
+        return data[2]*2; // [!code ++]
+      }, // [!code ++]
+    },
+    {
+      name: "散点图",
+      type: "scatter",
+      data: [
+        [15, 25],
+        [35, 45],
+        [55, 65],
+        [75, 85],
+        [95, 105],
+      ],
+    },
+  ],
+};
+```
+
+## 6. 雷达图
+
+`radar` 雷达图是展示多个单位在多个不同项目上的差异。
+
+如: 兵乓球运动员马龙的**六边形战士图**
+
+```js
+var options = {
+  // 雷达图的坐标系
+  radar: {
+    // 雷达图的指示器
+    indicator: [
+      { name: "速度", max: 100 },
+      { name: "力量", max: 100 },
+      { name: "灵活性", max: 100 },
+      { name: "耐力", max: 100 },
+      { name: "技术", max: 100 },
+      { name: "战术", max: 100 },
+    ],
+  },
+  series: [
+    {
+      name: "马龙",
+      type: "radar", // [!code focus]
+      data: [
+        {
+          value: [90, 80, 70, 60, 50, 40],
+          name: "马龙",
+        },
+      ],
+    },
+  ],
+};
+```
