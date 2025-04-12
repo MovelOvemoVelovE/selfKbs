@@ -66,6 +66,10 @@ export default defineConfig({
             text: "git提取日报、周报",
             link: "/markdowns/architect_trip/tools/gitDaily.md",
           },
+          {
+            text: "LeetCode每日一刷",
+            link: "/markdowns/leetCode/Easy",
+          }
         ],
       },
       {
@@ -231,6 +235,7 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/http"),
       // ...generateSidebar("/markdowns/books/continuousDelivery"),
       ...generateSidebar("/markdowns/books/echarts"),
+      ...generateSidebar("/markdowns/leetCode"),
     },
     // 社交链接
     socialLinks: [
