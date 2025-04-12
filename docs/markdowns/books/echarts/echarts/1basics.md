@@ -750,7 +750,7 @@ var options = {
 
 ## 5. 气泡图
 
-`scatter` 也是气泡图，唯一与散点图不同的是， 在散点图的两个维度的data格式外，需要第三个维度的**气泡大小**信息。
+`scatter` 也是气泡图，唯一与散点图不同的是， 在散点图的两个维度的 data 格式外，需要第三个维度的**气泡大小**信息。
 
 再通过`symbolSize: (data: typeof series.data) => number`来设置气泡的大小
 
@@ -767,8 +767,9 @@ var options = {
         [70, 80, 20], // [!code ++]
         [90, 100, 25], // [!code ++]
       ], // [!code ++]
-      symbolSize: function (data) { // [!code ++]
-        return data[2]*2; // [!code ++]
+      symbolSize: function (data) {
+        // [!code ++]
+        return data[2] * 2; // [!code ++]
       }, // [!code ++]
     },
     {
@@ -796,27 +797,110 @@ var options = {
 var options = {
   // 雷达图的坐标系
   radar: {
+    // [!code ++]
     // 雷达图的指示器
     indicator: [
+      // [!code ++]
       { name: "速度", max: 100 },
       { name: "力量", max: 100 },
       { name: "灵活性", max: 100 },
       { name: "耐力", max: 100 },
       { name: "技术", max: 100 },
       { name: "战术", max: 100 },
-    ],
-  },
+    ], // [!code ++]
+  }, // [!code ++]
   series: [
+    // [!code ++]
     {
-      name: "马龙",
-      type: "radar", // [!code focus]
+      // [!code ++]
+      type: "radar", // [!code ++][!code focus]
       data: [
+        // [!code ++]
         {
           value: [90, 80, 70, 60, 50, 40],
           name: "马龙",
         },
+        {
+          value: [80, 70, 60, 50, 40, 30],
+          name: "平均值",
+        },
+      ],
+    }, // [!code ++]
+  ], // [!code ++]
+};
+```
+
+## 7. 漏斗图
+
+`funnel` 漏斗图是转化率分析的图。
+
+```js
+var options = {
+  series: [
+    {
+      name: "转换率漏斗图",
+      type: "funnel", // [!code ++][!code focus]
+      min: 0,
+      max: 100,
+      minSize: "0%",
+      maxSize: "100%",
+      // 数据的升降序 可选 ascending
+      sort: "descending", // [!code ++]
+      gap: 2, // [!code ++]
+      label: {
+        show: true,
+        position: "inside",
+      },
+      // 鼠标悬停，突出显示文字
+      emphasis: {
+        // [!code ++]
+        label: {
+          // [!code ++]
+          fontSize: 20, // [!code ++]
+        }, // [!code ++]
+      }, // [!code ++]
+      data: [
+        { value: 60, name: "注册" },
+        { value: 40, name: "登录" },
+        { value: 20, name: "访问" },
+        { value: 10, name: "浏览" },
+        { value: 5, name: "购买" },
       ],
     },
   ],
 };
 ```
+
+## 8. 仪表盘
+
+`gauge` 仪表盘
+
+```js
+var options = {
+  series: [
+    {
+      type: "gauge", // [!code focus]
+      detail: { formatter: "{value}%" },
+      data: [{ value: 50, name: "注册" }],
+    },
+  ],
+};
+```
+
+## 9. 箱线图
+
+
+
+## 10. 热力图
+
+## 11. 旭日图
+
+## 12. 桑基图
+
+## 13. 词云图
+
+## 14. 树图
+
+## 15. 矩形树图
+
+## 16. 关系图
