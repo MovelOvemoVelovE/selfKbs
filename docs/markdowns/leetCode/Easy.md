@@ -153,3 +153,111 @@ function longestCommonPrefix(strs: string[]): string {
   return result.join("");
 }
 ```
+
+## 有效的括号 <Badge type="tip" text="2025.04.14" />
+
+括号的对称性，构成了栈的结构， 栈顶的元素一定是最后入栈的元素，且一定是先出栈的元素(也就是先闭合)
+
+```ts
+function isValid(s: string): boolean {
+  let ENUM = {
+    "(": ")",
+    "{": "}",
+    "[": "]",
+  };
+  // 使用栈的数据结构， 后进先出
+  // 遇到右箭头那么就栈顶推出一个左箭头
+  const leftStack: string[] = [];
+  for (let i = 0; i < s.length; i++) {
+    const chart = s[i];
+    // 左括号入栈
+    if (chart in ENUM) {
+      leftStack.push(chart);
+    } else if (Object.values(ENUM).includes(chart)) {
+      // 如果是右箭头， 那么就判断栈顶是否有左箭头
+      const left = leftStack.pop();
+      // 栈顶匹配不对
+      if (ENUM[left as string] !== chart) {
+        return false;
+      }
+    }
+  }
+  // 栈没有清空
+  if (leftStack.length) {
+    return false;
+  }
+  return true;
+}
+```
+
+## 合并两个有序链表 <Badge type="tip" text="2025.04.14" />
+
+给定两个链表，按照有序的顺序合并两个链表。
+
+:::info
+
+链表结构val当前值，next为下一个值。 如下: 
+
+```ts
+class ListNode {
+  val: number;
+  next: ListNode | null;
+  constructor(val?: number, next?: ListNode | null) {
+    this.val = val === undefined ? 0 : val;
+    this.next = next === undefined ? null : next;
+  }
+}
+```
+
+:::
+
+```ts
+function mergeTwoLists(
+  list1: ListNode | null,
+  list2: ListNode | null
+): ListNode | null {
+  // 创建一个虚拟链表头节点， 方便操作
+  const dummyHead = new ListNode(-1);
+  // 当然节点指针
+  let current = dummyHead;
+  // 一直到有一个链表为空
+  while (list1 && list2) {
+    // 比较两个链表的当前节点， 将较小的节点连接到结果链表中
+    if (list1.val < list2.val) {
+      current.next = list1;
+      list1 = list1.next;
+    } else {
+      current.next = list2;
+      list2 = list2.next;
+    }
+    // 切换当前指针
+    current = current.next;
+  }
+  // 连接剩余的节点
+  current.next = list1 || list2;
+
+  return dummyHead.next;
+}
+```
+
+## 删除有限数组中的重复项 <Badge type="tip" text="2025.04.14" />
+
+给定一个有序数组，删除重复项，使得每个元素只出现一次，返回新数组的长度。 并且数组的前(新数组的长度)个元素就是新数组的内容
+
+**原地算法，不使用额外的空间**
+
+```ts
+function removeDuplicates(nums: number[]): number {
+    // 双指针法， 快慢指针
+    let slow = 0
+    for (let fast = 1; fast < nums.length; fast++) {
+        // 如果快指针和慢指针不相等， 那么就将快指针的值赋值给慢指针的下一个位置
+        if (nums[fast] !== nums[slow]) {
+            slow++
+            nums[slow] = nums[fast]
+        }
+    }
+    // 返回长度， 注意是索引加1
+    return slow + 1
+};
+```
