@@ -261,3 +261,11 @@ function removeDuplicates(nums: number[]): number {
     return slow + 1
 };
 ```
+
+## 移除元素 <Badge type="tip" text="2025.04.14" />
+
+给定一个数组，删除指定的元素，返回新数组的长度。
+
+```ts
+
+```
