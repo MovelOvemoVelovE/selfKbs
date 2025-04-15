@@ -8,6 +8,7 @@
     react复习/nextjs
     canvas、svg
     PWA
+    性能, 前端的优势在于学习深度和相应的对应广度。
 # 后端开发
     express示例过一遍
     nodejs深入学习

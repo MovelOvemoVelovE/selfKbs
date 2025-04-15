@@ -65,6 +65,8 @@ HighCharts 是一个商业化的图表库， 由 javascript 编写。
 
 通过 npm 和 cdn 引入都是可以的。
 
+新建一个 html 文件， body 替换为如下代码。
+
 ```html
 <body>
   <div id="main" style="width: 600px; height: 400px"></div>
@@ -482,8 +484,8 @@ var options = {
     fontSize: 12,
     // 字体的系列： sans-serif、serif、monospace、Arial、Counrier New、Microsoft Yahei等
     fontFamily: "sans-serif",
-  }
-}
+  },
+};
 ```
 
 :::tip
@@ -494,7 +496,7 @@ var options = {
 
 ## 11. 刷选
 
-刷选 brush是区域选择，可以选择数据的某个区域进行查看并统计结果等。
+刷选 brush 是区域选择，可以选择数据的某个区域进行查看并统计结果等。
 
 ```js
 var options = {
@@ -502,14 +504,14 @@ var options = {
     // toolbox的选中状态 rect矩形选择、polygon多边形选择、lineX/lineY横纵向选择、clear清除l选中状态
     toolbox: ["lineX", "clear"],
     // 哪些数据可以被刷选: all、[]列表、number：0那一条seriesIndex
-    seriesIndex: 'all'
-  }
-}
+    seriesIndex: "all",
+  },
+};
 ```
 
 ## 12. 标注、标线、标域
 
-标注MarkPoint、标线MarkLine、标域MarkArea是对数据的标注。
+标注 MarkPoint、标线 MarkLine、标域 MarkArea 是对数据的标注。
 
 TODO
 
@@ -529,15 +531,23 @@ TODO
 
 # 可视化图
 
+:::danger 提示
+
+在学习图表前，组件内容必须熟读。 至少每个组件的 key 值和作用要记住。
+
+在图表中组件就是随手就拿来用的。记住最基础的其它的就交给 copilot 了。
+
+:::
+
 在 Echarts**术语速查手册**中， 可以看到可视化图表的分类。 官网目前是**22 种**， 其中最后一种是**自定义图**
 
 :::info
 
-图的类型，通过 `series.type`来指定。（会在对应章节的第一个单词声明他的type）
+图的类型，通过 `series.type`来指定。（会在对应章节的第一个单词声明他的 type）
 
-由于图配置和数据配置等代码过长，官网的示例中也是有着较为详细且容易调试的代码。 
+由于图配置和数据配置等代码过长，官网的示例中也是有着较为详细且容易调试的代码。
 
-这里只是对api进行注释并记录， 全面了解可以投入生产后，继续深挖。
+这里只是对 api 进行注释并记录， 全面了解可以投入生产后，继续深挖。
 
 :::
 
@@ -547,26 +557,350 @@ TODO
 
 ```js
 var options = {
-  // x轴配置
-  xAxis: {
-    // 较为松散的类别类型
-    type: 'category',
-    // x轴分组数据
-    data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
-  },
-  // 配置y轴
-  yAxis: {
-    // 数值类型
-    type: 'value',
-  },
   series: {
     // 折线图
-    type: 'line',
+    type: "line", // [!code focus]
+    // 是否需要光滑的曲线
+    smooth: true,
     // 真实数据
     data: [120, 200, 150, 80, 70, 110, 130],
-  }
-}
+  },
+};
 ```
 
+### 1.1 堆叠态折线图
+
+折线图通常是需要**多条折线**以及**堆叠态**来表明复杂情况下。
+
+且复杂图表是需要多个组件配合来做到数据的全面化
+
+```js
+var options = {
+  // 增加图例筛选对应数据  // [!code ++]
+  legend: {
+    // [!code ++]
+    // 图例位置  // [!code ++]
+    left: "right", // [!code ++]
+    // 图例数据  // [!code ++]
+    data: ["A产品销量", "B产品销量", "C产品销量"], // [!code ++]
+  }, // [!code ++]
+  // 设置数据项为 Array<simpleSeriesOption> // [!code ++]
+  series: [
+    // [!code highlight]
+    {
+      name: "A产品销量",
+      // 折线图
+      type: "line",
+      // 是否需要光滑的曲线
+      smooth: true,
+      // 真实数据
+      data: [120, 200, 150, 80, 70, 110, 130],
+      stack: "总量", // [!code ++]
+      areaStyle: {
+        // [!code ++]
+        // 设置堆叠态的下方区域 // [!code ++]
+        color: "rgba(255, 0, 0, 0.5)", // [!code ++]
+      }, // [!code ++]
+    },
+    {
+      name: "B产品销量",
+      // 折线图
+      type: "line",
+      // 是否需要光滑的曲线
+      smooth: true,
+      // 真实数据
+      data: [220, 182, 191, 234, 290, 330, 310],
+      stack: "总量",
+      areaStyle: {},
+    },
+    {
+      name: "C产品销量",
+      // 折线图
+      type: "line",
+      // 是否需要光滑的曲线
+      smooth: true,
+      // 真实数据
+      data: [150, 232, 201, 154, 190, 330, 410],
+      stack: "总量",
+      areaStyle: {},
+      label: {
+        normal: {
+          show: true,
+          position: "top",
+        },
+      },
+    },
+  ],
+};
+```
+
+![折线图](/assets/echarts/4-11line.png)
+
+## 2. 柱状图
+
+bar 柱状图是常用的离散数据的频数。
+
+```js
+var options = {
+  series: {
+    // 柱状图
+    type: "bar", // [!code focus]
+  },
+};
+```
+
+### 2.1 进阶柱状图
+
+聚合的图都 需要 `legend` 图例来辅助显示， 并将`series`设置为`Array<simpleSeriesOption>`。
+
+```js
+var options = {
+  // 调换x轴和y轴数据, 成为水平聚合图
+  xAxis: {
+    type: "value",
+  },
+  yAxis: {
+    type: "category",
+    data: ["衬衫", "羊毛衫", "雪纺衫", "牛仔裤", "皮衣", "高跟鞋", "袜子"],
+  },
+  // 数组结构聚合柱状图
+  series: [
+    {
+      name: "A产品销量",
+      // 柱状图
+      type: "bar", // [!code focus]
+      // 真实数据
+      data: [120, 200, 150, 80, 70, 110, 130],
+      // 堆叠态
+      // stack: "总量",
+      // areaStyle: {
+      //   color: "rgba(255, 0, 0, 0.5)",
+      // },
+      // 调换后label的位置也需要换成right
+      label: {
+        show: true,
+        position: "right",
+      },
+    },
+    // ....
+  ],
+};
+```
+
+![水平柱状图](/assets/echarts/4-21bar.png)
+
+## 3. 饼图
+
+`pie`饼图是展示数据占比的常用图表。
+
+```js
+var options = {
+  series: {
+    type: "pie", // [!code focus]
+    //  数组为环状图 // [!code ++]
+    // radius: ["50%", "70%"], // [!code ++]
+    // 普通饼状图
+    redius: "50%",
+    data: [
+      { value: 335, name: "直接访问" },
+      { value: 310, name: "邮件营销" },
+      { value: 234, name: "联盟广告" },
+      { value: 1000, name: "视频广告" },
+      { value: 1548, name: "搜索引擎" },
+    ],
+  },
+};
+```
+
+## 4. 散点图
+
+`scatter` 散点图
+
+```js
+var options = {
+  xAxis: { type: "value" }, // [!code ++]
+  yAxis: { type: "value" }, // [!code ++]
+  legend: { data: ["类别1", "类别2"] }, // [!code ++]
+  series: [
+    {
+      name: "类别1",
+      type: "scatter", // [!code focus]
+      data: [
+        [10, 20], // [!code highlight]
+        [30, 40], // [!code highlight]
+        [50, 60], // [!code highlight]
+        [70, 80], // [!code highlight]
+        [90, 100], // [!code highlight]
+      ],
+    },
+    {
+      name: "类别2",
+      type: "scatter",
+      data: [
+        [15, 25],
+        [35, 45],
+        [55, 65],
+        [75, 85],
+        [95, 105],
+      ],
+    },
+  ],
+};
+```
+
+## 5. 气泡图
+
+`scatter` 也是气泡图，唯一与散点图不同的是， 在散点图的两个维度的 data 格式外，需要第三个维度的**气泡大小**信息。
+
+再通过`symbolSize: (data: typeof series.data) => number`来设置气泡的大小
+
+```js
+var options = {
+  series: [
+    {
+      name: "气泡图",
+      type: "scatter", // [!code focus]
+      data: [
+        [10, 20, 5], // [!code ++]
+        [30, 40, 10], // [!code ++]
+        [50, 60, 15], // [!code ++]
+        [70, 80, 20], // [!code ++]
+        [90, 100, 25], // [!code ++]
+      ], // [!code ++]
+      symbolSize: function (data) {
+        // [!code ++]
+        return data[2] * 2; // [!code ++]
+      }, // [!code ++]
+    },
+    {
+      name: "散点图",
+      type: "scatter",
+      data: [
+        [15, 25],
+        [35, 45],
+        [55, 65],
+        [75, 85],
+        [95, 105],
+      ],
+    },
+  ],
+};
+```
+
+## 6. 雷达图
+
+`radar` 雷达图是展示多个单位在多个不同项目上的差异。
+
+如: 兵乓球运动员马龙的**六边形战士图**
+
+```js
+var options = {
+  // 雷达图的坐标系
+  radar: {
+    // [!code ++]
+    // 雷达图的指示器
+    indicator: [
+      // [!code ++]
+      { name: "速度", max: 100 },
+      { name: "力量", max: 100 },
+      { name: "灵活性", max: 100 },
+      { name: "耐力", max: 100 },
+      { name: "技术", max: 100 },
+      { name: "战术", max: 100 },
+    ], // [!code ++]
+  }, // [!code ++]
+  series: [
+    // [!code ++]
+    {
+      // [!code ++]
+      type: "radar", // [!code ++][!code focus]
+      data: [
+        // [!code ++]
+        {
+          value: [90, 80, 70, 60, 50, 40],
+          name: "马龙",
+        },
+        {
+          value: [80, 70, 60, 50, 40, 30],
+          name: "平均值",
+        },
+      ],
+    }, // [!code ++]
+  ], // [!code ++]
+};
+```
+
+## 7. 漏斗图
+
+`funnel` 漏斗图是转化率分析的图。
+
+```js
+var options = {
+  series: [
+    {
+      name: "转换率漏斗图",
+      type: "funnel", // [!code ++][!code focus]
+      min: 0,
+      max: 100,
+      minSize: "0%",
+      maxSize: "100%",
+      // 数据的升降序 可选 ascending
+      sort: "descending", // [!code ++]
+      gap: 2, // [!code ++]
+      label: {
+        show: true,
+        position: "inside",
+      },
+      // 鼠标悬停，突出显示文字
+      emphasis: {
+        // [!code ++]
+        label: {
+          // [!code ++]
+          fontSize: 20, // [!code ++]
+        }, // [!code ++]
+      }, // [!code ++]
+      data: [
+        { value: 60, name: "注册" },
+        { value: 40, name: "登录" },
+        { value: 20, name: "访问" },
+        { value: 10, name: "浏览" },
+        { value: 5, name: "购买" },
+      ],
+    },
+  ],
+};
+```
+
+## 8. 仪表盘
+
+`gauge` 仪表盘
+
+```js
+var options = {
+  series: [
+    {
+      type: "gauge", // [!code focus]
+      detail: { formatter: "{value}%" },
+      data: [{ value: 50, name: "注册" }],
+    },
+  ],
+};
+```
+
+## 9. 箱线图
 
 
+
+## 10. 热力图
+
+## 11. 旭日图
+
+## 12. 桑基图
+
+## 13. 词云图
+
+## 14. 树图
+
+## 15. 矩形树图
+
+## 16. 关系图
