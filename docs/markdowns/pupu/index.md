@@ -1,22 +1,20 @@
 # 前端开发
     封装markdown-it-container组件
     elementplus dialog+form内存泄漏 + daisyui源码查看
-    电商BI大屏
-    封装组件库并生成文档
+    Echarts书看完 50%
+    封装组件库继承vitepress
     jest测试框架 10%
-    MDN知识
-    react复习/nextjs
+    nextjs
     canvas、svg
     PWA
-    性能, 前端的优势在于学习深度和相应的对应广度。
+    性能
 # 后端开发
-    express示例过一遍
-    nodejs深入学习
-    java/python
+    express+nodejs
+    java/python + springcloud
 # 全栈开发
     流程引擎
     AI
     webrtc
     linux
-    http和计算机原理
+    计算机原理
     devops CICD
