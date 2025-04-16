@@ -401,3 +401,28 @@ KMP算法，需要了解一个概念： 前缀函数。  举个例子：
 
 那么根据 这两个特性确定算法的思路。
 
+
+
+## 搜索插入位置 <Badge type="tip" text="2025.04.16" />
+
+给定一个 排序升序数组和一个目标值，返回**目标值在数组中的索引**，**如果不存在，则返回它将会被插入的位置**。
+
+```ts
+function searchInsert(nums: number[], target: number): number {
+  const n = nums.length;
+  let left = 0, right = n - 1, ans = n;
+  while (left <= right) {
+    // 防止溢出
+      let mid = ((right - left) >> 1) + left;
+      if (target <= nums[mid]) {
+          ans = mid;
+          right = mid - 1;
+      } else {
+          left = mid + 1;
+      }
+  }
+  return ans;
+
+};
+```
+

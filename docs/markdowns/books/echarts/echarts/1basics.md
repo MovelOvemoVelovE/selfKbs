@@ -889,11 +889,73 @@ var options = {
 
 ## 9. 箱线图
 
+`boxplot` 箱线图是连续性数据分部情况的可视化图。
 
+echarts提供了预处理函数来处理数据。 `echarts.dataTool.prepareBoxplotData()`
+
+```js
+var data = echarts.dataTool.prepareBoxplotData([
+  [1, 2, 3, 4, 5],
+  [2, 3, 4, 5, 6],
+  [3, 4, 5, 6, 7],
+]);
+var options = {
+  series: [
+    {
+      type: "boxplot", // [!code focus]
+      data: data.boxData // [!code ++]
+      tooltip: {
+        formatter: function (params) {
+          return (
+            params.name +
+            "<br/>" +
+            "上四分位数: " +
+            params.data[3] +
+            "<br/>" +
+            "下四分位数: " +
+            params.data[1] +
+            "<br/>" +
+            "中位数: " +
+            params.data[2] +
+            "<br/>" +
+            "最大值: " +
+            params.data[4] +
+            "<br/>" +
+            "最小值: " +
+            params.data[0]
+          );
+        },
+      }
+    }
+  ]
+}
+```
 
 ## 10. 热力图
 
+`heatmap` 热力图 是一种密度图。 使用不同颜色和颜色不同深浅来表示数据量。 
+
+比如有：github 提交量。
+
+:::info
+
+1. 流程是先定义 x y轴的数据
+2. 而后定义的data是三个维度的数组， 其中前两个维度是 x y轴的坐标， 第三个维度是数据量。
+3. 设置type为 `heatmap`
+
+:::
+
+```js
+
+```
+
+
+
 ## 11. 旭日图
+
+`sunburst` 旭日图是饼图的进化版本。
+
+
 
 ## 12. 桑基图
 
