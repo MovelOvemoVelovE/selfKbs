@@ -891,7 +891,7 @@ var options = {
 
 `boxplot` 箱线图是连续性数据分部情况的可视化图。
 
-echarts提供了预处理函数来处理数据。 `echarts.dataTool.prepareBoxplotData()`
+echarts 提供了预处理函数来处理数据。 `echarts.dataTool.prepareBoxplotData()`
 
 ```js
 var data = echarts.dataTool.prepareBoxplotData([
@@ -933,35 +933,248 @@ var options = {
 
 ## 10. 热力图
 
-`heatmap` 热力图 是一种密度图。 使用不同颜色和颜色不同深浅来表示数据量。 
+`heatmap` 热力图 是一种密度图。 使用不同颜色和颜色不同深浅来表示数据量。
 
 比如有：github 提交量。
 
 :::info
 
-1. 流程是先定义 x y轴的数据
-2. 而后定义的data是三个维度的数组， 其中前两个维度是 x y轴的坐标， 第三个维度是数据量。
-3. 设置type为 `heatmap`
+1. 流程是先定义 x y 轴的数据
+2. 而后定义的 data 是三个维度的数组， 其中前两个维度是 x y 轴的坐标， 第三个维度是数据量。
+3. 设置 type 为 `heatmap`
 
 :::
 
 ```js
-
+// x轴数据
+var hours = [
+  "12am",
+  "1am",
+  // ...xxx
+  "9pm",
+  "10pm",
+  "11pm",
+];
+// y轴数据
+var days = [
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+  "Sunday",
+];
+// 资源数据
+var data = [
+  [0, 0, 5],
+  // ............xxx
+  [1500, 1500, 1500],
+].map((item) => [item[0], item[1], item[2] || "-"]); // 处理数据，给没有值的地方填充'-';
+var option = {
+  xAxis: {
+    type: "category",
+    data: hours,
+    axisLabel: {
+      interval: 0, // 设置x轴标签不重叠
+      rotate: 45, // 设置x轴标签旋转角度
+    },
+  },
+  yAxis: {
+    type: "category",
+    data: days,
+    axisLabel: {
+      interval: 0, // 设置y轴标签不重叠
+      rotate: 45, // 设置y轴标签旋转角度
+    },
+  },
+  // 设置热力图的颜色范围
+  visualMap: {
+    min: 0,
+    max: 250,
+    calculable: true,
+    inRange: {
+      color: ["#f6e58d", "#badc58", "#6ab04c", "#1dd1a1", "#00a8ff"],
+    },
+    textStyle: {
+      color: "#fff",
+    },
+  },
+  series: [
+    {
+      name: "资源数据",
+      type: "heatmap",
+      data: data,
+      label: {
+        show: true,
+        formatter: function (params) {
+          return params.value[2] || "-"; // 显示数据值或'-'
+        },
+      },
+      itemStyle: {
+        borderColor: "#fff",
+        borderWidth: 1,
+      },
+    },
+  ],
+};
 ```
 
-
+![热力图](/assets/echarts/4-10timeline.png)
 
 ## 11. 旭日图
 
 `sunburst` 旭日图是饼图的进化版本。
 
+不仅可以体现各项所占比例，还可以体现各项内组成的层级关系。
 
+```js
+var data = [
+  {
+    name: "A产品",
+    value: 100,
+    children: [
+      {
+        name: "A1产品",
+        value: 50,
+        children: [
+          { name: "A1-1产品", value: 20 },
+          { name: "A1-2产品", value: 30 },
+        ],
+      },
+      { name: "A2产品", value: 30 },
+      { name: "A3产品", value: 20 },
+    ],
+  },
+  {
+    name: "B产品",
+    value: 80,
+    children: [
+      { name: "B1产品", value: 40 },
+      { name: "B2产品", value: 30 },
+      { name: "B3产品", value: 10 },
+    ],
+  },
+];
+var option = {
+  series: {
+    type: "sunburst", // [!code focus]
+    data,
+    radius: [0, "90%"], // [!code ++]
+    label: {
+      rotate: "radial", // [!code ++]
+    },
+  },
+};
+```
+
+![旭日图](/assets/echarts/4-11sunburst.png)
 
 ## 12. 桑基图
 
+`sankey` 桑基图是能量分流图，也是**桑基能量平衡图**
+
+特征是 **首尾端**的能量都是**相等的**。
+
+![桑基图](/assets/echarts/4-12sankey.png)
+
+```js
+var option = {
+  series: {
+    type: "sankey",
+    // 定义有几个能量层
+    data: [
+      { name: "输入1" },
+      { name: "输入2" },
+      { name: "输出1" },
+      { name: "输出2" },
+      { name: "中间层" },
+      { name: "输出3" },
+    ],
+    // 连线！
+    links: [
+      { source: "输入1", target: "输出2", value: 5 },
+      { source: "输入1", target: "中间层", value: 3 },
+      { source: "输入2", target: "中间层", value: 2 },
+      { source: "中间层", target: "输出3", value: 4 },
+      { source: "中间层", target: "输出2", value: 1 },
+      { source: "中间层", target: "输出1", value: 2 },
+    ],
+  },
+};
+```
+
 ## 13. 词云图
 
+`wordCloud` 词云图是展示文本数据的可视化图。
+
+::: danger
+需要引入 `echarts-wordcloud` 插件。
+
+`<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts-wordcloud/2.1.0/echarts-wordcloud.min.js"></script>`
+:::
+
+![词云图](/assets/echarts/4-13wordcloud.png)
+
+```js
+var option = {
+  series: [
+    {
+      // Use the word cloud chart type
+      type: "wordCloud",
+      // circle (default),
+      // cardioid (apple or heart shape curve, the most known polar equation),
+      // diamond ( alias of square),
+      // triangle-forward,
+      // triangle
+      // triangle-upright,
+      // pentagon
+      // star.
+      shape: "hexagon",
+      // 字体的大小范围
+      sizeRange: [12, 60],
+      // 词云的间距
+      gridSize: 8,
+      textStyle: {
+        fontFamily: "sans-serif",
+        fontWeight: "bold",
+        // 词云的颜色
+        color: function () {
+          return (
+            "rgb(" +
+            [
+              Math.round(Math.random() * 160),
+              Math.round(Math.random() * 160),
+              Math.round(Math.random() * 160),
+            ].join(",") +
+            ")"
+          );
+        },
+      },
+      // 词云的聚焦状态
+      emphasis: {
+        focus: "self",
+        textStyle: {
+          textShadowBlur: 10,
+          textShadowColor: "#333",
+        },
+      },
+      data: [
+        { name: "ECharts", value: 366 },
+        { name: "JavaScript", value: 300 },
+        { name: "HTML", value: 250 },
+        { name: "CSS", value: 200 },
+        { name: "React", value: 180 },
+      ],
+    },
+  ],
+};
+```
+
 ## 14. 树图
+
+`tree` 树图是展示数据的层级关系。
+
 
 ## 15. 矩形树图
 
