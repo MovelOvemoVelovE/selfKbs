@@ -1,5 +1,5 @@
 import { defineConfig } from "vitepress";
-import Elementplus from "unplugin-element-plus/vite";
+// import Elementplus from "unplugin-element-plus/vite";
 import generateSidebar from "./vitepress/config/helper/sidebar.js";
 import mdConfig from "./vitepress/config/mdConfig.mjs";
 import path from "path";
@@ -253,7 +253,7 @@ export default defineConfig({
       }
     },
     plugins: [
-      Elementplus()
+      // Elementplus()
     ]
   }
 });
