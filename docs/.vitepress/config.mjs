@@ -1,4 +1,5 @@
 import { defineConfig } from "vitepress";
+import Elementplus from "unplugin-element-plus/vite";
 import generateSidebar from "./vitepress/config/helper/sidebar.js";
 import mdConfig from "./vitepress/config/mdConfig.mjs";
 import path from "path";
@@ -156,14 +157,7 @@ export default defineConfig({
             { text: "数据逻辑", link: "/markdowns/jtips/dataSource" },
             { text: "函数方法", link: "/markdowns/jtips/methods" },
           ],
-        },
-        {
-          text: "审批代码逻辑",
-          items: [
-            { text: "审批逻辑", link: "/markdowns/jtips/workFlow" },
-            { text: "函数方法", link: "/markdowns/jtips/flowMethods" },
-          ],
-        },
+        }
       ],
       "/markdowns/architect_trip/react": [
         {
@@ -257,6 +251,9 @@ export default defineConfig({
       alias: {
         '@': path.resolve(__dirname, '../../src')
       }
-    }
+    },
+    plugins: [
+      Elementplus()
+    ]
   }
 });
