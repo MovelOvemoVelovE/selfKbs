@@ -1,8 +1,13 @@
+---
+  description: "elementplus、vant等组件库、js、框架等踩坑记录"
+---
+
 Damn！Tread Hole! <Badge type="danger" text="version 0.1" />
 
 <script setup>
 
 import Calendar from '@/vueComponents/Calendar.vue'
+// import ElTreeSelect from '@/vueComponents/ElTreeSelect.vue'
 
 </script>
 
@@ -54,6 +59,66 @@ const tableData = ref([])
 - **传递prop避开data属性命名的冲突**
 - `vue`特性的`attribute`透传可通过`defineOptions().inheritAttrs = false`解决
 :::
+
+### el-tree-select组件
+
+组件的控制折叠等操作，文档中可能没有说明如何控制。
+
+可以`TemplateRef().value.getNode()`查看所有属性和方法，后灵活进行变通。
+
+![el-tree-select](/assets/damnHole/el-tree-select.png)
+
+:::tip 模拟需求
+
+**现在要求筛选树形结构字段后，末级非叶子节点，默认是折叠的，然后点击可以展示没有被筛选到的数据。**
+
+```vue
+<template>
+  <el-tree-select
+    ref="treeSelectRef"
+    :node-key="nodeKey"
+    :filter-node-method="filterNodeMethod"
+    @node-expand="handleNodeExpand"
+  />
+</template>
+
+
+<script setup>
+const filterNodeMethod = (value, data, node) => {
+  if(!value) return true
+  if( data.deptName.includes(value) ){
+    nextTick(() => {
+      // 如果当前节点的所有子节点都是隐藏状态，说明树形结构的筛选已经到头了
+      if(node.childNodes.length && node.childNodes.every(item => !item.visible)){
+        // 将当前节点变为折叠态
+        treeSelectRef.value.getNode(data.deptId).expanded = false
+        // 设置一个变量，可以让他点击后展开， 否则根节点点击后筛选功能会丢失
+        data.isLastFilterNode = true
+      }
+    })
+    return true
+  }
+  return false
+}
+
+const handleNodeExpand = (data, node) => {
+  expandedKeys.value.push(data.deptId)
+  // 在展开时间中，判断当前节点是否是最后一个筛选节点
+  if(data.isLastFilterNode){
+    node.childNodes.forEach( item => {
+      // 设置子节点的显示状态
+      item.visible = true
+      // 设置子节点属性为 最后一级筛选节点的下级节点，继续可以展开
+      item.data.isLastFilterNode = true
+    })
+  }
+}
+</script>
+```
+
+:::
+
+<!-- <ElTreeSelect /> -->
 
 ## vant
 
