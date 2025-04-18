@@ -538,3 +538,5 @@ function addBinary(a: string, b: string): string {
 ```
 
 :::
+
+## x的平方根 <Badge type="tip" text="2025.04.18" />
