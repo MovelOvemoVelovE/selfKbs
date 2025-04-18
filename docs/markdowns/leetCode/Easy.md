@@ -479,11 +479,46 @@ function plusOne(digits: number[]): number[] {
 :::code-group
 
 ```ts [暴力转换.ts]
-
+// 直接转换为10进制， 然后进行计算。 必须使用 BigInt ， 否则会溢出
+function addBinary(a: string, b: string): string {
+   // 使用 BigInt 直接解析二进制字符串
+   const aBigInt = BigInt("0b" + a); // 将二进制字符串转换为 BigInt
+   const bBigInt = BigInt("0b" + b); // 将二进制字符串转换为 BigInt
+ 
+   const sum = aBigInt + bBigInt; // BigInt 相加
+   return sum.toString(2); // 转换为二进制字符串)
+};
 ```
 
 ```ts [模拟二进制加法.ts]
-
+function addBinary(a: string, b: string): string {
+  // 返回答案
+  let answer = "";
+  // 
+  let carry = 0;
+  // 最长循环的长度
+  let lastLength = Math.max(a.length, b.length);
+  for (let i = 0; i < lastLength; i++) {
+    // 从后往前取值
+    // 取值时如果没有值则用0代替
+    const aNum = Number(a[a.length - 1 - i] || 0);
+    const bNum = Number(b[b.length - 1 - i] || 0);
+    // 当前位数的和
+    const sum = aNum + bNum + carry;
+    // `
+    // ${求和， 但是可能已经有剩下的carry为1， 所以需要模2，类似与 999，每一位都需要进} 
+    // ${已经计算的值}
+    // `
+    answer = (sum % 2) + answer;
+    // 消耗一次2，向下取整
+    carry = Math.floor(sum / 2);
+  }
+  // 循环结束后还有剩余的 溢出进1 直接加在最前面即可
+  if (carry) {
+    answer = carry + answer;
+  }
+  return answer
+}
 ```
 
 ```ts [位运算处理.ts]

@@ -227,3 +227,9 @@ obj = reactive({
 ```
 
 ::: 
+
+# vueGraggable组件
+
+使用`list`属性指定拖拽的列表
+
+# 
