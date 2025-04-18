@@ -19,7 +19,7 @@ function twoSum(nums: number[], target: number): number[] {
     // 如果补数在哈希表中，返回当前索引和补数的索引
     if (map.has(complement)) {
       // 补数的索引在哈希表中
-      return [map.get(complement)!, i];
+      return [map.get(complement), i];
     }
 
     map.set(nums[i], i);
