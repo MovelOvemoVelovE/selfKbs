@@ -19,7 +19,7 @@ function twoSum(nums: number[], target: number): number[] {
     // 如果补数在哈希表中，返回当前索引和补数的索引
     if (map.has(complement)) {
       // 补数的索引在哈希表中
-      return [map.get(complement)!, i];
+      return [map.get(complement), i];
     }
 
     map.set(nums[i], i);
@@ -426,3 +426,117 @@ function searchInsert(nums: number[], target: number): number {
 };
 ```
 
+## 最后一个单词的长度 <Badge type="tip" text="2025.04.17" />
+
+一个仅有空格和若干字符形成的字符串，找到最后一个单词的长度
+
+```ts
+function lengthOfLastWord(s: string): number {
+    return s.trim().split(' ').pop()?.length || 0;
+};
+```
+
+## 加1 <Badge type="tip" text="2025.04.17" />
+
+给定一个整数数组，分别对应位数，然后进行整数的加减，最后返回数组。
+
+如 `[1,2,3]` + 1 = `[1,2,4]` 
+
+`[9, 9, 9]` + 1 = `[1, 0, 0, 0]`
+
+```ts
+function plusOne(digits: number[]): number[] {
+  // 设置一个标志位，表示是否需要继续循环
+  // 如果当前位是9，则需要进位，设置为true
+  // 如果当前位不是9，则不需要进位，设置为false
+  let isContinue = true;
+  // 逆循环
+  for(let i = digits.length - 1; i >= 0; i--){
+    if(!isContinue) break;
+    
+    if(digits[i] === 9){
+      // 如果当前位是9，则进位，设置为0
+      digits[i] = 0;
+      // 如果是第一位进位，添加1
+      if(i === 0){
+        digits.unshift(1);
+        break
+      }
+
+    }else {
+      // 如果当前位不是9，则不需要进位，直接加1即可
+      digits[i]++;
+      isContinue = false
+    }
+  }
+  return digits;
+};
+```
+
+## 二进制求和
+
+
+:::code-group
+
+```ts [暴力转换.ts]
+// 直接转换为10进制， 然后进行计算。 必须使用 BigInt ， 否则会溢出
+function addBinary(a: string, b: string): string {
+   // 使用 BigInt 直接解析二进制字符串
+   const aBigInt = BigInt("0b" + a); // 将二进制字符串转换为 BigInt
+   const bBigInt = BigInt("0b" + b); // 将二进制字符串转换为 BigInt
+ 
+   const sum = aBigInt + bBigInt; // BigInt 相加
+   return sum.toString(2); // 转换为二进制字符串)
+};
+```
+
+```ts [模拟二进制加法.ts]
+function addBinary(a: string, b: string): string {
+  // 返回答案
+  let answer = "";
+  // 
+  let carry = 0;
+  // 最长循环的长度
+  let lastLength = Math.max(a.length, b.length);
+  for (let i = 0; i < lastLength; i++) {
+    // 从后往前取值
+    // 取值时如果没有值则用0代替
+    const aNum = Number(a[a.length - 1 - i] || 0);
+    const bNum = Number(b[b.length - 1 - i] || 0);
+    // 当前位数的和
+    const sum = aNum + bNum + carry;
+    // `
+    // ${求和， 但是可能已经有剩下的carry为1， 所以需要模2，类似与 999，每一位都需要进} 
+    // ${已经计算的值}
+    // `
+    answer = (sum % 2) + answer;
+    // 消耗一次2，向下取整
+    carry = Math.floor(sum / 2);
+  }
+  // 循环结束后还有剩余的 溢出进1 直接加在最前面即可
+  if (carry) {
+    answer = carry + answer;
+  }
+  return answer
+}
+```
+
+```ts [位运算处理.ts]
+function addBinary(a: string, b: string): string {
+  // 位运算
+  let x = BigInt('0b' + a);
+  let y = BigInt('0b' + b);
+
+  while (y !== 0n) {
+    const carry = x & y;
+    x = x ^ y;
+    y = carry << 1n;
+  }
+
+  return x.toString(2);
+};
+```
+
+:::
+
+## x的平方根 <Badge type="tip" text="2025.04.18" />
