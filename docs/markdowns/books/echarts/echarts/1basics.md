@@ -1175,11 +1175,159 @@ var option = {
 
 `tree` 树图是展示数据的层级关系。
 
+代码分为**数据定义**和**树形样式**的两部分，数据嵌套类似于**旭日图**
+
+```js
+var data = {
+  name: "A", // [!code ++]
+  children: [
+    // [!code ++]
+    {
+      // [!code ++]
+      name: "A1", // [!code ++]
+      children: [
+        // [!code ++]
+        { name: "A1-1", value: 101 }, // [!code ++]
+        { name: "A1-2", value: 220 }, // [!code ++]
+        { name: "A1-3", value: 303 }, // [!code ++]
+      ], // [!code ++]
+    }, // [!code ++]
+    {
+      // [!code ++]
+      name: "A2", // [!code ++]
+      children: [
+        // [!code ++]
+        { name: "A2-1", value: 2312 }, // [!code ++]
+        { name: "A2-2", value: 1231 }, // [!code ++]
+        { name: "A2-3", value: 1114 }, // [!code ++]
+      ], // [!code ++]
+    }, // [!code ++]
+    {
+      // [!code ++]
+      name: "A3", // [!code ++]
+      children: [
+        // [!code ++]
+        { name: "A3-1", value: 4521 }, // [!code ++]
+        { name: "A3-2", value: 5412 }, // [!code ++]
+        { name: "A3-3", value: 87412 }, // [!code ++]
+      ], // [!code ++]
+    }, // [!code ++]
+  ], // [!code ++]
+}; // [!code ++]
+var option = {
+  // 设置提醒文字
+  tooltip: {
+    trigger: "item",
+  },
+  series: [
+    {
+      // 设置是树图
+      type: "tree", // [!code focus]
+      // 树名称
+      name: "tree1",
+      // 树数据
+      data: [data],
+      symbolSize: 20,
+      // 设置叶子节点的样式
+      leaves: {
+        // [!code focus]
+        label: {
+          // [!code focus]
+          show: true, // [!code focus]
+          position: "right", // [!code focus]
+          align: "left", // [!code focus]
+        }, // [!code focus]
+      }, // [!code focus]
+    },
+  ],
+};
+```
 
 ## 15. 矩形树图
 
 `treemap` 矩形树图是展示数据的层级关系。
 
+并不是树， 可以表示数据层级关系、也可以表示数据的权重关系。
+
+```js
+var option = {
+  series: [
+    {
+      type: "treemap", // [!code focus]
+      data: [
+        {
+          name: "A", // [!code ++]
+          value: 50, // [!code ++]
+          children: [
+            // [!code ++]
+            { name: "A1", value: 15 }, // [!code ++]
+            { name: "A2", value: 15 }, // [!code ++]
+            {
+              // [!code ++]
+              name: "A3", // [!code ++]
+              value: 10, // [!code ++]
+              children: [
+                // [!code ++]
+                { name: "A31", value: 12 }, // [!code ++]
+                { name: "A32", value: 8 }, // [!code ++]
+              ], // [!code ++]
+            }, // [!code ++]
+          ], // [!code ++]
+        }, // [!code ++]
+        {
+          // [!code ++]
+          name: "B", // [!code ++]
+          value: 20, // [!code ++]
+          children: [
+            // [!code ++]
+            { name: "B11", value: 10 }, // [!code ++]
+            { name: "B12", value: 10 }, // [!code ++]
+          ], // [!code ++]
+        }, // [!code ++]
+      ], // [!code ++]
+      itemStyle: {
+        borderColor: "#fff",
+        borderWidth: 2,
+        gapWidth: 2,
+      },
+    },
+  ],
+};
+```
+
 ## 16. 关系图
 
 `graph` 关系图是展示数据的关系。
+
+```js
+var options = {
+  series: [
+    {
+      type: "graph", // [!code focus]
+      layout: "force",
+      data: [
+        { name: "阿里巴巴集团", value: 100, symbolSize: 100 },
+        { name: "马云", value: 80, symbolSize: 80 },
+        // .,,,
+        { name: "阿里巴巴教育", value: 50, symbolSize: 50 },
+      ],
+      links: [
+        { source: "马云", target: "阿里巴巴集团" },
+        { source: "阿里巴巴集团", target: "蚂蚁集团" },
+        // ...xxx
+        { source: "阿里巴巴集团", target: "阿里巴巴金融" },
+        { source: "阿里巴巴集团", target: "阿里巴巴教育" },
+      ],
+      roam: true,
+      label: {
+        show: true,
+      },
+      force: {
+        repulsion: 2000,
+      },
+    },
+  ],
+};
+```
+
+![graph](/assets/echarts/4-16graph.png)
