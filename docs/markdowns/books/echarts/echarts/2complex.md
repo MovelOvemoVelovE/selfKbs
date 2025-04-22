@@ -32,7 +32,7 @@ Echarts 提供了很多可选的主题，包括了: `vintage`、`macarons`、`in
 
 随着时间推移，数据的变化，图表也会随之变化。
 
-我们做一个随着时间价格不断递增来不断变化的图表.
+我们做一个**随着时间价格不断递增来不断变化的图表**
 
 ## 1. 准备数据
 
@@ -351,3 +351,5 @@ for (let i = rankData.length - 1; i > 0; i--) {
 ```
 
 逐步将全部代码复制，即可得到一个简易粗糙的动态可视化图表。
+
+![61dynamicExample](/assets/echarts/61dynamicExample.gif)
