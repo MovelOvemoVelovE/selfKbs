@@ -473,7 +473,7 @@ function plusOne(digits: number[]): number[] {
 };
 ```
 
-## 二进制求和
+## 二进制求和 <Badge type="tip" text="2025.04.18" />
 
 
 :::code-group
@@ -539,4 +539,27 @@ function addBinary(a: string, b: string): string {
 
 :::
 
-## x的平方根 <Badge type="tip" text="2025.04.18" />
+## x的平方根 <Badge type="tip" text="2025.04.22" />
+
+
+::: code-group
+
+```ts [数学公式推导.ts]
+function mySqrt(x: number): number {
+    if(x == 0){
+        return 0;
+    }
+    let ans = Math.floor(Math.exp(Math.log(x) * 0.5));
+    return (ans + 1) * (ans + 1) <= x ? ans + 1 : ans;
+};
+```
+
+```ts [二分法.ts]
+
+```
+
+```ts [牛顿迭代法.ts]
+
+```
+
+:::
