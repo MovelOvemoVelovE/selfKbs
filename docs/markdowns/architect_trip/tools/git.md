@@ -76,6 +76,7 @@ highlight: vs2015
 | **查看**本地签出所有分支     |         `git branch -v`         |
 | **查看**本地对远程分支的引用 |         `git branch -r`         |
 | **拉取**一个提交到当前分支   |   `git cherry-pick <commit>`    |
+| **拉取**某一批提交到当前分支   |   `git cherry-pick <start-commit>^..<end-commit>`    |
 | **创建并签出**               | `git checkout -b <branch-name>` |
 
 ### 删除操作
