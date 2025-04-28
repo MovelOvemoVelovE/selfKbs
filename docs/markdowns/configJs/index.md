@@ -23,3 +23,7 @@
 ## .vitepress/config.mjs
 
 <<< ../../../docs/.vitepress/config.mjs{js}
+
+## .prettierrc.cjs
+
+<<< ./\.prettierrc.cjs{js}
