@@ -1,6 +1,7 @@
 # 前端开发
     封装markdown-it-container组件
     elementplus dialog+form内存泄漏 + daisyui源码查看
+    vuetifyjs源码查看
     Echarts书看完 50%
     封装组件库
     jest测试框架 10%

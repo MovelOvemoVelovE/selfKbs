@@ -32,5 +32,4 @@ module.exports = {
   // 标签闭合时是否将结束标签放在同一行
   bracketSameLine: false, // 默认值为 false，设置为 true 时将把结束标签放在同一行
 
-  
 };
