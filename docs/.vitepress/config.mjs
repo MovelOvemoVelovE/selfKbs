@@ -61,7 +61,6 @@ export default defineConfig({
       {
         text: "🧬量子纠缠",
         items: [
-          //     { text: "查询索引", link: "/markdowns/jtips/dataSource" },
           { text: "🙆‍♀️噗", link: "/markdowns/pupu/index" },
           {
             text: "git提取日报、周报",
@@ -70,6 +69,10 @@ export default defineConfig({
           {
             text: "LeetCode每日一刷",
             link: "/markdowns/leetCode/Easy",
+          },
+          {
+            text: '项目结构配置构建',
+            link: '/markdowns/architect_trip/project/projectConfig'
           }
         ],
       },

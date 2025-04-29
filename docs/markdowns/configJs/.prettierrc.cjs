@@ -27,7 +27,7 @@ module.exports = {
   jsxSingleQuote: true, // 默认值为 false
 
   // 在对象字面量中使用逗号分隔属性
-  objectWrap: preserve, // 默认值为 preserve， collapse对象尽可能地折叠
+  objectWrap: 'preserve', // 默认值为 preserve， collapse对象尽可能地折叠
 
   // 标签闭合时是否将结束标签放在同一行
   bracketSameLine: false, // 默认值为 false，设置为 true 时将把结束标签放在同一行
