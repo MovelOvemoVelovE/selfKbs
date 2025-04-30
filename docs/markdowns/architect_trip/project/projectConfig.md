@@ -22,9 +22,8 @@ prettier 是一个代码格式化工具，支持多种语言的代码格式化�
 
 配合一定的配置项 + git提交钩子可以做到代码提交时自动格式化代码。
 
+## git提交规范
 
-## git提交钩子
+git提交规范是为了让代码提交时，能够清晰地表达出本次提交的目的、内容、影响范围等信息。
 
-```bash
-npm install commitizen cz-git --save-dev
-```
+## eslint
