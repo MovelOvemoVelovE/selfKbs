@@ -20,3 +20,4 @@
     linux
     计算机原理
     devops CICD
+    husky

@@ -1,10 +1,12 @@
-请求可以使用:
+客户端发送http请求可以使用如下的方式:
 
 1. XMLHttpRequest对象
 2. fetch的ES6
 3. jsonP
 4. postMessage
 5. axios
+
+`fetch`是`ES6`新增的API，使用起来比`XMLHttpRequest`简单很多。
 
 # 使用
 
@@ -16,8 +18,6 @@
 
 1. 只要服务器有反馈信息promise都会为`fulfilled`状态， 只有断网后才是`rejected`状态。
 2. post请求需要设置header和body。 get请求需要自己拼接到url后
-
-如果想要获取数据失败也调用.catch()， 可以return Promise.reject()来进行操作。
 
 # 配置项
 
@@ -250,10 +250,6 @@ function isPlainObject(obj) {
     Ctor = {}.hasOwnProperty.call(proto, 'constructor') && proto.constructor
     console.log(Ctor);
     return typeof Ctor === 'function' && Ctor === Object
-}
-
-function qsStringify(str) {
-
 }
 
 export default http
