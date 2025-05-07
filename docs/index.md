@@ -23,16 +23,16 @@ hero:
 features:
   - title: 高效
     icon: ⚡
-    details: 一个详细、优雅的文档，可以让工作事半功倍
+    details: 不断积累的代码及思路，可以快速的实现一些功能，甚至是复制一些功能
   - title: 示例
     icon: 🎨
-    details: 代码示例完整、注释及描述完善，可以不再关注于代码逻辑而是业务逻辑
+    details: 代码示例完整、注释及描述完善，不必将生命浪费在一次次的重复思考
   - title: 意义
     icon: 🏆
-    details: 以文档养技术，技术反哺文档
+    details: 只有在"折腾"中，才能"被动地"学习到一些东西
   - title: AI
     icon: 🚀
-    details: 利用AI工具! 可以记录AI工具都较复杂生成的算法
+    details: 利用AI工具! 不仅仅是辅助工作，还可以辅助学习
 ---
 
 <script setup>
