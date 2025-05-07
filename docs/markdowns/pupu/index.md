@@ -1,5 +1,5 @@
 # 前端开发
-    封装markdown-it-container组件
+    封装markdown-it-container组件 50%
     elementplus dialog+form内存泄漏 + daisyui源码查看
     vuetifyjs源码查看
     Echarts书看完 50%
@@ -21,3 +21,7 @@
     计算机原理
     devops CICD
     husky
+
+:::demo 一个简单的按钮组件
+PlusTable
+:::
