@@ -67,7 +67,7 @@ export default defineConfig({
             link: "/markdowns/architect_trip/tools/gitDaily.md",
           },
           {
-            text: "LeetCode每日一刷",
+            text: "LeetCode每日一刷(刷不动版)",
             link: "/markdowns/leetCode/Easy",
           },
           {
