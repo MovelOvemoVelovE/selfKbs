@@ -8,6 +8,16 @@
 
 同样都是输出，只不过`println`会在输出后换行，`print`不会换行。
 
+## 2. 加强for循环
+
+使用循环数组的循环，列出每项
+
+```java
+for (int cell : locationCells) {
+  System.out.println(cell);
+}
+```
+
 # 二、对象
 
 ## 1. 垃圾回收
@@ -15,3 +25,17 @@
 创建对象存放在**堆**的内存区域， java根据对象大小来分配内存空间。
 
 当某个对象被java虚拟机觉察到不会再使用，那么对象被**标记**，内存不足则会被垃圾回收
+
+# 数据类型
+
+## 1. String => int
+
+```java
+Integer.parseInt("123");
+```
+
+## 2. 强制编译器转换(double => int)
+
+```java
+int i = (int) (Math.random() * 100);
+```

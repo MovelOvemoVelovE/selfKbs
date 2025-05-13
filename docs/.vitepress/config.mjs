@@ -147,6 +147,10 @@ export default defineConfig({
     ],
     // 侧边栏配置
     sidebar: {
+      "/markdowns/books/headFirstJava": [
+        { text: "Head First Java", items: [{ text: "Head First Java", link: "/markdowns/books/headFirstJava/headFirstJava" }] },
+        { text: "javaTips", items: [{ text: "javaTips", link: "/markdowns/books/headFirstJava/tips" }] },
+      ],
       "/markdowns/jbs-components": [
         {
           text: "基础组件",

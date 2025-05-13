@@ -435,19 +435,253 @@ public class Test {
 
 :::code-group
 
-```java [思路.java]
-/*
-1. 创建一个游戏
-2. 程序入口main方法
-3. 记录用户猜测的几次
-4. 创建一个游戏助手，获得用户输入的猜测位置
-5. 随机生成3个格子 表明战舰的位置
-6. 创建一个变量，判断战舰有没有被击沉， 如果一直为true， 那么就一直进行游戏
-7. 最后给出评分，也就是用户输入了多少次击沉的战舰
-*/
+```java [SimpleDotComGame.java]
+// 1. 创建一个游戏
+public class SimpleDotComGame {
+    // 2. 程序入口main方法
+    public static void main(String[] args) {
+        // 3. 记录用户猜测的几次
+        int numOfGuesses = 0;
+        // 4. 创建一个游戏助手，获得用户输入的猜测位置
+        GameHelper helper = new GameHelper();
+
+        // 5. 随机生成3个格子 表明战舰的位置
+        int random = (int) (Math.random() * 5);
+        int[] locations = {random, random + 1, random + 2};
+
+        // 6. 创建一个战舰对象、是否被击中
+        SimpleDotCom theDotGame = new SimpleDotCom();
+        theDotGame.setLocationCells(locations);
+
+        // 7. 创建一个变量，判断战舰有没有被击沉， 如果一直为true， 那么就一直进行游戏
+        boolean isAlive = true;
+        // 8. 一直进行游戏直到战舰被击沉
+        while (isAlive) {
+            String guess = helper.getUserInput();
+            String result = theDotGame.checkYourself(guess);
+            numOfGuesses++;
+
+            if (result.equals("kill")) {
+                isAlive = false;
+                System.out.println("You took " + numOfGuesses + " guesses.");
+            }
+        }
+    }
+}
 ```
 
+```java [SimpleDotGameHelper.java]
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
+public class GameHelper {
+    String getUserInput() {
+        String inputLine = null;
+        System.out.print("Enter a number:  ");
+
+        try {
+            BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+            inputLine = is.readLine();
+            if (inputLine.isEmpty()) return null;
+
+        } catch (IOException e) {
+            System.out.println("IOException: " + e);
+        }
+
+        return inputLine;
+    }
+}
+```
+
+```java [SimpleDotCom.java]
+public class SimpleDotCom {
+    int numOfHits = 0;
+    int[] locationCells;
+
+    public String checkYourself(String stringGuess) {
+        int guess = Integer.parseInt(stringGuess);
+        String result = "miss";
+
+        for (int cell : locationCells) {
+            if (guess == cell) {
+                result = "hit";
+                numOfHits++;
+                break;
+            }
+        }
+
+        if (numOfHits == locationCells.length) {
+            result = "kill";
+        }
+
+        System.out.println(result);
+        return result;
+    }
+
+    public void setLocationCells(int[] los) {
+        locationCells = los;
+    }
+}
+```
+
+:::
+
+# 六、 使用java函数库
+
+Java内置了数百个类。 熟练从统称为JAVA API的函数库中找到所需功能，那么就不必重复造轮子
+
+:::info
+
+上一章是有bug的，当你命中第一次后， 重复输入命中的数字，那么3次后也会判断击沉。
+
+:::
+
+![战舰游戏bug](/assets/headFirstJava/game1bug.png)
+
+## `ArrayList`
+
+问题是没有记录到已经命中的数字，怎么解决嘞：
+
+1. 声明第二个数组，记录是否为true命中过，都为true则击沉
+1. 修改原来的数组，命中了就改为 -1，表示命中过
+1. 如果可以动态修改数组的长度，直接删除掉对应的元素就好了
+    - 但是数组是无法修改长度的
+
+有一种集合是可以动态修改长度的！ 那就是`ArrayList`
+
+---
+
+`ArrayList`是一个可以动态修改长度的数组， 有着以下的api特性:
+
+```java
+public class ArrayListTest {
+    public static void main(String[] args) {
+        // 创建一个ArrayList对象
+        ArrayList<Egg> myList = new ArrayList<Egg>();
+        Egg s = new Egg();
+        s.setName("Egg");
+        Egg b = new Egg();
+        b.setName("Bacon");
+        // 添加元素
+        myList.add(s);
+        myList.add(b);
+        // 集合的大小
+        int mySize = myList.size();
+        // 是否包含某个元素
+        boolean isIncludes = myList.contains(s);
+        // 查询元素的索引
+        int idx = myList.indexOf(s);
+        // 是否为空对象
+        boolean empty = myList.isEmpty();
+    }
+}
+```
+
+:::tip
+
+**`ArrayList`无法保存`primitive`数据类型， 只能保存引用变量。**
+
+我怎么知道有一个类型是`ArrayList`，而且还知道他能解决神马问题?
+
+答案在后几章，期待。
+
+:::
+
+## 2. 比较`ArrayList`与一般数组
+
+- 创建时必须确定大小 ———— 一般数组
+- 存放对象必须指定位置 ———— 一般数组
+    - `ArrayList`直接`add()`
+- 可以通过下标索引获取: —————— `myList[1]`
+- 需要传入参数化泛型 —————— `ArrayList<String>`
+
+## 3. 修改代码解决简单版bug
+
+:::code-group
+
 ```java [SimpleDotComGame.java]
+// 1. 创建一个游戏
+public class SimpleDotComGame {
+    // 2. 程序入口main方法
+    public static void main(String[] args) {
+        // 3. 记录用户猜测的几次
+        int numOfGuesses = 0;
+        // 4. 创建一个游戏助手，获得用户输入的猜测位置
+        GameHelper helper = new GameHelper();
+
+        // 5. 随机生成3个格子 表明战舰的位置
+        int random = (int) (Math.random() * 5); // [!code --]
+        int[] locations = {random, random + 1, random + 2}; // [!code --]
+        ArrayList<String> locations = new ArrayList<>(); // [!code ++]
+        locations.add(Integer.toString(random)); // [!code ++]
+        locations.add(Integer.toString(random + 1)); // [!code ++]
+        locations.add(Integer.toString(random + 2)); // [!code ++]
+        theDotGame.setLocationCells(locations); // [!code ++]
+
+        // 6. 创建一个战舰对象、是否被击中
+        SimpleDotCom theDotGame = new SimpleDotCom();
+        theDotGame.setLocationCells(locations);
+
+        // 7. 创建一个变量，判断战舰有没有被击沉， 如果一直为true， 那么就一直进行游戏
+        boolean isAlive = true;
+        // 8. 一直进行游戏直到战舰被击沉
+        while (isAlive) {
+            String guess = helper.getUserInput();
+            String result = theDotGame.checkYourself(guess);
+            numOfGuesses++;
+
+            if (result.equals("kill")) {
+                isAlive = false;
+                System.out.println("You took " + numOfGuesses + " guesses.");
+            }
+        }
+    }
+}
+```
+
+```java [SimpleDotCom.java]
+import java.util.ArrayList; // [!code ++]
+
+public class SimpleDotCom {
+    int numOfHits = 0; // [!code --]
+    int[] locationCells; // [!code --]
+    ArrayList<String> locationCells; // [!code ++]
+
+    public String checkYourself(String stringGuess) {
+        int guess = Integer.parseInt(stringGuess); // [!code --]
+        String result = "miss";
+
+        for (int cell : locationCells) { // [!code --]
+            if (guess == cell) { // [!code --]
+                result = "hit"; // [!code --]
+                numOfHits++; // [!code --]
+                break; // [!code --]
+            } // [!code --]
+        } // [!code --]
+
+        int index = locationCells.indexOf(stringGuess); // [!code ++]
+        if (index >= 0) { // [!code ++]
+            locationCells.remove(index); // [!code ++]
+            if (locationCells.isEmpty()) { // [!code ++]
+                result = "kill"; // [!code ++]
+            } else { // [!code ++]
+                result = "hit"; // [!code ++]
+            } // [!code ++]
+        } // [!code ++]
+
+        if (numOfHits == locationCells.length) {  // [!code --]
+            result = "kill";  // [!code --]
+        }  // [!code --]
+
+        System.out.println(result);
+        return result;
+    }
+
+    public void setLocationCells(int[] los) {
+        locationCells = los;
+    }
+}
 
 ```
 
