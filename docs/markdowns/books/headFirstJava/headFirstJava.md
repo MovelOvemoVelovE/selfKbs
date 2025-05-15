@@ -689,3 +689,229 @@ public class SimpleDotCom {
 
 ## 4. 制作豪华版的战舰游戏
 
+:::code-group
+
+```java [DotComGame.java]
+import java.util.ArrayList;
+
+public class DotComGame {
+    private GameHelper helper = new GameHelper();
+    private ArrayList<DotCom> dotComsList = new ArrayList<DotCom>();
+    private int numOfGuesses = 0;
+
+    private void setupGame(){
+        DotCom dotcomOne = new DotCom();
+        dotcomOne.setName("Pets.com");
+        DotCom dotcomTwo = new DotCom();
+        dotcomTwo.setName("eToys.com");
+        DotCom dotcomThree = new DotCom();
+        dotcomThree.setName("Go2.com");
+        dotComsList.add(dotcomOne);
+        dotComsList.add(dotcomTwo);
+        dotComsList.add(dotcomThree);
+
+        System.out.println("Your goal is to sink three dot coms.");
+        System.out.println("Pets.com, eToys.com, Go2.com");
+        System.out.println("Try to sink them all in the fewest number of guesses.");
+
+        for(DotCom dotCom : dotComsList){
+            ArrayList<String> newLocation = helper.placeDotCom(3);
+            dotCom.setLocationCells(newLocation);
+        }
+    }
+
+    private void startPlaying(){
+        while(!dotComsList.isEmpty()){
+            String userGuess = helper.getUserInput();
+            checkUserGuess(userGuess);
+        }
+        finishGame();
+    }
+
+    public void checkUserGuess(String userGuess){
+        numOfGuesses++;
+        String result = "miss";
+        for( DotCom dotCom : dotComsList){
+            result = dotCom.checkYourself(userGuess);
+            if(result.equals("hit")){
+                System.out.println("Hit!");
+                break;
+            }
+            if(result.equals("kill")){
+                System.out.println("You sunk " + dotCom.getName() + "!");
+                dotComsList.remove(dotCom);
+                break;
+            }
+        }
+        if(result.equals("miss")){
+            System.out.println("You are Miss.");
+        }
+    }
+
+    public void finishGame(){
+        System.out.println("All dot coms are dead! Your stock is now worthless.");
+        if(numOfGuesses <= 18){
+            System.out.println("It only took you " + numOfGuesses + " guesses.");
+        } else {
+            System.out.println("Took you long enough. " + numOfGuesses + " guesses.");
+        }
+    }
+
+    public static void main(String[] args) {
+        DotComGame game = new DotComGame();
+        game.setupGame();
+        game.startPlaying();
+    }
+}
+```
+
+```java [DotCom.java]
+package dotCom;
+
+import java.util.ArrayList;
+
+public class DotCom {
+    private String name;
+    private ArrayList<String> locationCells;
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setLocationCells(ArrayList<String> los) {
+        locationCells = los;
+    }
+
+    public ArrayList<String> getLocationCells() {
+        return locationCells;
+    }
+
+    public String checkYourself(String userInput) {
+        String result = "miss";
+        int index = locationCells.indexOf(userInput);
+        if (index >= 0) {
+            locationCells.remove(index);
+            if (locationCells.isEmpty()) {
+                result = "kill";
+            } else {
+                result = "hit";
+            }
+        }
+        return result;
+    }
+}
+```
+
+```java [GameHelper.java]
+package dotCom;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
+public class GameHelper {
+    private static final String alphabet = "abcdefg";
+    private int gridLength = 7;
+    private int gridSize = 49;
+    private int[] grid = new int[gridSize];
+    private int comCount = 0;
+
+    public String getUserInput() {
+        String inputLine = null;
+        System.out.println("Enter a letter and a number (e.g., a0, b3):   ");
+        try {
+            BufferedReader is = new BufferedReader(new InputStreamReader(System.in));
+            inputLine = is.readLine();
+            if (inputLine.length() == 0) return null;
+        } catch (IOException e) {
+            System.out.println("IOException:  " + e);
+        }
+        return inputLine;
+    }
+
+    public ArrayList<String> placeDotCom(int comSize) {
+        ArrayList<String> alphaList = new ArrayList<String>();
+        String[] alphaCords = new String[comSize];
+        String temp = null;
+        int[] coords = new int[comSize];
+        int attempts = 0;
+        boolean success = false;
+        int location = 0;
+
+        comCount++;
+        int incr = 1;
+        if ((comCount % 2) == 1) {
+            incr = gridLength;
+        }
+
+        while (!success & attempts++ < 200) {
+            location = (int) (Math.random() * gridSize);
+            int x = 0;
+            success = true;
+            while (success && x < comSize) {
+                if (grid[location] == 0) {
+                    coords[x++] = location;
+                    location += incr;
+                    if (location >= gridSize) {
+                        success = false;
+                    }
+                    if (x > 0 && (location % gridLength == 0)) {
+                        success = false;
+                    }
+                } else {
+                    success = false;
+                }
+            }
+        }
+
+        int x = 0;
+        int row = 0;
+        int column = 0;
+        while (x < comSize) {
+            grid[coords[x]] = 1;
+            row = (int) (coords[x] / gridLength);
+            column = coords[x] % gridLength;
+            temp = String.valueOf(alphabet.charAt(column));
+            alphaList.add(temp.concat(Integer.toString(row)));
+            x++;
+        }
+
+        return alphaList;
+    }
+}
+```
+
+:::
+
+## 5. 使用函数库(Java API)
+
+在Java API中，类是被包装在包中， 要使用API的类，必须知道在哪个包中。
+
+如我们使用的`ArrayList`，他在`java.util`包中。 `System`和`Math`类在`java.lang`包中。
+
+`java.lang`包是自动导入的， 其他的包需要手动导入。
+
+```java
+// 第一种使用
+import java.util.ArrayList; // 导入ArrayList类
+import java.util.*  // 导入所有类
+
+// 第二种使用
+java.util.ArrayList<String> myList = new java.util.ArrayList<String>();
+```
+
+## 6. 函数问答
+
+1. **使用import会把程序变大吗? 编译过程会把包或者类包进入嘛?**
+    - `import`与C的`include`并不相同，`import`引入也只是省下前面的包名称而已
+    - 并不会因此而变大变慢
+2. **为何不需引入`String`和`System`类**
+    - 是提前引入的包， 很基础的包，java本身知道去哪里找
+3. **自己写入的包需要包在包中嘛?**
+    - 是的，后续章节会介绍这个。
+
