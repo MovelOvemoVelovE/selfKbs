@@ -34,7 +34,7 @@ export default defineConfig({
       // src: '/imgs/logo.jpg',
     },
     // 站点标题
-    siteTitle: "不断充实的知识库",
+    siteTitle: "仙路尽头谁为峰 一见无始道成空",
     // 主题配置
     // 搜索
     search: {
@@ -44,8 +44,8 @@ export default defineConfig({
           root: {
             translations: {
               button: {
-                buttonText: "搜索文档",
-                buttonAriaLabel: "搜索文档",
+                buttonText: "搜索古籍",
+                buttonAriaLabel: "搜索古籍",
               },
               modal: {
                 noResultsText: "无法找到相关结果",
@@ -60,7 +60,7 @@ export default defineConfig({
     // 导航栏配置
     nav: [
       {
-        text: "🧬量子纠缠",
+        text: "☯ ‌阴阳道图",
         items: [
           { text: "🙆‍♀️噗", link: "/markdowns/pupu/index" },
           {
@@ -78,7 +78,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "🌈框架",
+        text: "🕋 ‌神王模板‌",
         items: [
           { text: "React", link: "/markdowns/architect_trip/react/index" },
           { text: "vue", link: "/markdowns/architect_trip/vue/vue" },
@@ -89,7 +89,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "🔨工具",
+        text: "🔪 ‌极道帝兵",
         items: [
           {
             text: "工具函数",
@@ -102,7 +102,7 @@ export default defineConfig({
         ],
       },
       {
-        text: "🤑技多不压身",
+        text: "🖐️ ‌禁忌遗韵",
         items: [
           { text: "nodejs", link: "/markdowns/architect_trip/nodejs/nodejs" },
           {
@@ -126,14 +126,14 @@ export default defineConfig({
         ],
       },
       {
-        text: "🌩知识碎片",
+        text: "🧩 ‌大道残片",
         items: [
           { text: "踩坑碎片", link: "/markdowns/damnHole/index" },
           { text: "js零散", link: "/markdowns/damnHole/js" },
         ],
       },
       {
-        text: '🔖读书让人成长',
+        text: '📜仙王手札',
         items: [
           { text: '《持续交付-发布可靠软件的系统方法》', link: '/markdowns/books/continuousDelivery/1index' },
           { text: '《你不知道的Javascript》', link: '/markdowns/books/javascriptStory/4jsYDK' },
@@ -148,7 +148,13 @@ export default defineConfig({
     // 侧边栏配置
     sidebar: {
       "/markdowns/books/headFirstJava": [
-        { text: "Head First Java", items: [{ text: "Head First Java", link: "/markdowns/books/headFirstJava/headFirstJava" }] },
+        { 
+          text: "headFirstJava", 
+          items: [
+            { text: "新入道途", link: "/markdowns/books/headFirstJava/headFirstJava" },
+            { text: "略通道行", link: "/markdowns/books/headFirstJava/premiumJava" }
+          ]
+      },
         { text: "javaTips", items: [{ text: "javaTips", link: "/markdowns/books/headFirstJava/tips" }] },
       ],
       "/markdowns/jbs-components": [
