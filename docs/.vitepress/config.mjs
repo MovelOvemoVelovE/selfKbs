@@ -269,6 +269,9 @@ export default defineConfig({
         '@': path.resolve(__dirname, '../../src')
       }
     },
+    // server: {
+    //   open: false,
+    // },
     plugins: [
       // Elementplus()
     ]

@@ -127,4 +127,165 @@ IS-A关系在继承下一定是单向的关系， 如果会双向则可能是同
 
 当创建一个`Animal`类， 拟出了所有动物子类的共同协议， 他们可以执行 叫、吃饭、睡觉和走路等行为。 这又涉及到了面对对象最精彩的——**多态**
 
-## 7. 
+## 7. 认识多态
+
+我们之前创建对象是这样的：
+
+```java
+Dog dog = new Dog();
+```
+
+引用类型必须与对象的类型是一致的， 两者都必须是Dog
+
+**那么多态下，这种规则就不成立了， 我们可以这样：**
+
+```java
+Animal myDog = new Dog();
+```
+
+引用类型与对象类型不一致了！ 我们可以用父类的引用来指向子类的对象。 这就是**多态**。
+
+:::tip
+
+运用多态时， 引用类型可以是实际对象的父类。
+
+只要通过**IS-A**关系来验证， 那么就可以使用父类的引用来指向子类的对象。
+
+:::
+
+## 8. 多态的例子
+
+我们举些例子， 从**对象的创建**、**方法的参数**、**方法的返回类型**来说明多态的应用。
+
+```java
+// 1. 对象的创建
+public class polymorphismExam {
+    public static void main(String[] args) {
+        Animal[] animals = new Animal[5];
+
+        animals[0] = new Dog();
+        animals[1] = new Cat();
+        animals[2] = new Lion();
+
+        for (int i = 0; i < animals.length; i++) {
+            animals[i].eat();
+            animals[i].roam();
+        }
+    }
+}
+
+// 2. 方法的参数
+public class Vet {
+    public void giveShot(Animal a) {
+        a.sound();
+    }
+}
+
+class PetOwner {
+    public void start(){
+        Vet v = new Vet();
+        Dog d = new Dog();
+        Cat c = new Cat();
+
+        v.giveShot(d);
+        v.giveShot(c);
+    }
+}
+```
+
+## 9. 有奖问答
+
+1. **设计子类有层次上的限制吗? 最多几层?** 
+    - 实际上是没有严格层次的限制
+    - 但是观察Java API可以发现，不会很深，通常不会超过两层 
+
+1. **如果没有办法看到类源代码，有想要改变类方法，是不是可以用子类来覆盖?**
+    - 是的，这是面向对象很了不起的特征
+
+1. **能够继承任何一个类吗? 类是私有的能不继承吗?**
+    - 内部类还没介绍到，但是并没有私有类这一说
+    - 存取控制可以使类不继承，虽然类不能标记私有，但是可以标记不共有，只能被同一个包下的继承子类
+    - 使用final修饰符， 表示类为继承的末端
+    - 类只有private的构造程序(constructor)
+
+1. **`final`这个类有什么好处? 有什么意义?**
+    - 一般是不会使用这个标记，除非你要确保都是你写的版本，控制死
+
+1. **是不是`final`可以用在方法上，继承了不能覆盖**
+    - 可以的
+
+## 10. 遵守覆盖的规则
+
+子类可以覆盖父类的方法， 但是有一些规则需要遵守：
+
+1. 覆盖的方法必须与父类的方法具有相同的名称、返回类型和参数列表
+
+1. 不能降低方法的存取权限
+
+## 11. 方法重载
+
+方法的重载是**两个方法的名称相同，但是参数不同**， 所以： 重载与多态是毫无关系的。
+
+:::tip
+
+重载版的方法只是刚好有相同名字的不同方法。 
+
+与多态和继承是无关，重载的方法与覆盖方法不一样。
+
+:::
+
+1. **返回类型可以不同**
+    - 可以任意改变重载方法的返回类型
+    - 参数不同即可
+
+1. **不能只改变返回类型**
+    - 重载的条件是使用不同的参数！此时返回的类型才可以自定义
+
+1. **可以更改存取权限**
+    - 可以任意更改存取权限
+
+```java [overload.java]
+public class Overloads {
+    String uniqueId;
+
+    public int addNums(int a, int b) {
+        return a + b;
+    }
+
+    public double addNums(double a, double b) {
+        return a + b;
+    }
+
+    public void SetUniqueId(String uniqueId) {
+        this.uniqueId = uniqueId;
+    }
+
+    public void setUniqueId(int ssNumber) {
+        String numberString = " " + ssNumber;
+        this.uniqueId = numberString;
+    }
+}
+```
+
+# 二、深入多态
+
+
+**继承只是开始**， 要使用多态，我们还需要**接口**。
+
+## 接口
+
+接口是**100%纯抽象的**类， 无法初始化。
+
+:::tip
+
+接口是多态和Java的核心， 也是Java的灵魂。
+
+:::
+
+之前我们用过`Animal`类，然后通过继承扩展出了`Dog`、`Cat`、`Lion`等类。 那么有个问题： 
+
+`Animal myAnimal = new Animal();` 这个是可以的嘛? 世界上存在一个叫做`Animal`的动物吗?
+
+当然不可能， 所以说`Animal`是一个接口。 这就是接口的意义， 他是不可以初始化的纯抽象类。
+
+
