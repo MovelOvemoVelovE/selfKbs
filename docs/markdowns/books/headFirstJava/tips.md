@@ -39,7 +39,7 @@ public class Child extends Parent {
 
 当某个对象被java虚拟机觉察到不会再使用，那么对象被**标记**，内存不足则会被垃圾回收
 
-# 数据类型
+# 三、数据类型
 
 ## String => int
 
@@ -53,8 +53,14 @@ Integer.parseInt("123");
 int i = (int) (Math.random() * 100);
 ```
 
-# 进阶
+# 四、进阶
 
 ## headFirst设计模式
 
 在学习完`headFirstJava`后，接下来可以学习`headFirst设计模式`， 该书籍是对设计模式的深入讲解。
+
+# 五、编译器
+
+## 万能对象
+
+编译器是根据**引用类型**来判断哪些`methods`可以调用，而不是根据`Object`确实本身的类型。

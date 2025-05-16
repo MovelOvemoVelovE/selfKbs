@@ -272,7 +272,7 @@ public class Overloads {
 
 **继承只是开始**， 要使用多态，我们还需要**接口**。
 
-## 接口
+## 1. 接口定义
 
 接口是**100%纯抽象的**类， 无法初始化。
 
@@ -288,4 +288,156 @@ public class Overloads {
 
 当然不可能， 所以说`Animal`是一个接口。 这就是接口的意义， 他是不可以初始化的纯抽象类。
 
+抽象类很简单，直接加上关键词`abstract`即可。
 
+```java
+abstract class Animal {
+    
+}
+```
+
+:::tip
+
+抽象类除了被继承之外， 是没有用途、价值、目的的。
+
+:::
+
+## 2. 抽象与具体
+
+不是抽象类的类就是具体类。 在Java API中， 会有很多的抽象类。
+
+## 3. 抽象方法
+
+除了类，我们还可以抽象方法。 抽象的类代表此类必须要`extends`过， 抽象方法则是表示方法必须被**覆盖**。
+
+:::tip
+
+抽象的方法是没有实体的！ 
+
+如果声明出抽象的方法，必须将类标记为抽象!, 不能在非抽象类中拥有抽象方法。
+
+:::
+
+```java
+public abstract void eat();
+```
+
+## 4. 必须实现所有抽象的方法
+
+**实现抽象的方法就如同覆盖过方法一样。 但是具体类必须！实现抽象方法**
+
+抽象机制允许将负担转移为下层， 如`Animal`和`Canine`类都标记为了`abstract`， 那么就`Canine`类就可以不实现`Animal`的抽象方法，但是下层就必须要实现了。
+
+## 5. 万用类、终极类
+
+在Java中所有的类都是从`Object`类继承出来的， 它是所有类的源头。
+
+**没有直接继承过其他类的类都是隐式的继承了对象**
+
+`public class Animal extends Object` 这个是隐式的， 你看不到的。
+
+那么`Object`里有哪些自带的行为?
+
+1. `equals()`
+    - 比较两个对象是否相同
+2. `toString()`
+    - 返回对象的字符串表示
+3. `hashCode()`
+    - 返回对象的哈希值
+4. `getClass()`
+    - 返回对象的类
+
+## 6. 重点问答
+
+1. **Object这个类是抽象类嘛?**
+    - 不是，至少不是完全的抽象类
+    - 所有继承下来的方法都是具体的，没有必须要覆盖的方法
+1. **可以覆盖Object的方法?**
+    - 部分是可以的， 部分被设置`final`修饰符
+1. **Object是具体的? 但是为什么会允许有人创建呢? 这不是类似于创建了`Animal`类嘛?**
+    - 好问题! 这种情况是为了创建一个通用的对象，轻量化的
+    - 最常用的用途是用在线程的同步化
+1. **既然多态这么牛，那所有参数、变量、返回类型我都用Object可以不?**
+    - Java程序的类型安全检查时一项重要机制，防止调用一些不安全的类型越界
+    - 如果使用Object类型来设置引用类型，那就**代表！这个实例仅仅是Object的实例**
+
+## 7.使用Object类型引用会付出代价！
+
+查看以下代码， 了解Object转换的问题。
+
+```java
+public class MyAnimals {
+
+    public static void main(String[] args) {
+        ArrayList<Dog> dogs = new ArrayList<Dog>();
+        dogs.add(new Dog());
+        Dog a = dogs.get(0);
+
+        ArrayList<Animal> animals = new ArrayList<Animal>();
+        animals.add(new Dog());
+        // java: 不兼容的类型: polymorphismExam.Animal无法转换为polymorphismExam.Dog
+        Dog b = animals.get(0);
+    }
+
+    public void go(){
+        Dog aDog = new Dog();
+        // Object不可以再转换为Dog类型, 传入的Dog已经被转为了Object
+        Dog sameDog = getReturn(aDog);
+    }
+
+    public Object getReturn(Object o){
+        return o;
+    }
+}
+```
+
+## 8. 探索内部Object
+
+当你执行`Snowboard snowboard = new Snowboard();`时, 会在堆上发生什么事情呢? 创建怎么样的对象?
+
+![堆上的对象](/assets/headFirstJava/Object1.png)
+
+所以如果你用了`Object`类型引用来设置`snowboard`，那么一定是不能调用`turn`方法
+
+如果想要转换回去，可以使用`Dog d = (Dog) o`
+
+
+## 9. 深入多态! 修改合约
+
+如果说我是一个`Dog`， 那么`Object`、`Animal`、`Canine`都是合约的一部分。 根据 IS-A 测试，我就会是`Canine`、`Animal`、`Object`。
+
+如果有人想用，大可以将定义好的class交给他人使用。
+
+但是如果我们想要加上一个亲热、耍宝的 宠物特性进入的功能怎么办呢?
+
+我们大可以将`beFirendly()`和`play`方法直接加入到`Dog`类中， 但是有没有缺陷呢?
+
+**如果。。。如果Cat也想要这个功能呢? 怎么样才能让`Animal`选择性的带有`Pet`行为但是又不会让老虎、狮子也变为了宠物?
+
+### 方法一、直接加入到Animal
+
+是的可以解决，但是河马？狼？也是宠物了？？
+
+### 方法二、 将宠物方法设为抽象！每个动物必须覆盖
+
+是的，可以让每个动物都必须声明： 我是宠物或者我不是宠物，别让我做一些蠢事
+
+但是老虎、狮子凭什么需要定义这种声明，没有意义！
+
+### 方法三、 需要的动物手动去添加方法
+
+我们可以手动给dog、cat都加入这些方法，但是这样和java的多态有什么关系呢？ 我根本不知道到底哪个动物被你定义为了家宠
+
+### 方法四、 多重继承？
+
+创建一个另类的`Pet`类， 让需要的动物去多重继承这类，这样可以变相的实现多态，且不会影响其他动物
+
+其实java并不支持这种方法，因为多重继承有被成为**致命方块**的问题。(由于形状像扑克牌的方块)
+
+![致命方块](/assets/headFirstJava/Object2.png)
+
+好吧！问题还是没有解决
+
+### 方法五、 接口救星来了
+
+`interface`关键字的接口。
