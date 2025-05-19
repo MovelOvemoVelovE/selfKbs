@@ -23,3 +23,17 @@
 ## .vitepress/config.mjs
 
 <<< ../../../docs/.vitepress/config.mjs{js}
+
+## .prettierrc.cjs
+
+<<< ./\.prettierrc.cjs{js}
+
+## tsconfig.json
+
+<<< ./tsconfig.json{json}
+
+## pinia.code-snippets
+
+pinia的代码片段
+
+<<< ./pinia.code-snippets{json}
