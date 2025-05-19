@@ -26,7 +26,7 @@
 
 ## .prettierrc.cjs
 
-<<< ./\.prettierrc.cjs{js}
+<<< ./.prettierrc.cjs{js}
 
 ## tsconfig.json
 
