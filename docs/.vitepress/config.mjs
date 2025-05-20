@@ -152,7 +152,8 @@ export default defineConfig({
           text: "headFirstJava", 
           items: [
             { text: "新入道途", link: "/markdowns/books/headFirstJava/headFirstJava" },
-            { text: "略通道行", link: "/markdowns/books/headFirstJava/premiumJava" }
+            { text: "略通道行", link: "/markdowns/books/headFirstJava/premiumJava" },
+            { text: "渐入佳境", link: "/markdowns/books/headFirstJava/middleTip" },
           ]
       },
         { text: "javaTips", items: [{ text: "javaTips", link: "/markdowns/books/headFirstJava/tips" }] },
