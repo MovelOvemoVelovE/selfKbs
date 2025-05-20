@@ -57,7 +57,7 @@ export default defineConfig({
         },
       },
     },
-    // 导航栏配置
+    // 导航栏配置 
     nav: [
       {
         text: "☯ ‌阴阳道图",
@@ -142,6 +142,7 @@ export default defineConfig({
           { text: '《WEB响应式设计》', link: '/markdowns/books/javascriptStory/3responsiveDesign' },
           { text: '《Echarts入门、实战与进阶》', link: '/markdowns/books/echarts/index' },
           { text: '《HEAD FIRST JAVA》', link: '/markdowns/books/headFirstJava/headFirstJava' },
+          { text: '《Maven 实战》', link: '/markdowns/books/mavenInAction/mavenInAction' }
         ]
       }
     ],
