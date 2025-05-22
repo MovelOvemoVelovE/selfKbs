@@ -122,15 +122,41 @@ context.strokeRect(10, 10, 110, 160);
 :::code-group
 
 ```js [三角形.js]
-
+context.beginPath();
+context.moveTo(75, 75);
+context.lineTo(100, 75)
+context.lineTo(100, 25)
+context.fill()
 ```
 
-```js
-
+```js [笑脸.js]
+context.beginPath();
+context.arc(75, 75, 50, 0, Math.PI * 2, true); // 画一条弧线
+context.moveTo(110, 75); // 切换笔到指定位置
+context.arc(75, 75, 35, 0, Math.PI, false); // 画一条弧线
+context.moveTo(65, 65); // 切换笔到指定位置
+context.arc(60, 65, 5, 0, Math.PI * 2, true); // 画一条弧线
+context.moveTo(95, 65); // 切换笔到指定位置
+context.arc(90, 65, 5, 0, Math.PI * 2, true); // 画一条弧线
+context.stroke()
 ```
 
-```js
+```js [两个三角形.js]
+ctx = myCanvas.getContext("2d");
 
+ctx.beginPath();
+ctx.moveTo(25, 25);
+ctx.lineTo(105, 25);
+ctx.lineTo(25, 105);
+ctx.fill();
+
+// 描边三角形
+ctx.beginPath();
+ctx.moveTo(125, 125);
+ctx.lineTo(125, 45);
+ctx.lineTo(45, 125);
+ctx.closePath();
+ctx.stroke();
 ```
 
 ```js

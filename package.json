@@ -14,6 +14,7 @@
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
+    "@iconify/vue": "^5.0.0",
     "postcss-px-to-viewport": "^1.1.1",
     "vitepress": "^1.6.3"
   },

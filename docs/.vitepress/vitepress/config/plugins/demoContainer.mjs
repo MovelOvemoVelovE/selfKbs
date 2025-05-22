@@ -30,8 +30,10 @@ export default function createDemoContainerPlugin(md) {
             source="${encodeURIComponent(source)}"
             description="${encodeURIComponent(md.render(description))}"
           >
-            <template #source><ep-${sourceFile.replaceAll('/', '-')}/></template>
-        `;
+           <template #source>
+              <${sourceFile} />
+            </template>
+          `;
       } else {
         return '</Demo>\n';
       }
