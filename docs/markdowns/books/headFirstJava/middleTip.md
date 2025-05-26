@@ -152,3 +152,30 @@ String floatStr = Float.toString(2.71f);
 
 `String s = String.format("%,d", 1234567890);`
 
+格式化format，第一个参数的格式可以总结为以下:
+
+`% [argument_index$] [flags] [width] [.precision] conversion`
+- `argument_index$`：可选，指定参数的索引
+- `flags`：可选，指定格式化的标志
+- `width`：可选，指定最小宽度
+- `.precision`：可选，指定小数点后的位数
+- `conversion`：必需，指定转换类型，如`d`（整数）、`f`（浮点数）、`s`（字符串）等
+
+```java
+public class Main {
+    public static void main(String[] args) {
+        // The rank is 154984.22, out of 49,875,145.13
+        System.out.println(String.format("The rank is %.2f, out of %,.2f", 154984.215, 49875145.126548));
+        // The rank is 49875145.13, out of 154,984.22
+        System.out.println(String.format("The rank is %2$.2f, out of %1$,.2f", 154984.215, 49875145.126548));
+    }
+}
+```
+
+## 12 日期格式
+
+查看几个日期格式化的范例
+
+```java
+
+```
