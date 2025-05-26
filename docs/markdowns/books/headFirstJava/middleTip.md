@@ -1,4 +1,4 @@
-# 数字很重要
+# 一、 数字很重要
 
 除了primitive主数据类型的运算，数字还有很多其他工作。
 
@@ -174,8 +174,31 @@ public class Main {
 
 ## 12 日期格式
 
-查看几个日期格式化的范例
+先来查看几个日期格式化的范例。
 
 ```java
+import java.util.Date;
 
+public class Main {
+    public static void main(String[] args) {
+        Date today = new Date();
+        // Today is: 周一 5月 26 16:15:29 CST 2025
+        System.out.println(String.format("Today is: %tc", today));
+        // Today is: 04:15:29 下午
+        System.out.println(String.format("Today is: %tr", today));
+        // Today is: 星期一, 五月, 05/26/25
+        System.out.println(String.format("Today is: %tA, %tB, %tD", today, today, today));
+        // Today is: 星期一, 五月, 05/26/25
+        System.out.println(String.format("Today is: %tA, %<tB, %<tD", today));
+    }
+}
 ```
+
+查看Java API文档，发现很多都是被**deprecated**的， 也就是不推荐使用的, 但是**获取当前时间**还是可以的。
+
+我们可以使用`java.util.Calendar`类来获取日期和时间。
+
+# 二、 异常处理
+
+异常处理是使用`try-catch`语句来捕获和处理异常的。
+
