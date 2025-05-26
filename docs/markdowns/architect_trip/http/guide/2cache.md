@@ -64,6 +64,40 @@ Last-Modified: Tue, 22 Feb 2021 22:22:22 GMT
 
 ```
 
-启发缓存是在`Cache-control`广泛使用之前的缓存机制。
+启发缓存是在`Cache-control`广泛使用之前的缓存机制。 现在所有的响应都应明确指定`cache-Control`头。
 
-## 
+:::tip
+
+启发式缓存是指在没有明确的缓存指令时，浏览器或代理服务器根据响应的`Last-Modified`和`Date`头来决定是否缓存响应。 
+
+nginx、Apache等服务器会自动处理启发式缓存。
+
+:::
+
+## Age缓存、Expires
+
+Expires和Age头用于缓存响应的时间, **但是Expires头已被弃用, 没必要声明**。
+
+而可以通过`Cache-Control: max-age=604800`来设置缓存的最大时间。 而后通过`Age`头表明已经缓存的时间，从而可以判断是否需要使用缓存。
+
+
+## vary指定缓存策略
+
+`Vary`头用于指定缓存策略，告诉缓存服务器如何处理请求的不同变体。
+
+当你决定通过`user-agent`来区分缓存时， 你可以使用`Vary: User-Agent`。 当你使用`Vary: Accept-Encoding`时， 你可以告诉缓存服务器如何处理不同的编码方式。
+
+## 缓存过期后验证响应
+
+当缓存过期后，浏览器会向服务器发送一个`If-Modified-Since`请求头，询问资源是否已被修改。
+
+如果资源未被修改，服务器会返回304 Not Modified状态码，浏览器可以继续使用缓存的响应。
+
+但是`If-Modified-Since`头已被弃用，建议使用`Etags`和`If-None-Match`头来验证缓存。
+
+
+
+## 不用缓存、重新加载/强制加载、删除存储响应
+
+`Cache-Control: no-cache`头可以强制浏览器重新加载资源。
+
