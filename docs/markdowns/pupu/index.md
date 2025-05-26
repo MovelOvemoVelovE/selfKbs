@@ -1,17 +1,15 @@
 # 前端开发
-    封装组件库
-    Echarts书看完 50%
+    查看antdsign源码、封装组件库及markdown-it-container： k-flow
+    Echarts书看完 60%
     canvas、svg
     jest测试框架 10%
     nextjs/nuxtjs
     PWA
     性能
-    根据工号生成二维码，实现一些数字化的操作： 
     vuetifyjs源码查看
     elementplus dialog+form内存泄漏 + daisyui源码查看
-    封装markdown-it-container组件 60%
 # 后端开发
-    java/python + springcloud
+    java/python + springcloud + 全家桶
     express+nodejs
     UML
 # 全栈开发

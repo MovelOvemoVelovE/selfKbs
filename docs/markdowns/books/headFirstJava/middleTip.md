@@ -146,6 +146,9 @@ String doubleStr = Double.toString(3.14);
 String floatStr = Float.toString(2.71f);
 ```
 
-## 11. 包装类： 数字格式化
+## 11. 数字格式化
 
+先查看一个例子，讲数字用逗号相隔展示。
+
+`String s = String.format("%,d", 1234567890);`
 
