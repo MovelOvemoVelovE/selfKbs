@@ -143,7 +143,8 @@ export default defineConfig({
           { text: '《Echarts入门、实战与进阶》', link: '/markdowns/books/echarts/index' },
           { text: '《HEAD FIRST JAVA》', link: '/markdowns/books/headFirstJava/headFirstJava' },
           { text: '《Maven 实战》', link: '/markdowns/books/mavenInAction/mavenInAction' },
-          { text: '《MDN Canvas文档》', link: '/markdowns/books/Canvas/index' }
+          { text: '《MDN Canvas文档》', link: '/markdowns/books/Canvas/index' },
+          { text: '《图解HTTP》', link: '/markdowns/books/diagrammatizeHTTP/index' }
         ]
       }
     ],
@@ -244,7 +245,6 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/nodejs"),
       ...generateSidebar("/markdowns/architect_trip/express"),
       ...generateSidebar("/markdowns/architect_trip/js"),
-      ...generateSidebar("/markdowns/architect_trip/http"),
       // ...generateSidebar("/markdowns/books/continuousDelivery"),
       ...generateSidebar("/markdowns/books/echarts"),
       ...generateSidebar("/markdowns/leetCode"),

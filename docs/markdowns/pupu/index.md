@@ -1,7 +1,7 @@
 # 前端开发
     查看antdsign源码、封装组件库及markdown-it-container： k-flow
     Echarts书看完 60%
-    canvas、svg
+    canvas svg
     jest测试框架 10%
     nextjs/nuxtjs
     PWA
