@@ -1,18 +1,17 @@
 # 前端开发
-    查看antdsign源码、封装组件库及markdown-it-container： k-flow
-    Echarts书看完 60%
+    封装组件库： 查看antdsign源码及markdown-it-container
+    封装一套自己的wflow
+    Echarts书看完 70%
     canvas svg
     jest测试框架 10%
     nextjs/nuxtjs
     PWA
     性能
-    vuetifyjs源码查看
-    elementplus dialog+form内存泄漏 + daisyui源码查看
     webworker
 # 后端开发
     java/python + springcloud + 全家桶
     express+nodejs
-    UML
+    UML图
 # 全栈开发
     流程引擎
     AI
@@ -21,7 +20,9 @@
     计算机原理
     devops CICD
     husky
-# sad 
+
+# 文档等级名称
+
 1、新入道途
 2、小具法力
 3、初领妙道
