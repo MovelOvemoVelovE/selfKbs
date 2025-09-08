@@ -70,3 +70,157 @@ java中，嵌套作用域的变量重名是**不被允许的**
     }
 }
 ```
+
+java中无需关心对象的销毁，垃圾处理器会处理掉它们。
+
+### 字段
+
+可以在类中定义字段。 如果是作为类成员， java会设置默认值。 而如果是方法内生命未赋值，那么java会在编译时报错。
+
+| 字段类型    | 默认值            |
+|---------|----------------|
+| boolean | false          |
+| char    | '\u0000'(null) |
+| byte    | 0              |
+| short   | 0              |
+| int     | 0              |
+| long    | 0L             |
+| float   | 0.0f           |
+| double  | 0.0d           |
+
+---
+
+### 编写java程序
+
+#### 名称可见性
+
+所有语言都会有一个问题，那就是对于名称的控制。 在程序的某一模块使用一个名称，有的人在另外的模块也是用了同名，那么怎么区分。
+
+java通过新颖的方法来解决问题，将命名空间和反转的URL所生成的文件路径关联。
+
+#### 使用其他组件
+
+为了消除类与库的冲突，java可以使用`import java.util.ArrayList`和`import java.util.*`来导入类使用，不过第二种在很多编程风格中都明确要求指出具体类
+
+#### static关键字
+
+使用了`static`关键字，可以不创建对象而直接访问类成员。
+
+对于这个可以叫做**类数据**和**类方法**， 也就是静态数据和静态方法。
+
+```java
+class StaticText {
+    static int num; // 静态字段
+    static void print() { // 静态方法
+        System.out.println(num);
+    }
+}
+
+StaticText.num++
+StaticText.print();
+```
+
+### 第一个java程序和笔记规范
+
+可以写成第一个完整程序， 运行时显示一个字符串，以及一个java标准库的Date类生成的日期。
+
+第一行注释则为示例文件夹的路径， 接下来的行则是`import`引入的所有额外的库中类，如`import java.util.*;`
+
+java额外的类很多，可以下载Oracle公司官网的JDK文档，查看列表及用法。
+
+```java
+// objects/HelloWorld.java
+import java.util.Date;
+
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+        System.out.println(new Date());
+    }
+}
+```
+
+#### 程序启动入口
+
+每一个文件内必须有一个和文件同名的类，且类中有一个`public static void main(String[] args)`方法， 作为程序的入口。
+
+#### 标准库
+
+java的重要资产之一也是极其丰富的标准库， 如`System`的库:
+
+```java
+public class ShowProperties {
+    public static void main(String[] args) {
+       System.getProperties().list(System.out); // 打印所有系统属性
+       System.out.println(System.getProperty("user.name")); // 当前用户名
+        System.out.println(System.getProperty("java.library.path")); // java库路径
+    }
+}
+```
+
+#### 编程风格
+
+"Code Conventions for the Java Programming Language"是java的编程风格规范， 可以在Oracle官网找到。
+
+要求类名使用大驼峰风格，而方法和数据则使用小驼峰风格。
+
+# 2. 操作符
+
+## 使用java操作符
+
+java操作符接受一个或多个参数，然后生成一个新的值。 这里参数与普通方法参数形式不同， 但是效果一致
+
+普通的加法、减法、乘法、除法、取模与其他语言基本相同。 有些操作符会修改自身的值，也叫做**副作用**。
+
+> 几乎所有操作符只能操作基本数据类型， 例外的是 `=`、`==`、`！=`可以操作对象(这也是对象一个容易令人疑惑的地方)
+> 
+> String类也支持`+=` 和 `+`操作符。
+
+## 优先级
+
+最简单的规则就是先乘除后加减。 可以用括号来明确计算顺序。
+
+`+`意味着字符串拼接， 如果需要，还会执行字符串转换。 当一个字符串后跟着`+`和一个非`String`字符，那么会尝试将非`String`字符转换为`String`， 然后进行拼接。
+
+## 赋值
+
+对于赋值来说，基本数据是赋值，而引用数据类型则是赋值引用， 也就是指向同一个对象。
+
+### 方法调用中的别名
+
+当一个对象作为参数传递给方法时， 实际上传递的是对象的引用， 也就是别名。 这样在方法内对对象的修改会影响到原始对象。
+
+```java
+public class PassObject {
+    static void f(Letter y) {
+        y.c = 'z';
+    }
+    public static void main(String[] args) {
+        Letter x = new Letter();
+        x.c = 'a'; // a
+        System.out.println("1: x.c: " + x.c); // a
+        f(x);
+        System.out.println("2: x.c: " + x.c); // z
+    }
+}
+
+class Letter {
+    char c;
+}
+```
+
+## 算数操作符
+
+java中的算数操作符与其他语言类似，包括了乘法(`*`)、除法(`/`)、取模(`%`), 整数除法的结果是舍弃小数位，而不是四舍五入。
+
+
+
+
+
+
+
+
+
+
+
+
