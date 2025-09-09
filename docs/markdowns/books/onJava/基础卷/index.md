@@ -173,14 +173,15 @@ java操作符接受一个或多个参数，然后生成一个新的值。 这里
 普通的加法、减法、乘法、除法、取模与其他语言基本相同。 有些操作符会修改自身的值，也叫做**副作用**。
 
 > 几乎所有操作符只能操作基本数据类型， 例外的是 `=`、`==`、`！=`可以操作对象(这也是对象一个容易令人疑惑的地方)
-> 
+>
 > String类也支持`+=` 和 `+`操作符。
 
 ## 优先级
 
 最简单的规则就是先乘除后加减。 可以用括号来明确计算顺序。
 
-`+`意味着字符串拼接， 如果需要，还会执行字符串转换。 当一个字符串后跟着`+`和一个非`String`字符，那么会尝试将非`String`字符转换为`String`， 然后进行拼接。
+`+`意味着字符串拼接， 如果需要，还会执行字符串转换。 当一个字符串后跟着`+`和一个非`String`字符，那么会尝试将非`String`字符转换为
+`String`， 然后进行拼接。
 
 ## 赋值
 
@@ -212,6 +213,187 @@ class Letter {
 ## 算数操作符
 
 java中的算数操作符与其他语言类似，包括了乘法(`*`)、除法(`/`)、取模(`%`), 整数除法的结果是舍弃小数位，而不是四舍五入。
+
+通过`Random`类创建对象可以生成随机数。 通过调用`Random`类的`nextInt()`、`nextFloat()`、`nextDouble()`、`nextLong()`
+等方法可以生成不同类型的随机数。
+
+> `Random`的`nextInt(n)`方法生成的整数下限为0。
+
+```java
+public class Mathops {
+    public static void main(String[] args){
+        // 创建一个种子随机数生成器
+        Random rand = new Random(47);
+        int i, j, k;
+        // 产生两个0-99之间的随机整数
+        j = rand.nextInt(100) + 1;
+        System.out.println("j: " + j);
+        k = rand.nextInt(100) + 1;
+        System.out.println("k: " + k);
+        i = j / k;
+        System.out.println("j / k: " + i);
+        i = j % k;
+        System.out.println("j % k: " + i);
+        // 单精度浮点数float运算
+        float u, v, w; // 使用单精度
+        v = rand.nextFloat();
+        System.out.println("v: " + v);
+        w = rand.nextFloat();
+        System.out.println("v - w: " + w);
+        u = v * w;
+        System.out.println("v * w: " + u);
+        u = v / w;
+        System.out.println("v / w: " + u);
+    }
+}
+```
+
+#### 一元操作符
+
+一元减号是可以将正数变为负数， 负数变为正数。
+
+> 一元操作符可以将较小的类型提升为int类型。
+
+```java
+public class Mathops {
+    public static void main(String[] args){
+        int a = 100;
+        int x = -a;  // 转换为负数
+        byte d = 10;
+        int y = -d; // 将较小的byte转换为int，然后转换为负数
+        System.out.println(x);
+        System.out.println(y);
+    }
+}
+```
+
+#### 关系操作符
+
+这里的关系与其他语言基本无异， 但是可以看下 测试对象是否相等 这个命题
+
+##### 测试对象是否相等
+
+`==`和`!=`可以用来比较对象， 但是比较的是引用， 也就是内存地址。 如果两个引用指向同一个对象， 那么它们是相等的。
+
+> 接下来比较整数值用4种方式来创建
+> 1. 规定变量为`Integer`类型， 直接赋值
+> 2. 通过`new`创建
+> 3. 通过`Integer.valueOf()`创建
+> 4. 规定变量为`int`类型， 直接赋值
+> 
+> 并且关注下127 和 128 这两个边界值的不同表现
+> 
+
+```java
+public class Equivalence {
+    static void show(String desc, Integer n1, Integer n2) {
+        System.out.println(desc + " : ");
+        System.out.printf(
+                "%d===%d %b %b%n", n1, n2, n1 == n2, n1.equals(n2)
+        );
+    }
+
+    @SuppressWarnings("deprecation")
+    public static void test(int value) {
+        // 变量为 Integer 类型
+        Integer i1 = value;
+        Integer i2 = value;
+        show("Automatic", i1, i2);
+
+        // 使用 new 创建 Integer 对象
+        Integer r1 = new Integer(value);
+        Integer r2 = new Integer(value);
+        show("new Integer", r1, r2);
+
+        // 使用 Integer.valueOf 创建 Integer 对象
+        Integer v1 = Integer.valueOf(value);
+        Integer v2 = Integer.valueOf(value);
+        show("Integer.valueOf", v1, v2);
+
+        // int 作为整数数值对象
+        int p1 = value;
+        int p2 = value;
+        show("int", p1, p2);
+    }
+
+    public static void main(String[] args) {
+        /**
+         * 对于 -128 到 127 之间的整数，Java 使用享元模式来缓存对象， 超出边界则是每次创建新的对象
+         * 127 输出结果如下
+         * Automatic :
+         * 127===127 true true
+         * new Integer :
+         * 127===127 false true
+         * Integer.valueOf :
+         * 127===127 true true
+         * int :
+         * 127===127 true true
+         */
+        test(127);
+        /**
+         * 对于 128 输出结果如下
+         * Automatic :
+         * 128===128 false true
+         * new Integer :
+         * 128===128 false true
+         * Integer.valueOf :
+         * 128===128 false true
+         * int :
+         * 128===128 true true
+         */
+        test(128);
+    }
+}
+```
+
+> 浮点数比较(==)`Double.MAX_VALUE`和`Double.MAX_VALUE - Double.MIN_VALUE * 1000000`是相等的。
+
+
+### 逻辑运算符
+
+逻辑运算符与其他语言类似， 但是JAVA中`&&`和`||`只可用于布尔值。
+
+java中也有**短路**的概念， 对于`&&`如果第一个条件已经决定了结果， 那么第二个条件就不会被计算。 
+
+### 按位操作符
+
+操作单个二进制位， 对两个参数的对应二进制进行布尔代数运算。
+
+两个输入位都是1 则 按位`&`(与操作符)输出1， 否则为0;
+
+两位一个为0， 一个为1， 则按位`|`(或操作符)输出1， 只有2个都为0则输出为0;
+
+两位只有一个是1， 则按位`^`(异或操作符)输出1， 否则输出0;
+
+按位`~`(非操作符)将0变为1， 1变为0。 **是一元操作符**， 只对一个操作数进行操作。
+
+### 移位操作符
+
+[//]: # (TODO)
+
+### 字符串转换
+
+通过`+`和`+=`操作符可以将非字符串类型转换为字符串类型。 同JavaScript。
+
+```java
+int x = 0;
+System.out.println("" + x); // 0
+```
+
+是执行类型转换的一种方法， 不用调用麻烦的显式方法:`Integer.toString(x)`。
+
+### 类型转换操作符
+
+适当时候，java会自动将一种类型的数据转换为另一种类型数据。 例如当整数赋值给浮点变量， 将自动`int`转换为`float`。
+
+如果想要对某个值转换，可以将希望得到的数据类型放在括号中。
+
+> 类型转换可能是多余的， 但是仍然可以做多余的类型转换来表明观点，或者是仅仅让代码更加清晰。
+
+```java
+
+```
+
 
 
 
