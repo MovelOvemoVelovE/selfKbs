@@ -391,8 +391,53 @@ System.out.println("" + x); // 0
 > 类型转换可能是多余的， 但是仍然可以做多余的类型转换来表明观点，或者是仅仅让代码更加清晰。
 
 ```java
-
+public class Cast {
+    public static void main(String[] args) {
+        int i = 200;
+        long lng = (long) i; // 自动提升
+        lng = i; // 宽化数据格式， 数据格式自动提升，自动强制转换
+        long lng2 = (long) 200; // 强制转换
+        lng2 = 200;
+        i = (int) lng2;
+    }
+}
 ```
+
+#### 截尾和舍入
+
+在进行窄化转型，必须注意截尾和舍入的问题。 
+
+将float或double转型为整数值， 总是对数值进行截尾。 如果要用舍入，则使用`java.lang.Math`类中的`round()`方法。
+
+```java
+public class CastingNumbers {
+    public static void main(String[] args) {
+        double above = 0.7, below = 0.4;
+        float fabove = 0.7f, fbelow = 0.4f;
+        System.out.println("(int) above: " + (int) above); // 0
+        System.out.println("(int) below: " + (int) below); // 0
+        System.out.println("(int) fabove: " + (int) fabove); //
+        System.out.println("(int) fbelow: " + (int) fbelow); //
+        System.out.println("Math.round(above): " + Math.round(above)); // 1
+    }
+}
+```
+
+#### 提升
+
+对于小于int的char、byte、short类型， 在进行算术运算时， 会自动提升为int类型。
+
+如果需要窄化数据类型， 需要强制转换。
+
+### java没有sizeof()
+
+java没有`sizeof`操作符， 
+
+### 操作符小结
+
+TODO 熟悉所有题
+
+## 控制流 
 
 
 
