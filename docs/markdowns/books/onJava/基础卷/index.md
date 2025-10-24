@@ -437,7 +437,19 @@ java没有`sizeof`操作符，
 
 TODO 熟悉所有题
 
-## 控制流 
+## 控制流
+
+控制流也就是`if..else`、`for`、、`while`、`switch`等。
+
+### `for..in`
+
+
+java5中引入了`for..in`循环， 也叫做**增强型for循环**。 可用于数组和容器。 大部分文档也称之为`foreach`循环。
+
+而java8增加一个经常使用的`forEach()`方法，, 所有称上面的方法是 `for..in`循环。
+
+`
+
 
 
 
