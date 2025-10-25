@@ -123,6 +123,7 @@ export default defineConfig({
       {
         text: "📜仙王手札",
         items: [
+          { text: '《深入理解计算机系统CS:APP》', link: '/markdowns/books/CSAPP/index' },
           { text: "MDN文档", link: "/markdowns/mdn/index" },
           {
             text: "《持续交付-发布可靠软件的系统方法》",
@@ -281,6 +282,23 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/js"),
       ...generateSidebar("/markdowns/books/echarts"),
       ...generateSidebar("/markdowns/leetCode"),
+      '/markdowns/books/CSAPP': [
+        {
+          text: '目录总览',
+          items: [
+            { text: '深入理解计算机系统CS:APP', link: '/markdowns/books/CSAPP/index' },
+          ]
+        },
+        {
+          text: '第一部分 程序结构和执行',
+          items: [
+            { text: '第一章 计算机系统漫游', link: '/markdowns/books/CSAPP/part1/chapter1' },
+            { text: '第二章 信息的表示与处理', link: '/markdowns/books/CSAPP/part1/chapter2' },
+            { text: '第三章 程序的机器级表示', link: '/markdowns/books/CSAPP/part1/chapter3' },
+            { text: '第四章 优化程序性能', link: '/markdowns/books/CSAPP/part1/chapter4' },
+          ]
+        },
+      ]
     },
     // 社交链接
     socialLinks: [
