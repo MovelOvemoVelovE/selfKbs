@@ -125,9 +125,10 @@ export default defineConfig({
         items: [
           { text: '《深入理解计算机系统CS:APP》', link: '/markdowns/books/CSAPP/index' },
           { text: "MDN文档", link: "/markdowns/mdn/index" },
+          { text: "《MDN Canvas文档》", link: "/markdowns/books/Canvas/index" },
           {
-            text: "《持续交付-发布可靠软件的系统方法》",
-            link: "/markdowns/books/continuousDelivery/1index",
+            text: "《图解HTTP》",
+            link: "/markdowns/books/diagrammatizeHTTP/index",
           },
           {
             text: "《你不知道的Javascript》",
@@ -140,6 +141,10 @@ export default defineConfig({
           {
             text: "《JavaScript设计模式》",
             link: "/markdowns/books/javascriptStory/2designMode",
+          },
+          {
+            text: "《持续交付-发布可靠软件的系统方法》",
+            link: "/markdowns/books/continuousDelivery/1index",
           },
           {
             text: "《WEB响应式设计》",
@@ -157,15 +162,11 @@ export default defineConfig({
             text: "《Maven 实战》",
             link: "/markdowns/books/mavenInAction/mavenInAction",
           },
-          { text: "《MDN Canvas文档》", link: "/markdowns/books/Canvas/index" },
-          {
-            text: "《图解HTTP》",
-            link: "/markdowns/books/diagrammatizeHTTP/index",
-          },
           {
             text: "《On JAVA基础版》",
             link: "/markdowns/books/onJava/基础卷/index",
           },
+          { text: "《MySql必知必会》", link: '/markdowns/books/mySql/index' },
         ],
       },
     ],
