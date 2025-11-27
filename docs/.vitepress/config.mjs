@@ -167,6 +167,7 @@ export default defineConfig({
             link: "/markdowns/books/onJava/基础卷/index",
           },
           { text: "《MySql必知必会》", link: '/markdowns/books/mySql/index' },
+          { text: "《Vuejs设计与实现》", link: '/markdowns/books/Vuejs/index' },
         ],
       },
     ],
@@ -299,7 +300,24 @@ export default defineConfig({
             { text: '第四章 优化程序性能', link: '/markdowns/books/CSAPP/part1/chapter4' },
           ]
         },
-      ]
+      ],
+      '/markdowns/books/Vuejs': [
+        {
+          text: 'Vuejs设计与实现',
+          items: [
+            { text: '前言', link: '/markdowns/books/Vuejs/index' },
+          ]
+        },
+        {
+          text: '第一部分 框架设计概览',
+          items: [
+            { text: '第一章', link: '/markdowns/books/Vuejs/part1/chapter1' },
+            { text: '第二章', link: '/markdowns/books/Vuejs/part1/chapter2' },
+            { text: '第三章', link: '/markdowns/books/Vuejs/part1/chapter3' },
+            { text: '第四章', link: '/markdowns/books/Vuejs/part1/chapter4' },
+          ]
+        }
+      ],
     },
     // 社交链接
     socialLinks: [
