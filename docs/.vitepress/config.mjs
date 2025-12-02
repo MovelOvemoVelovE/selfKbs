@@ -123,7 +123,10 @@ export default defineConfig({
       {
         text: "📜仙王手札",
         items: [
-          { text: '《深入理解计算机系统CS:APP》', link: '/markdowns/books/CSAPP/index' },
+          {
+            text: "《深入理解计算机系统CS:APP》",
+            link: "/markdowns/books/CSAPP/index",
+          },
           { text: "MDN文档", link: "/markdowns/mdn/index" },
           { text: "《MDN Canvas文档》", link: "/markdowns/books/Canvas/index" },
           {
@@ -166,8 +169,8 @@ export default defineConfig({
             text: "《On JAVA基础版》",
             link: "/markdowns/books/onJava/基础卷/index",
           },
-          { text: "《MySql必知必会》", link: '/markdowns/books/mySql/index' },
-          { text: "《Vuejs设计与实现》", link: '/markdowns/books/Vuejs/index' },
+          { text: "《MySql必知必会》", link: "/markdowns/books/mySql/index" },
+          { text: "《Vuejs设计与实现》", link: "/markdowns/books/Vuejs/index" },
         ],
       },
     ],
@@ -284,39 +287,61 @@ export default defineConfig({
       ...generateSidebar("/markdowns/architect_trip/js"),
       ...generateSidebar("/markdowns/books/echarts"),
       ...generateSidebar("/markdowns/leetCode"),
-      '/markdowns/books/CSAPP': [
+      "/markdowns/books/CSAPP": [
         {
-          text: '目录总览',
+          text: "目录总览",
           items: [
-            { text: '深入理解计算机系统CS:APP', link: '/markdowns/books/CSAPP/index' },
-          ]
+            {
+              text: "深入理解计算机系统CS:APP",
+              link: "/markdowns/books/CSAPP/index",
+            },
+          ],
         },
         {
-          text: '第一部分 程序结构和执行',
+          text: "第一部分 程序结构和执行",
           items: [
-            { text: '第一章 计算机系统漫游', link: '/markdowns/books/CSAPP/part1/chapter1' },
-            { text: '第二章 信息的表示与处理', link: '/markdowns/books/CSAPP/part1/chapter2' },
-            { text: '第三章 程序的机器级表示', link: '/markdowns/books/CSAPP/part1/chapter3' },
-            { text: '第四章 优化程序性能', link: '/markdowns/books/CSAPP/part1/chapter4' },
-          ]
+            {
+              text: "第一章 计算机系统漫游",
+              link: "/markdowns/books/CSAPP/part1/chapter1",
+            },
+            {
+              text: "第二章 信息的表示与处理",
+              link: "/markdowns/books/CSAPP/part1/chapter2",
+            },
+            {
+              text: "第三章 程序的机器级表示",
+              link: "/markdowns/books/CSAPP/part1/chapter3",
+            },
+            {
+              text: "第四章 优化程序性能",
+              link: "/markdowns/books/CSAPP/part1/chapter4",
+            },
+          ],
         },
       ],
-      '/markdowns/books/Vuejs': [
+      "/markdowns/books/Vuejs": [
         {
-          text: 'Vuejs设计与实现',
-          items: [
-            { text: '前言', link: '/markdowns/books/Vuejs/index' },
-          ]
+          text: "Vuejs设计与实现",
+          items: [{ text: "前言", link: "/markdowns/books/Vuejs/index" }],
         },
         {
-          text: '第一部分 框架设计概览',
+          text: "第一部分 框架设计概览",
           items: [
-            { text: '第一章', link: '/markdowns/books/Vuejs/part1/chapter1' },
-            { text: '第二章', link: '/markdowns/books/Vuejs/part1/chapter2' },
-            { text: '第三章', link: '/markdowns/books/Vuejs/part1/chapter3' },
-            { text: '第四章', link: '/markdowns/books/Vuejs/part1/chapter4' },
-          ]
-        }
+            {
+              text: "第一章 权衡的艺术",
+              link: "/markdowns/books/Vuejs/part1/chapter1",
+            },
+            {
+              text: "第二章 框架设计核心要素",
+              link: "/markdowns/books/Vuejs/part1/chapter2",
+            },
+            {
+              text: "第三章 Vuejs设计思路",
+              link: "/markdowns/books/Vuejs/part1/chapter3",
+            },
+            { text: "第四章", link: "/markdowns/books/Vuejs/part1/chapter4" },
+          ],
+        },
       ],
     },
     // 社交链接
