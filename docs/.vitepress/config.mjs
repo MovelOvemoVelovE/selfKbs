@@ -339,9 +339,17 @@ export default defineConfig({
               text: "第三章 Vuejs设计思路",
               link: "/markdowns/books/Vuejs/part1/chapter3",
             },
-            { text: "第四章", link: "/markdowns/books/Vuejs/part1/chapter4" },
           ],
         },
+        {
+          text: "第二部分 响应系统",
+          items: [
+            {
+              text: "第四章 作用和实现",
+              link: "/markdowns/books/Vuejs/part2/chapter4",
+            },
+          ]
+        }
       ],
     },
     // 社交链接

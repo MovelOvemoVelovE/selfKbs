@@ -186,5 +186,56 @@ function renderer(vnode, container){
 
 ## 模板工作原理
 
+`.vue`单文件就是一个组件， `template`标签内容就是模板内容，通过编译器编译成渲染函数添加到`script`标签的组件对象上，而后渲染器调用组件的`render`方法获取虚拟DOM、渲染真实DOM
+
+```js
+export default {
+  data(){},
+  methods: {},
+  render(){
+    return h(/* 虚拟DOM对象 */)
+  }
+}
+```
+
+## 各个模块的有机整体
+
+如前所述， 组件实现是依赖于渲染器，模板编译是依赖于编译器， 编译后的代码是根据渲染器和虚拟DOM的设计决定。
+
+为什么说是一个整体? 拿编译器和渲染器来说：
+
+```html
+<div id="foo" :class="cls"></div>
+```
+
+编译器需要将上面模板编译成如下渲染函数：
+
+```js
+function render(){
+    return {
+        tag: 'div',
+        props: { id: 'foo', class: this.cls },
+        children: []
+    }
+}
+```
+
+`cls`这个变量发生变化， 渲染就会去寻找并更新变化内容， 但是这个 "寻找"过程需要花费力气和了，可以让编译器去处理， 帮助渲染器生成更高效的更新逻辑。
+
+```js
+function render(){
+    return {
+        tag: 'div',
+        props: { id: 'foo', class: this.cls, __dynamicProps: ['class'] },
+        children: []
+    }
+}
+```
+
+渲染器在更新时就可以直接使用`__dynamicProps`数组， 只更新这些动态属性， 避免不必要的对比和更新。
+
+> 这里只是一个例子， 了解到他们是存在一定的信息交流和互相协助，以达到更好的性能和用户体验。 这里的交流媒介是virtual DOM对象。
+
+
 
 

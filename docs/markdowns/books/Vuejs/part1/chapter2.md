@@ -14,11 +14,11 @@ createApp(App).mount('#not-exist')
 
 那么vue会在控制台打印内容
 
-![img.png](../imgs/img.png)
+![img.png](imgs/img.png)
 
 还有就是关于`Ref`等的类型打印
 
-![img.png](../imgs/img2.png)
+![img.png](imgs/img2.png)
 
 ## 控制代码体积
 
