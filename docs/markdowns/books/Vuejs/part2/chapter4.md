@@ -179,3 +179,152 @@ const bucket = new WeakMap()
 
 为了符合vue3，读取收集时的动作放在`track`**追踪函数**中， 修改触发时的动作放在`trigger`**触发函数**中。
 
+
+:::code-group
+
+```js[proxy.js]
+let activeEffect = null;
+let butcket = new WeakMap();
+const data = { name: "Alice", age: 30 }
+const obj = new Proxy(data, {
+  get(target, key) {
+    track(target, key)
+    return target[key];
+  },
+  set(target, key, value) {
+    target[key] = value;
+    trigger(target, key)
+    return true
+  }
+})
+```
+
+```js[track.js]
+function track(target, key){
+  console.log(`Tracking access to property "${key}" with value: ${target[key]}`);
+  if(!activeEffect)return
+  let depsMap = butcket.get(target);
+  if(!depsMap){
+    depsMap = new Map();
+    butcket.set(target,depsMap)
+  }
+  let deps = depsMap.get(key);
+  if(!deps){
+    deps = new Set();
+    depsMap.set(key,deps)
+  }
+  deps.add(activeEffect)
+}
+```
+
+```js[trigger.js]
+function trigger(target, key){
+  const depsMap = butcket.get(target);
+  if(!depsMap)return
+  const deps = depsMap.get(key);
+  if(!deps)return
+  deps.forEach(effect=>{
+    effect()
+  })
+}
+```
+
+:::
+
+## 分支切换与cleanup
+
+分支切换指的是： effect函数中有三元表达式，根据对象不同值变化不同的逻辑： 
+
+```js
+effect(
+    function(){
+      console.log("Effect run");
+      document.body.innerText = obj.age > 18 ? obj.name : "Minor";
+    }
+)
+setTimeout(() => {
+  obj.age = 1
+}, 1000)
+
+setTimeout(() => {
+  obj.name = 'Police'
+}, 3000)
+```
+
+初始化`isOk`为`true`，那么第一次执行`effect`函数， 会与`isOk`和`name`都建立联系， 以后无论怎么处理`isOk`， 只要`name`变化， 都会触发`effect`函数执行， 这是不合理的。
+
+:::tip
+
+思路： 在重新开始一轮的track、trigger之前，刷新一遍依赖关系， 这时候`isOk`为`false`， 那么就不会再与`name`建立联系了。
+
+:::
+
+:::code-group
+
+```js[proxy.js]
+const cleanup = (effectFn) => { //[!code ++]
+  // 操作依赖集合， 清空 //[!code ++]
+  for (let i = 0; i < effectFn.deps.length; i++) { //[!code ++]
+    const deps = effectFn.deps[i]; //[!code ++]
+    deps.delete(effectFn); //[!code ++]
+  } //[!code ++]
+  effectFn.deps.length = 0; //[!code ++]
+} //[!code ++]
+
+const effect = (fn) => {
+  const effectFn = () => {
+    cleanup(effectFn) // 新增 //[!code ++]
+    activeEffect = effectFn;
+    // 执行副作用函数
+    fn();
+  }
+  effectFn.deps = [] //[!code ++]
+  effectFn() //[!code ++]
+}
+```
+
+```js[track.js]
+// 增加函数到 依赖集合
+  deps.add(activeEffect)
+// 增加 依赖集合到 函数deps属性内
+    activeEffect.deps.push(deps) //[!code ++]
+```
+
+```js[trigger.js]
+function trigger(target, key){
+  const depsMap = butcket.get(target);
+  if(!depsMap)return
+  const effects = depsMap.get(key);
+  if(!effects)return
+  const effectToRun = new Set(effects) //[!code ++]
+  effectToRun.forEach(fn=>{ //[!code ++]
+    /**
+     * fn执行 //[!code ++]
+     * 1. 会执行cleanup， cleanUp内进行了依赖集合的清空 //[!code ++]
+     * 2. 之后会执行fn本身， fn内会重新进行依赖收集 //[!code ++]
+     * 3. 这样会导致死循环 //[!code ++]
+     */ //[!code ++]
+    fn() //[!code ++]
+  }) //[!code ++]
+}
+```
+
+:::
+
+## 嵌套的effect与effect栈
+
+effect函数是会发生嵌套的， 例如组件可以嵌套， 组件传递props去渲染子组件，这时候就是嵌套的effect函数。
+
+```js
+effect(
+    () => {
+      Foo.render()
+      effect(
+          () => {
+            Bar.render()
+          }
+      )
+    }
+)
+```
+
