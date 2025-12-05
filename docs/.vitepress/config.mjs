@@ -171,6 +171,7 @@ export default defineConfig({
           },
           { text: "《MySql必知必会》", link: "/markdowns/books/mySql/index" },
           { text: "《Vuejs设计与实现》", link: "/markdowns/books/Vuejs/index" },
+          { text: "《Python编程，从入门到实践》", link: "/markdowns/books/python/basic/index" },
         ],
       },
     ],
@@ -351,6 +352,21 @@ export default defineConfig({
           ]
         }
       ],
+      "/markdowns/books/python/basic": [
+        {
+          text: "Python编程，从入门到实践",
+          items: [{ text: "前言", link: "/markdowns/books/python/basic/index" }],
+        },
+        {
+          text: "第一部分 Python基础知识",
+          items: [
+            {
+              text: "第一章 安装Python",
+              link: "/markdowns/books/python/basic/part1/chapter1",
+            },
+          ]
+        }
+      ]
     },
     // 社交链接
     socialLinks: [

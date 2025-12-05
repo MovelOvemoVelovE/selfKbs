@@ -328,3 +328,8 @@ effect(
 )
 ```
 
+由于目前是顶层单变量去设置`activeEffect`， 那么内层effect执行时， 会覆盖掉外层effect， 这样当内层effect执行完毕后， 外层effect就找不到了。
+
+当修改`foo`时， 只会触发内层effect执行， 外层effect不会执行。
+
+
