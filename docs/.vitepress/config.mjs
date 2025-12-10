@@ -379,6 +379,10 @@ export default defineConfig({
             {
               text: '第五章 用户输入和while循环',
               link: "/markdowns/books/python/basic/part1/chapter5",
+            },
+            {
+              text: '第六章 函数',
+              link: "/markdowns/books/python/basic/part1/chapter6",
             }
           ]
         }
