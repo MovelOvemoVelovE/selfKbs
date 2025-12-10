@@ -364,6 +364,10 @@ export default defineConfig({
               text: "第一章 安装Python",
               link: "/markdowns/books/python/basic/part1/chapter1",
             },
+            {
+              text: "第二章 列表/元组",
+              link: "/markdowns/books/python/basic/part1/chapter2",
+            }
           ]
         }
       ]
