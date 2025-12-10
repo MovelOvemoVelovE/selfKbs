@@ -375,6 +375,10 @@ export default defineConfig({
             {
               text: "第四章 字典",
               link: "/markdowns/books/python/basic/part1/chapter4",
+            },
+            {
+              text: '第五章 用户输入和while循环',
+              link: "/markdowns/books/python/basic/part1/chapter5",
             }
           ]
         }
