@@ -367,6 +367,14 @@ export default defineConfig({
             {
               text: "第二章 列表/元组",
               link: "/markdowns/books/python/basic/part1/chapter2",
+            },
+            {
+              text: "第三章 条件判断",
+              link: "/markdowns/books/python/basic/part1/chapter3",
+            },
+            {
+              text: "第四章 字典",
+              link: "/markdowns/books/python/basic/part1/chapter4",
             }
           ]
         }
