@@ -98,7 +98,7 @@ import utils
 utils.getUserInfo('12345')
 
 # 局部导入
-from utils import getUserInfo
+from utils import getUserInfo, getOrderInfo
 
 getUserInfo(6666)
 

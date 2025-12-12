@@ -383,6 +383,10 @@ export default defineConfig({
             {
               text: '第六章 函数',
               link: "/markdowns/books/python/basic/part1/chapter6",
+            },
+            {
+              text: '第七章 类',
+              link: "/markdowns/books/python/basic/part1/chapter7",
             }
           ]
         }
