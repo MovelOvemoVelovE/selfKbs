@@ -1,25 +1,31 @@
 # 前端开发
-    封装组件库： 查看antdsign源码及markdown-it-container
-    封装一套自己的wflow
-    Echarts书看完 70%
-    canvas svg
-    jest测试框架 10%
-    nextjs/nuxtjs
-    PWA
-    性能
-    webworker
+
+* 封装组件库： 查看antdsign源码及markdown-it-container
+* 查看vxe-table源码，了解虚拟列表组件的成熟方案
+* 学习monorepo管理多包项目
+* 封装一套自己的wflow
+* Echarts书看完 70%
+* canvas svg
+* jest测试框架 10%
+* PWA
+* 性能
+* webworker
+
 # 后端开发
-    java/python + springcloud + 全家桶
-    express+nodejs
-    UML图
+
+* python
+* java + springcloud + 全家桶
+* UML图
+
 # 全栈开发
-    流程引擎
-    AI
-    webrtc
-    linux
-    计算机原理
-    devops CICD
-    husky
+
+* 流程引擎
+* AI
+* webrtc
+* linux
+* 计算机原理
+* devops CICD
+* husky
 
 # 文档等级名称
 
