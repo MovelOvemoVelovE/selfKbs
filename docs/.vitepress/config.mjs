@@ -361,7 +361,7 @@ export default defineConfig({
           text: "第一部分 Python基础知识",
           items: [
             {
-              text: "第一章 安装Python",
+              text: "第一章 安装与基础语法",
               link: "/markdowns/books/python/basic/part1/chapter1",
             },
             {
@@ -387,7 +387,24 @@ export default defineConfig({
             {
               text: '第七章 类',
               link: "/markdowns/books/python/basic/part1/chapter7",
+            },
+            {
+              text: '第八章 文件、异常、存储数据',
+              link: "/markdowns/books/python/basic/part1/chapter8",
+            },
+            {
+              text: '第九章 测试代码',
+              link: "/markdowns/books/python/basic/part1/chapter9",
             }
+          ]
+        },
+        {
+          text: '第二部分 项目实战',
+          items: [
+            {
+              text: '第一章 外星人入侵',
+              link: "/markdowns/books/python/basic/part2/chapter1",
+            },
           ]
         }
       ]
