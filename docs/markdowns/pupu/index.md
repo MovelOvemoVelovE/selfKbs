@@ -1,3 +1,7 @@
+# 使用工具等
+
+- anki 桌面软件 - 学习英语
+
 # 前端开发
 
 * 封装组件库： 查看antdsign源码及markdown-it-container

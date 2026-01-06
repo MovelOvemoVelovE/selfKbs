@@ -402,9 +402,13 @@ export default defineConfig({
           text: '第二部分 项目实战',
           items: [
             {
-              text: '第一章 外星人入侵',
+              text: '第一章 数据可视化',
               link: "/markdowns/books/python/basic/part2/chapter1",
             },
+            {
+              text: '第二章 下载数据展示',
+              link: "/markdowns/books/python/basic/part2/chapter2",
+            }
           ]
         }
       ]

@@ -4,9 +4,10 @@
 
 刷过算法的脑子多少有点..小可爱
 
+[来! 一起刷怪~](https://leetcode.cn/problemset/)
 :::
 
-## 数组查找两数之和的下标 <Badge type="tip" text="2025.04.12" />
+## 数组查找两数之和的下标<Badge type="tip" text="2025.04.12" />
 
 ```ts
 function twoSum(nums: number[], target: number): number[] {
@@ -97,9 +98,9 @@ function isPalindrome(x: number): boolean {
 
 另外还有一种情况： 如 4 不是`IIII`, 而是`IV`， 9 不是`VIIII`, 而是`IX`。
 
-I 放在 V 和 X 的前面，表示 1 减去 5 和 10。
-X 放在 L 和 C 的前面，表示 10 减去 50 和 100。
-C 放在 D 和 M 的前面，表示 100 减去 500 和 1000。
+I 放在 V 和 X 的前面，表示 1 被减 5 和 10。
+X 放在 L 和 C 的前面，表示 10 被减 50 和 100。
+C 放在 D 和 M 的前面，表示 100 被减 500 和 1000。
 
 ```ts
 function romanToInt(s: string): number {
@@ -137,7 +138,9 @@ function romanToInt(s: string): number {
 
 给出一个字符串数组，找出其中最长的公共前缀。
 
-```ts
+::: code-group
+
+```ts[普通解法.ts]
 function longestCommonPrefix(strs: string[]): string {
   let result: string[] = [];
   // 抽出第一个字符串
@@ -153,6 +156,28 @@ function longestCommonPrefix(strs: string[]): string {
   return result.join("");
 }
 ```
+
+```ts[最优时间复杂度解法.ts]
+function longestCommonPrefix(strs: string[]): string {
+    // 特殊情况处理
+    if (strs.length === 0) return ""
+    // 取出第一个字符串作为前缀
+    let prefix = strs[0]
+
+    for (let i = 1; i < strs.length; i++) {
+        // 如果当前字符串不以prefix开头
+        while (!strs[i].startsWith(prefix)) {
+            // 缩短prefix
+            prefix = prefix.slice(0, -1)
+            if (prefix === "") return ""
+        }
+    }
+
+    return prefix
+}
+```
+
+:::
 
 ## 有效的括号 <Badge type="tip" text="2025.04.14" />
 
@@ -240,7 +265,7 @@ function mergeTwoLists(
 }
 ```
 
-## 删除有限数组中的重复项 <Badge type="tip" text="2025.04.14" />
+## 删除有限数组中的重复项<Badge type="tip" text="2025.04.14" />
 
 给定一个有序数组，删除重复项，使得每个元素只出现一次，返回新数组的长度。 并且数组的前(新数组的长度)个元素就是新数组的内容
 
