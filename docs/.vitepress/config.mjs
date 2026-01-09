@@ -171,7 +171,14 @@ export default defineConfig({
           },
           { text: "《MySql必知必会》", link: "/markdowns/books/mySql/index" },
           { text: "《Vuejs设计与实现》", link: "/markdowns/books/Vuejs/index" },
-          { text: "《Python编程，从入门到实践》", link: "/markdowns/books/python/basic/index" },
+          {
+            text: "《Python编程，从入门到实践》",
+            link: "/markdowns/books/python/basic/index",
+          },
+          {
+            text: "《Selenium自动化测试实战》",
+            link: "/markdowns/books/selenium/index",
+          },
         ],
       },
     ],
@@ -349,13 +356,15 @@ export default defineConfig({
               text: "第四章 作用和实现",
               link: "/markdowns/books/Vuejs/part2/chapter4",
             },
-          ]
-        }
+          ],
+        },
       ],
       "/markdowns/books/python/basic": [
         {
           text: "Python编程，从入门到实践",
-          items: [{ text: "前言", link: "/markdowns/books/python/basic/index" }],
+          items: [
+            { text: "前言", link: "/markdowns/books/python/basic/index" },
+          ],
         },
         {
           text: "第一部分 Python基础知识",
@@ -377,41 +386,68 @@ export default defineConfig({
               link: "/markdowns/books/python/basic/part1/chapter4",
             },
             {
-              text: '第五章 用户输入和while循环',
+              text: "第五章 用户输入和while循环",
               link: "/markdowns/books/python/basic/part1/chapter5",
             },
             {
-              text: '第六章 函数',
+              text: "第六章 函数",
               link: "/markdowns/books/python/basic/part1/chapter6",
             },
             {
-              text: '第七章 类',
+              text: "第七章 类",
               link: "/markdowns/books/python/basic/part1/chapter7",
             },
             {
-              text: '第八章 文件、异常、存储数据',
+              text: "第八章 文件、异常、存储数据",
               link: "/markdowns/books/python/basic/part1/chapter8",
             },
             {
-              text: '第九章 测试代码',
+              text: "第九章 测试代码",
               link: "/markdowns/books/python/basic/part1/chapter9",
-            }
-          ]
+            },
+          ],
         },
         {
-          text: '第二部分 项目实战',
+          text: "第二部分 项目实战",
           items: [
             {
-              text: '第一章 数据可视化',
+              text: "第一章 数据可视化",
               link: "/markdowns/books/python/basic/part2/chapter1",
             },
             {
-              text: '第二章 下载数据展示',
+              text: "第二章 下载数据展示",
               link: "/markdowns/books/python/basic/part2/chapter2",
+            },
+          ],
+        },
+      ],
+      "/markdowns/books/selenium": [
+        {
+          text: "Selenium",
+          items: [{ text: "前言", link: "/markdowns/books/selenium/index" }],
+        },
+        {
+          text: "第一部分 Selenium基础知识",
+          items: [
+            {
+              text: "第一章 自动化测试概述",
+              link: "/markdowns/books/selenium/chapter1",
+            },
+            {
+              text: "第二章 Selenium IDE基本运用",
+              link: "/markdowns/books/selenium/chapter2",
+            },
+            {
+              text: "第三章 Selenium IDE高级运用",
+              link: "/markdowns/books/selenium/chapter3",
+            },
+            {
+              text: '第三章 Selenium WebDriver基本运用',
+              link: "/markdowns/books/selenium/chapter4",
             }
-          ]
-        }
-      ]
+          ],
+        },
+      ],
     },
     // 社交链接
     socialLinks: [
