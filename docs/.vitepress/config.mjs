@@ -447,6 +447,12 @@ export default defineConfig({
             }
           ],
         },
+        {
+          text: '第二部分 Selenium实战',
+          items: [
+
+          ]
+        }
       ],
     },
     // 社交链接

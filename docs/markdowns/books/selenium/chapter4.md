@@ -145,8 +145,48 @@ print("获取高度值：", driver.get_window_rect()["height"])
 | 查看多个元素       | find_elements(By.ID, value)等        | 方法名增加复数`s`， 匹配是集合                                                   |
 | 嵌套查询         | 在方法调用后可以链式调用继续嵌套查找                  | 例如：`driver.find_element(By.ID, "form").find_element(By.NAME, "wd")` |
 
-
 ## 页面元素操作
+
+#### 1. 点击元素
+
+```py
+driver.find_element(By.ID, "chat-textarea").click() # 点击聊天输入框
+```
+
+#### 2. 输入内容或上传附件
+
+使用`send_keys()`方法， 附件则是直接传入文件的地址。
+
+```py
+driver.find_element(By.ID, "chat-textarea").send_keys("selenium") # 输入selenium
+driver.find_element(By.ID, "upload").send_keys("D:\\self space\\file\\test.txt") # 上传附件
+```
+
+:::tip
+附件需要找到的是, `<input type="file">`元素
+:::
+
+#### 3. 清空元素内容
+
+```py
+driver.find_element(By.ID, "chat-textarea").clear() # 清空聊天输入框
+```
+
+#### 4. 提交表单
+
+只有当使用原生`form`元素的`submit`按钮时， 使用此方法。 
+
+现代网页基本都使用点击按钮，来触发进行对应的校验等。
+
+```py
+driver.find_element(By.ID, "form").submit() # 提交表单
+```
+
+#### 5. 下拉框元素的选项操作
+
+:::tip
+下拉(多选)框需要使用`webdriver.support.select`模块中的`Select`类来操作。
+:::
 
 
 
