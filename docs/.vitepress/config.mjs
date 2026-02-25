@@ -118,6 +118,7 @@ export default defineConfig({
         items: [
           { text: "踩坑碎片", link: "/markdowns/damnHole/index" },
           { text: "js零散", link: "/markdowns/damnHole/js" },
+          { text: '项目vitePress接入', link: '/markdowns/damnHole/vitePress' },
         ],
       },
       {
@@ -179,6 +180,7 @@ export default defineConfig({
             text: "《Selenium自动化测试实战》",
             link: "/markdowns/books/selenium/index",
           },
+          { text: 'Python从入门到实战', link: '/markdowns/books/pythonTwo/index' }
         ],
       },
     ],
