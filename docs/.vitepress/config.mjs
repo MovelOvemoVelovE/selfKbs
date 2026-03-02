@@ -57,7 +57,7 @@ export default defineConfig({
         text: "☯ ‌阴阳道图",
         items: [
           { text: "🙆‍♀️噗", link: "/markdowns/pupu/index" },
-          {text: "房子", link: '/markdowns/pupu/myHouse'},
+          {text: "房子", link: '/markdowns/pupu/myhouse'},
           {
             text: "git提取日报、周报",
             link: "/markdowns/architect_trip/tools/gitDaily.md",
