@@ -1,28 +1,38 @@
+# 使用工具等
+
+- anki 桌面软件 - 学习英语
+
 # 前端开发
-    封装markdown-it-container组件 50%
-    elementplus dialog+form内存泄漏 + daisyui源码查看
-    vuetifyjs源码查看
-    Echarts书看完 50%
-    封装组件库
-    jest测试框架 10%
-    nextjs/nuxtjs
-    canvas、svg
-    PWA
-    性能
-    根据工号生成二维码，实现一些数字化的操作： 
+
+* 封装组件库： 查看antdsign源码及markdown-it-container
+* 查看vxe-table源码，了解虚拟列表组件的成熟方案
+* 学习monorepo管理多包项目
+* 封装一套自己的wflow
+* Echarts书看完 70%
+* canvas svg
+* jest测试框架 10%
+* PWA
+* 性能
+* webworker
+
 # 后端开发
-    express+nodejs
-    java/python + springcloud
-    UML
+
+* python
+* java + springcloud + 全家桶
+* UML图
+
 # 全栈开发
-    流程引擎
-    AI
-    webrtc
-    linux
-    计算机原理
-    devops CICD
-    husky
-# sad 
+
+* 流程引擎
+* AI
+* webrtc
+* linux
+* 计算机原理
+* devops CICD
+* husky
+
+# 文档等级名称
+
 1、新入道途
 2、小具法力
 3、初领妙道

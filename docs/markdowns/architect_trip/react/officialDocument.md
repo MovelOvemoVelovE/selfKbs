@@ -29,7 +29,7 @@ JSX特点:
 4. `{}`代替`''`使用js表达式
 5. 使用if判断return最终的jsx表达式
 6. 部分jsx可以赋值变量后嵌入
-7. `{isTure && <div>true</div>}`为假值
+7. `{isTure && <div>true</div>}`为假值不会渲染内容
 
 ## 循环渲染
 
@@ -69,7 +69,6 @@ JSX特点:
 3. 传递给事件处理的函数是一个函数，而不是**调用**
 4. 确保为事件处理程序使用适当html标签，比如是`button`而不是`div`
 5. 事件捕获可以使用`onClickCapture`, 添加Capture 后缀
-6. 
 
 ## state
 

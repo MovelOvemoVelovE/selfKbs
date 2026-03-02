@@ -8,38 +8,34 @@
     <!-- 右下角功能按钮 -->
     <div class="demo-actions">
       <el-tooltip content="查看源码" placement="top">
-        <el-button
-          circle
-          size="small"
+        <Icon 
+          icon="fluent-color:code-24"
+          width="24"
+          height="24"
           @click="toggleSource"
-        ></el-button>
+        />
       </el-tooltip>
       <el-tooltip content="复制源码" placement="top">
-        <el-button
-          circle
-          size="small"
+        <Icon 
+          icon="flat-color-icons:copyright"
+          width="24"
+          height="24"
           @click="copySource"
-        ></el-button>
-      </el-tooltip>
-      <el-tooltip content="在 Playground 中编辑" placement="top">
-        <el-button
-          circle
-          size="small"
-          @click="openPlayground"
-        ></el-button>
+        />
       </el-tooltip>
     </div>
 
     <!-- 下半部分：源码展示 -->
     <div v-if="showSource" class="demo-source">
-      <pre><code class="language-html" v-text="decodedSource"></code></pre>
+      <pre><code class="language-vue" v-html="highlightedSource"></code></pre>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, computed } from 'vue';
-import { ElButton, ElTooltip } from 'element-plus';
+import { ElTooltip } from 'element-plus';
+import { Icon } from "@iconify/vue";
 import 'element-plus/dist/index.css';
 
 const props = defineProps({
@@ -53,6 +49,11 @@ const props = defineProps({
   },
 });
 
+// 引入 VitePress 的高亮工具
+import { useData } from 'vitepress';
+const { theme } = useData();
+const Prism = theme.value?.prism || window.Prism;
+
 const showSource = ref(false);
 
 const decodedSource = computed(() => decodeURIComponent(props.source));
@@ -61,14 +62,19 @@ const toggleSource = () => {
   showSource.value = !showSource.value;
 };
 
+// 高亮处理
+const highlightedSource = computed(() => {
+  if (Prism && Prism.highlight) {
+    return Prism.highlight(decodedSource.value, Prism.languages.markdown, 'markdown');
+  }
+  // fallback
+  return decodedSource.value.replace(/</g, '&lt;').replace(/>/g, '&gt;');
+});
+
 const copySource = () => {
   navigator.clipboard.writeText(decodedSource.value).then(() => {
     alert('源码已复制到剪贴板！');
   });
-};
-
-const openPlayground = () => {
-  alert('在 Playground 中编辑功能尚未实现！');
 };
 </script>
 
@@ -91,16 +97,18 @@ const openPlayground = () => {
 }
 
 .demo-actions {
-  position: absolute;
   bottom: 16px;
   right: 16px;
   display: flex;
+  justify-content: flex-end;
   gap: 8px;
 }
 
+.demo-actions:hover {
+  cursor: pointer;
+}
+
 .demo-source {
-  background-color: #282c34;
-  color: #fff;
   padding: 16px;
   border-radius: 8px;
   overflow-x: auto;

@@ -3,7 +3,7 @@
 layout: home
 
 hero:
-  name: "卡卡筑基"
+  name: "三思而后行!"
   text: "人生的意义在于人本身"
   tagline: 人活到100岁，影像的大小是46,195.3125 TB
   image: 
@@ -14,13 +14,19 @@ hero:
       text: 数据逻辑
       link: /markdowns/jtips/dataSource
     - theme: brand
-      text: Echarts入门、实战与进阶
-      link: /markdowns/books/echarts/index
+      text: GoTo New Zealand
+      link: /markdowns/English/words
     - theme: alt
       text: 🚀学无止境
       link: /markdowns/pupu/index
+    - theme: alt
+      text: 生活经验领悟
+      link: /markdowns/life/index
 
 features:
+  - title: 聚合
+    icon: 🧩
+    details: 书写笔记要聚合零散、最少知识点的原则
   - title: 高效
     icon: ⚡
     details: 不断积累的代码及思路，可以快速的实现一些功能，甚至是复制一些功能
@@ -33,6 +39,9 @@ features:
   - title: AI
     icon: 🚀
     details: 利用AI工具! 不仅仅是辅助工作，还可以辅助学习
+  - title: 坚持
+    icon: 💪
+    details: 坚持才是王道，只有坚持才能看到希望的曙光
 ---
 
 <script setup>

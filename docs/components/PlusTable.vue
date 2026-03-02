@@ -1,11 +1,9 @@
 <template>
-  <el-table border></el-table>
-  <el-button>你好</el-button>
+  <p>My cat is <strong>very</strong> grumpy.</p>
 </template>
 
 <script setup>
 import 'element-plus/dist/index.css'
-import { ref } from 'vue'
 import { ElTable, ElButton } from 'element-plus'
 </script>
 

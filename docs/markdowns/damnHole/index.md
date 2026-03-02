@@ -25,7 +25,7 @@ import Calendar from '@/vueComponents/Calendar.vue'
 
 ::: code-group
 
-```vue [parent.vue]
+ ```vue [parent.vue]
 <template>
   <component is="Child" :data="rowData" >
 </template>
@@ -170,7 +170,6 @@ const calendarFormatter = (day) => {
 :::
 
 <Calendar />
-
 
 # vue
 

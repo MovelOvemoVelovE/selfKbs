@@ -1,15 +1,10 @@
----
-theme: vuepress
-highlight: vs2015
----
-
-> vite官网: [Vite 官方中文文档 (vitejs.cn)](https://vitejs.cn/vite3-cn/guide/)    
->
-> 了解下就得了 
+> vite官网: [Vite 官方中文文档 (vitejs.cn)](https://vitejs.cn/vite3-cn/guide/)
 
 # 了解
 
-Vite是使用ESbuild预构建依赖、ESM原生提供源码、Rollup打包构建。
+Vite是使用ESbuild预构建依赖、ESM原生提供源码、Rollup打包构建。 
+
+vite的最大作用是显著的提升 **前端开发体验**
 
 # 搭建环境
 
@@ -25,14 +20,7 @@ npm run dev
 ```
 ---
 
-**值得注意的是：**   
-
-- **index.html** 在根目录下, Vite将其视为源码和模块图的一部分 
-    - 不需要`%PUBLIC_URL%`占位符
-
-- vite有 **根目录** 的概念，源码的绝对路径都是根据 **root目录**作为基础来解析
-
-- `vite server some/dir/html` 替换掉当前根目录
+**可以使用`.`来指定当前目录安装vite初始化**
 
 # 功能篇
 
