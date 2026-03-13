@@ -96,6 +96,7 @@ export default defineConfig({
           },
           { text: "vite", link: "/markdowns/architect_trip/tools/vite/vite" },
           { text: "Git", link: "/markdowns/architect_trip/tools/git" },
+          { text: "GitHub排行榜", link: "/markdowns/architect_trip/tools/githubRank" },
           { text: "📝配置文件集", link: "/markdowns/configJs/index" },
         ],
       },
